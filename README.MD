@@ -14,8 +14,9 @@ A repository that contains dotfiles for :
 ## Installation 
 
 > Before running this script makesure that you have backed up your current dotfiles
-Make the script executable `chmod +x setup.sh`
-To install the dotfiles run `./setup.sh`
+
+- Make the script executable `chmod +x setup.sh`
+- To install the dotfiles run `./setup.sh`
 
 ### Only linking
 
