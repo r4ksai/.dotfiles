@@ -13,8 +13,13 @@ A repository that contains dotfiles for :
 
 ## Installation 
 
-> Before running this script makesure that you have backed up your current dotfiles
+> .dotfile folder should be in home directory
 
+**This will prefix your current dotfiles with .backup** 
+
+- Move to home directory `cd ~`
+- Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
+- Move into .dotfiles `cd .dotfiles`
 - Make the script executable `chmod +x setup.sh`
 - To install the dotfiles run `./setup.sh`
 

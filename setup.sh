@@ -1,7 +1,5 @@
 #!/bin/zsh
-# FIXME :- Change the linking path to a dynamic path
-# FIXME :- Create a function to backup pre-existing dotfiles and delete 
-# FIXME :- Change the dotfile permissions
+
 setup()
 {
 	# Oh-My-Zsh
@@ -31,6 +29,16 @@ link()
 	ln -s ~/.dotfiles/.zshrc ~/.zshrc
 	ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 }
+
+backup()
+{
+	mv ~/.vimrc ~/.vimrc.backup
+	mv ~/.gitconfig ~/.gitconfig.backup 
+	mv ~/.zshrc ~/.zshrc.backup 
+	mv ~/.tmux.conf ~/.tmux.conf.backup 
+}
+
+backup
 
 if [[ $1 = "link" ]]
 then
