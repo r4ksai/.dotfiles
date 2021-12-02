@@ -1,3 +1,5 @@
+![cover](./images/screenshot.png)
+
 # DOTFILES
 
 A repository that contains dotfiles for :
@@ -26,4 +28,3 @@ A repository that contains dotfiles for :
 **Use this only to link dotfiles, this does not contain installation**
 To only link the dotfiles run `./setup.sh link`
 
-![Desktop](assets/screenshot.png)
