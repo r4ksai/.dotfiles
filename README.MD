@@ -1,4 +1,4 @@
-#DOTFILES
+# DOTFILES
 
 A repository that contains dotfiles for :
 - Vim
