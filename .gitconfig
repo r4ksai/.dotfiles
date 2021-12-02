@@ -15,7 +15,7 @@
 [hub]
 	protocol = https
 [alias]
-	a = "!git status --short | peco | awk '{print $2}' | xargs git add"
+	a = "add ."
 	d = diff
 	co = checkout
 	ci = commit

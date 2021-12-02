@@ -12,8 +12,10 @@
 filetype on
 packadd! dracula
 colorscheme dracula
+set showmatch
 syntax enable
 set foldmethod=indent
+set nofoldenable
 set number
 set relativenumber
 set noerrorbells
