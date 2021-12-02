@@ -13,8 +13,7 @@ A repository that contains dotfiles for :
 
 ## Installation 
 
-> .dotfile folder should be in home directory
-
+**You do not have to backup your current dotfiles**
 **This will prefix your current dotfiles with .backup** 
 
 - Move to home directory `cd ~`
