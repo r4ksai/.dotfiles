@@ -13,8 +13,7 @@ A repository that contains dotfiles for :
 
 ## Installation 
 
-**You do not have to backup your current dotfiles**
-**This will prefix your current dotfiles with .backup** 
+**You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup** 
 
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
