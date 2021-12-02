@@ -18,7 +18,6 @@ set number
 set relativenumber
 set noerrorbells
 set visualbell
-set spell
 set autoindent 
 set ft=nasm
 set tabstop=4
