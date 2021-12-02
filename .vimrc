@@ -11,15 +11,14 @@
 
 filetype on
 packadd! dracula
-syntax enable
 colorscheme dracula
+syntax enable
 set foldmethod=indent
 set number
 set relativenumber
 set noerrorbells
 set visualbell
 set autoindent 
-set ft=nasm
 set tabstop=4
 set shiftwidth=4
 set history=1000
