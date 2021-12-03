@@ -30,6 +30,18 @@ link()
 	ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 }
 
+brew()
+{
+	brew install tmux
+	brew install vim
+	brew install htop
+	brew install pyenv
+	brew install nmap
+	brew install openvpn
+	brew install fish
+	brew install blender
+}
+
 backup()
 {
 	mv ~/.vimrc ~/.vimrc.backup
@@ -43,6 +55,9 @@ backup
 if [[ $1 = "link" ]]
 then
 	link
+elif [[ $1 = "brew" ]]
+then
+	brew
 else
 	setup
 fi
