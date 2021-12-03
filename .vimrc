@@ -60,6 +60,14 @@ set lazyredraw
 " Save with root permission
 command! W w !sudo tee > /dev/null %
 
+"-----------------------------
+" Tabs
+
+" Open current directory
+nmap te :tabedit 
+nmap <S-Tab> :tabprev<Return>
+nmap <Tab> :tabnext<Return>
+
 "------------------------------
 " Windows
 
