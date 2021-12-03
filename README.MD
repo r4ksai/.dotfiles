@@ -1,3 +1,5 @@
+![cover](./images/screenshot.png)
+
 # DOTFILES
 
 A repository that contains dotfiles for :
@@ -13,9 +15,7 @@ A repository that contains dotfiles for :
 
 ## Installation 
 
-> .dotfile folder should be in home directory
-
-**This will prefix your current dotfiles with .backup** 
+**You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup** 
 
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`

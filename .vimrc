@@ -13,6 +13,7 @@ filetype on
 packadd! dracula
 colorscheme dracula
 set showmatch
+set mps+=<:> 
 syntax enable
 set foldmethod=indent
 set nofoldenable
