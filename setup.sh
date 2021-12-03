@@ -39,6 +39,7 @@ brew()
 	brew install nmap
 	brew install openvpn
 	brew install fish
+	brew install npm
 	brew install blender
 }
 
