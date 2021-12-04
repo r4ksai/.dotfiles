@@ -60,6 +60,11 @@ set lazyredraw
 " Save with root permission
 command! W w !sudo tee > /dev/null %
 
+" Others
+set clipboard=unnamed
+set shell=zsh
+set backspace=indent,eol,start
+
 "-----------------------------
 " Tabs
 
