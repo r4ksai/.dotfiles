@@ -25,3 +25,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Alias 
 alias cl="clear"
+alias l="exa"
+alias ll="exa -lg"
+alias la="exa -lga"
