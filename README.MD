@@ -23,6 +23,8 @@ A repository that contains dotfiles for :
 - Make the script executable `chmod +x setup.sh`
 - To install the dotfiles run `./setup.sh`
 
+**You need to add Dracula theme to the terminal manually**
+
 ### Only linking
 
 **Use this only to link dotfiles, this does not contain installation**
@@ -38,4 +40,6 @@ To install brew modules run `./setup.sh brew`
 ### Install Font to support  Icons
 
 **Install Font to support visibility of Icons by running** `brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font`
+
+**For this to take effect you need to change the terminal font to the installed font**
 
