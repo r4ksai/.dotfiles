@@ -26,6 +26,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Alias 
 alias cl="clear"
-alias l="exa"
-alias ll="exa -lg"
-alias la="exa -lga"
+alias l="exa --icons"
+alias ll="exa -lg --icons"
+alias la="exa -lga --icons"
+alias lt="l --tree --level=2"
+alias llt="ll --tree --level=2"
+alias lat="la --tree --level=2"
