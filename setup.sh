@@ -33,6 +33,7 @@ link()
 
 brew()
 {
+	brew install peco
 	brew install tmux
 	brew install vim
 	brew install htop
