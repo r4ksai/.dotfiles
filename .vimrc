@@ -26,7 +26,7 @@ set showmatch
 set mps+=<:> 
 
 " Folding
-set foldmethod=indent
+set foldmethod=marker foldlevel=0
 set nofoldenable
 
 " Show numbers
