@@ -34,3 +34,8 @@ To only link the dotfiles run `./setup.sh link`
 **If you don't have brew installed use** `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 To install brew modules run `./setup.sh brew`
+
+### Install Font to support  Icons
+
+**Install Font to support visibility of Icons by running** `brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font`
+
