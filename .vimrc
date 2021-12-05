@@ -50,6 +50,7 @@ set history=1000
 set ignorecase
 set smartcase
 set hlsearch
+set incsearch
 
 " Autocompletion
 set wildmenu
