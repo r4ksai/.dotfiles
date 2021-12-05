@@ -24,6 +24,7 @@ setup()
 
 link()
 {
+	backup
 	ln -s ~/.dotfiles/.vimrc ~/.vimrc
 	ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 	ln -s ~/.dotfiles/.zshrc ~/.zshrc
@@ -51,7 +52,6 @@ backup()
 	mv ~/.tmux.conf ~/.tmux.conf.backup 
 }
 
-backup
 
 if [[ $1 = "link" ]]
 then
