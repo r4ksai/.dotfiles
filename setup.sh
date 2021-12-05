@@ -42,6 +42,7 @@ brew()
 	brew install fish
 	brew install npm
 	brew install blender
+	brew install reattach-to-user-namespace # Important for Tmux-Yank
 }
 
 backup()
