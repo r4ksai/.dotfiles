@@ -19,6 +19,8 @@ setup()
 	mkdir -p ~/.vim/pack/themes/start
 	cd ~/.vim/pack/themes/start
 	git clone https://github.com/dracula/vim.git dracula
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # Plugin Manager
+	mkdir ~/.vim/plugged
 	ln -s ~/.dotfiles/.vimrc ~/.vimrc
 }
 
