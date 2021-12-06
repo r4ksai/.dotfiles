@@ -52,6 +52,10 @@ set smartcase
 set hlsearch
 set incsearch
 
+" Finding files - Search down into subfolders
+set path+=**
+set wildignore+=*/node_modules/*
+
 " Autocompletion
 set wildmenu
 
@@ -60,6 +64,18 @@ set lazyredraw
 
 " Save with root permission
 command! W w !sudo tee > /dev/null %
+
+" Delete without yank and paste from clipbaord 0
+nnoremap <leader>d "_d
+nnoremap x "_x
+nnoremap <S-C-p> "0p
+
+" Increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Select all
+nmap <C-a> gg<S-v>G
 
 " Others
 set clipboard=unnamed
