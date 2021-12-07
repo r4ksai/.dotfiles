@@ -27,6 +27,7 @@ source $ZSH/oh-my-zsh.sh
 # Alias 
 alias cl="clear"
 alias l="exa --icons"
+alias ls="l" # For acessing ls type \ls
 alias ll="exa -lg --icons"
 alias la="exa -lga --icons"
 alias lt="l --tree --level=2"
