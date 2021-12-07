@@ -7,6 +7,9 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   z
+  tmux
+  colored-man-pages
+  colorize
 )
 
 # Path Variable
@@ -17,6 +20,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Langauge
 export LANG=en_US.UTF-8
+
+# Color
+export TERM=screen-256color
 
 # Default Editor
 export EDITOR='vim'
