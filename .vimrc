@@ -126,10 +126,14 @@ Plug 'ap/vim-css-color'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-commentary'
 
 " Initialize plugin system
 call plug#end()
 
+let g:rainbow_active = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
 
