@@ -129,6 +129,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
