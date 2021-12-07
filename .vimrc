@@ -14,8 +14,10 @@ set nocompatible
 filetype off
 
 " Theme
+set encoding=UTF-8
 packadd! dracula
 colorscheme dracula
+set background=dark
 syntax enable
 set cursorline
 set nowrap
@@ -122,6 +124,8 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
+Plug 'ryanoasis/vim-devicons'
 
 " Initialize plugin system
 call plug#end()
