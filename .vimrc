@@ -17,6 +17,7 @@ filetype off
 set encoding=UTF-8
 packadd! dracula
 colorscheme dracula
+let g:dracula_italic = 0
 set background=dark
 syntax enable
 set cursorline
@@ -137,5 +138,6 @@ call plug#end()
 let g:rainbow_active = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
+let g:airline#extensions#whitespace#enabled = 0
 
 map <F5> :NERDTreeToggle<CR>
