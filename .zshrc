@@ -10,6 +10,7 @@ plugins=(
   tmux
   colored-man-pages
   colorize
+  web-search
 )
 
 # Path Variable
