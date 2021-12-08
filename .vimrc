@@ -139,5 +139,6 @@ let g:rainbow_active = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
 
 map <F5> :NERDTreeToggle<CR>
