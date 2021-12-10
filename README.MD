@@ -3,10 +3,10 @@
 # DOTFILES
 
 A repository that contains dotfiles for :
-- Vim
-- ZSH
-- Git
-- Tmux
+- [Vim](.vimrc)
+- [ZSH](.zshrc)
+- [Git](.gitconfig)
+- [Tmux](.tmux.conf)
 
 ## Requirements
 
