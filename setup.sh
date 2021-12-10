@@ -47,6 +47,7 @@ brew()
 	brew install blender
 	brew install reattach-to-user-namespace # Important for Tmux-Yank
     brew install tig
+    brew install wget
 }
 
 backup()
