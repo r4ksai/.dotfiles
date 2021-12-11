@@ -1,0 +1,45 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+# Cross-platform make
+brew "cmake"
+# Library for USB device access
+brew "libusb"
+# USB programmer
+brew "dfu-util"
+# Modern replacement for 'ls'
+brew "exa"
+# Improved top (interactive process viewer)
+brew "htop"
+# Open controller for the MiniPRO TL866xx series of chip programmers
+brew "minipro"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Small build system for use with gyp or CMake
+brew "ninja"
+# Port scanning utility for large networks
+brew "nmap"
+# Platform built on V8 to build network applications
+brew "node"
+# Development kit for the Java programming language
+brew "openjdk"
+# Simplistic interactive filtering tool
+brew "peco"
+# Manage compile and link flags for libraries
+brew "pkg-config"
+# Python version management
+brew "pyenv"
+# Reattach process (e.g., tmux) to background
+brew "reattach-to-user-namespace"
+# Text interface for Git repositories
+brew "tig"
+# Terminal multiplexer
+brew "tmux"
+# Internet file retriever
+brew "wget"
+# 3D creation suite
+cask "blender"
+cask "font-hack-nerd-font"
