@@ -189,3 +189,12 @@ let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__r
 
 " Open/Close nerdtree
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Important keybindings to remember
+" ---------------------------------
+" ss & sv -> Split 
+" te -> Tab
+" tab -> Move between tabs
+" Control + n -> Auto Suggestion 
+" gcc -> Comment
+" Control + y + , -> Emmet
