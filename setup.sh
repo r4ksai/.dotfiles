@@ -22,6 +22,10 @@ setup()
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # Plugin Manager
 	mkdir ~/.vim/plugged
 	ln -s ~/.dotfiles/.vimrc ~/.vimrc
+
+    # NeoVim
+
+    ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
 }
 
 link()
@@ -31,6 +35,7 @@ link()
 	ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 	ln -s ~/.dotfiles/.zshrc ~/.zshrc
 	ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+    ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
 }
 
 brew()
