@@ -160,7 +160,6 @@ endif
 
 Plug 'preservim/nerdtree'
 Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
