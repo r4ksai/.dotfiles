@@ -14,11 +14,13 @@ set nocompatible
 filetype off
 
 " Theme
+if !has("nvim")
+    packadd! dracula
+    colorscheme dracula
+    let g:dracula_italic = 0
+endif
 set encoding=UTF-8
 set fileencodings=utf-8
-packadd! dracula
-colorscheme dracula
-let g:dracula_italic = 0
 set background=dark
 syntax enable
 set cursorline
@@ -55,6 +57,7 @@ set expandtab
 
 " History buffer
 set history=1000
+set hidden
 
 " Search
 set ignorecase
@@ -108,6 +111,11 @@ set showcmd
 set cmdheight=1
 set laststatus=2
 
+" incremental substitution (neovim)
+if has('nvim')
+  set inccommand=split
+endif
+
 "-----------------------------
 " Tabs
 
@@ -141,7 +149,14 @@ nmap <C-w><down> <C-w>-
 "------------------------------
 " Plugins
 
-call plug#begin('~/.vim/plugged')
+if has("nvim")
+    let g:plug_home = stdpath('data') . '/plugged'
+    call plug#begin()
+    Plug 'dracula/vim', { 'as': 'dracula' }
+else
+    call plug#begin('~/.vim/plugged')
+endif
+
 
 Plug 'preservim/nerdtree'
 Plug 'bling/vim-airline'
@@ -157,6 +172,11 @@ Plug 'tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
+
+if has("nvim")
+    " Theme 
+    colorscheme dracula
+endif
 
 " Activate rainbow plugin
 let g:rainbow_active = 1
