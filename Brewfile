@@ -2,36 +2,71 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
-tap "homebrew/services"
-tap "osx-cross/avr"
 
-# Core application library for C
-brew "glib"
-# Atmel AVR MCU programmer
-brew "avrdude"
-# Blocking, shuffling and loss-less compression library
-brew "c-blosc"
-# Object-file caching compiler wrapper
-brew "ccache"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
-# GSettings schemas for desktop components
-brew "gsettings-desktop-schemas"
-# OpenType text shaping engine
-brew "harfbuzz"
-# Framework for layout and rendering of i18n text
-brew "pango"
-# Toolkit for creating graphical user interfaces
-brew "gtk+3"
-# Multipurpose sniffer/interceptor/logger for switched LAN
-brew "ettercap"
+# Version Control
+# ------------------------------------------------
+# Distributed revision control system
+brew "git"
+# Text interface for Git repositories
+brew "tig"
+
+# Terminal apps
+# ------------------------------------------------
+# Port scanning utility for large networks
+brew "nmap"
+# Improved top (interactive process viewer)
+brew "htop"
+# SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
+brew "openvpn"
+# Terminal multiplexer
+brew "tmux"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Vi 'workalike' with many additional features
+brew "vim"
+# Pager/text based browser
+brew "w3m"
+# Internet file retriever
+brew "wget"
+
+# Extra terminal apps
+# ------------------------------------------------
+# Simplistic interactive filtering tool
+brew "peco"
 # Modern replacement for 'ls'
-brew "folly"
-# File format designed to store large amounts of data
-brew "hdf5"
-# User interface to the TELNET protocol
-brew "telnet"
-# Watch files and take action when they change
-brew "watchman"
-# GNU compiler collection for AVR 8-bit and 32-bit Microcontrollers
-brew "osx-cross/avr/avr-gcc@9"
+brew "exa"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Reattach process (e.g., tmux) to background
+brew "reattach-to-user-namespace"
+
+# Embeded development tools
+# ------------------------------------------------
+# Cross-platform make
+brew "cmake"
+# Small build system for use with gyp or CMake
+brew "ninja"
+# Manage compile and link flags for libraries
+brew "pkg-config"
+# USB programmer
+brew "dfu-util"
+# Library for USB device access
+brew "libusb"
+# Open controller for the MiniPRO TL866xx series of chip programmers
+brew "minipro"
+
+
+# Langauge support
+# ------------------------------------------------
+# Development kit for the Java programming language
+brew "openjdk"
+# Platform built on V8 to build network applications
+brew "node"
+# Python version management
+brew "pyenv"
+
+# 3D creation suite
+cask "blender"
+cask "font-hack-nerd-font"
+
+#To install from brewfile run 'brew bundle --file <this-file>'
