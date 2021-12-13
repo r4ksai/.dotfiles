@@ -38,23 +38,6 @@ link()
     ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
 }
 
-brew()
-{
-	brew install peco
-	brew install tmux
-	brew install vim
-	brew install htop
-	brew install pyenv
-	brew install nmap
-	brew install openvpn
-	brew install fish
-	brew install npm
-	brew install blender
-	brew install reattach-to-user-namespace # Important for Tmux-Yank
-    brew install tig
-    brew install wget
-}
-
 backup()
 {
 	mv ~/.vimrc ~/.vimrc.backup
@@ -69,7 +52,7 @@ then
 	link
 elif [[ $1 = "brew" ]]
 then
-	brew
+    brew bundle --file Brew
 else
 	setup
 fi
