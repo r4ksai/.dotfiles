@@ -46,3 +46,5 @@ To install brew modules run `./setup.sh brew`
 ### Install Plugin manager for neovim
 
 **To install plugin manager run** ` curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
+**To install plugins using plugin manager run `:PlugInstall` inside vim or neovim**
