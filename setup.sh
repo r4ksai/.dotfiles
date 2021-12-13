@@ -52,7 +52,7 @@ then
 	link
 elif [[ $1 = "brew" ]]
 then
-    brew bundle --file Brew
+    brew bundle
 else
 	setup
 fi
