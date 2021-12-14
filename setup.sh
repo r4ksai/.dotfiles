@@ -6,14 +6,9 @@ setup()
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-	ln -s ~/.dotfiles/.zshrc ~/.zshrc
-
-	# Git
-	ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 
 	# Tmux
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
 	# Vim
 	mkdir -p ~/.vim/pack/themes/start
@@ -21,11 +16,15 @@ setup()
 	git clone https://github.com/dracula/vim.git dracula
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # Plugin Manager
 	mkdir ~/.vim/plugged
-	ln -s ~/.dotfiles/.vimrc ~/.vimrc
+    link
+}
 
-    # NeoVim
-
-    ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
+backup()
+{
+	mv ~/.vimrc ~/.vimrc.backup
+	mv ~/.gitconfig ~/.gitconfig.backup 
+	mv ~/.zshrc ~/.zshrc.backup 
+	mv ~/.tmux.conf ~/.tmux.conf.backup 
 }
 
 link()
@@ -38,14 +37,11 @@ link()
     ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
 }
 
-backup()
+debian()
 {
-	mv ~/.vimrc ~/.vimrc.backup
-	mv ~/.gitconfig ~/.gitconfig.backup 
-	mv ~/.zshrc ~/.zshrc.backup 
-	mv ~/.tmux.conf ~/.tmux.conf.backup 
+    apt update && apt upgrade -y
+    apt install git vim tmux neovim curl
 }
-
 
 if [[ $1 = "link" ]]
 then
@@ -53,6 +49,9 @@ then
 elif [[ $1 = "brew" ]]
 then
     brew bundle
+elif [[ $1 = "debian" ]]
+then
+    debian
 else
 	setup
 fi
