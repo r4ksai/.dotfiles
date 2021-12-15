@@ -31,11 +31,9 @@ A repository that contains dotfiles for :
 
 To only link the dotfiles run `./setup.sh link`
 
-### Brew Installation
+### Package Installation
 
-**If you don't have brew installed use** `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-To install brew modules run `./setup.sh brew`
+To install Packages run `./setup.sh install`
 
 ### Install Font to support  Icons
 
