@@ -57,8 +57,11 @@ package_install()
             brew bundle
     elif [[ "$OSTYPE" == "linux-gnu"* ]]
     then
-        apt update && apt upgrade -y
-        apt install git vim tmux neovim curl
+        if ! command -v apt &> /dev/null
+        then
+            apt update && apt upgrade -y
+            apt install git vim tmux neovim curl
+        fi
 }
 
 if [[ $1 = "link" ]]
