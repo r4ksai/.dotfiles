@@ -42,11 +42,11 @@ patchfiles()
 
 backup()
 {
-	mv ~/.vimrc ~/.vimrc.backup
-	mv ~/.gitconfig ~/.gitconfig.backup 
-	mv ~/.zshrc ~/.zshrc.backup 
-	mv ~/.tmux.conf ~/.tmux.conf.backup 
-    mv ~/.config/nvim/init.vim ~.config/nvim/init.vim.backup
+	mv ~/.vimrc ~/.patches/.vimrc.backup
+	mv ~/.gitconfig ~/.patches/.gitconfig.backup 
+	mv ~/.zshrc ~/.patches/.zshrc.backup 
+	mv ~/.tmux.conf ~/.patches/.tmux.conf.backup 
+    mv ~/.config/nvim/init.vim ~./.patches/.nvim.backup
 }
 
 link()
