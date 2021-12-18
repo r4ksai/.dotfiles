@@ -21,6 +21,9 @@ setup()
     ## Install dracula mannually - change this to be added in the plugin itself
 	git clone https://github.com/dracula/vim.git dracula
 
+    # NeoVim
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
     # Link files
     link
 }

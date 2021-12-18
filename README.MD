@@ -41,8 +41,6 @@ To install Packages run `./setup.sh install`
 
 **For this to take effect you need to change the terminal font to the installed font**
 
-### Install Plugin manager for neovim
-
-**To install plugin manager run** ` curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+### Install Plugins for Vim or Nvim
 
 **To install plugins using plugin manager run `:PlugInstall` inside vim or neovim**
