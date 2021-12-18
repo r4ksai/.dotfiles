@@ -16,13 +16,25 @@ setup()
 	# Vim
 	mkdir -p ~/.vim/pack/themes/start
 	cd ~/.vim/pack/themes/start
-    ## Install dracula mannually - change this to be added in the plugin itself
-	git clone https://github.com/dracula/vim.git dracula
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # Plugin Manager
 	mkdir ~/.vim/plugged
+    ## Install dracula mannually - change this to be added in the plugin itself
+	git clone https://github.com/dracula/vim.git dracula
 
     # Link files
     link
+}
+
+patchfiles()
+{
+    mkdir ~/.patches
+    cd ~/.patches
+    # Todo: Check if exists and if does diff and patch into patches folder
+	diff ~/.dotfiles/.vimrc ~/.vimrc > ~/.patches/.vimrc.patch
+	diff ~/.dotfiles/.tmux.conf ~/.tmux.conf > ~/.patches/.tmux.patch
+	diff ~/.dotfiles/.zshrc ~/.zshrc > ~/.patches/.zshrc.patch
+	diff ~/.dotfiles/.gitconfig ~/.gitconfig > ~/.patches/.gitconfig.patch
+    diff ~/.dotfiles/.vimrc ~/.config/nvim/init.vim > ~/.patches/.nvim.patch
 }
 
 backup()
@@ -31,12 +43,13 @@ backup()
 	mv ~/.gitconfig ~/.gitconfig.backup 
 	mv ~/.zshrc ~/.zshrc.backup 
 	mv ~/.tmux.conf ~/.tmux.conf.backup 
+    mv ~/.config/nvim/init.vim ~.config/nvim/init.vim.backup
 }
 
 link()
 {
     # Create backups
-	backup
+	patchfiles
 
     # Link
 	ln -s ~/.dotfiles/.vimrc ~/.vimrc
@@ -62,6 +75,7 @@ package_install()
             apt update && apt upgrade -y
             apt install git vim tmux neovim curl
         fi
+    fi
 }
 
 if [[ $1 = "link" ]]
