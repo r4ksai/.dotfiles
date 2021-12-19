@@ -32,12 +32,14 @@ patchfiles()
 {
     mkdir ~/.patches
     cd ~/.patches
-    # Todo: Check if exists and if does diff and patch into patches folder
+
 	diff ~/.dotfiles/.vimrc ~/.vimrc > ~/.patches/.vimrc.patch
 	diff ~/.dotfiles/.tmux.conf ~/.tmux.conf > ~/.patches/.tmux.patch
 	diff ~/.dotfiles/.zshrc ~/.zshrc > ~/.patches/.zshrc.patch
 	diff ~/.dotfiles/.gitconfig ~/.gitconfig > ~/.patches/.gitconfig.patch
     diff ~/.dotfiles/.vimrc ~/.config/nvim/init.vim > ~/.patches/.nvim.patch
+
+    backup
 }
 
 backup()
