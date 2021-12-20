@@ -71,8 +71,9 @@ package_install()
         if ! command -v brew &> /dev/null
         then
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        fi
             brew bundle
+            brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
+        fi
     elif [[ "$OSTYPE" == "linux-gnu"* ]]
     then
         if ! command -v apt &> /dev/null
