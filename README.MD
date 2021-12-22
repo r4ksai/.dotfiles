@@ -37,8 +37,6 @@ To install Packages run `./setup.sh install`
 
 ### Install Font to support  Icons
 
-**Install Font to support visibility of Icons by running** `brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font`
-
 **For this to take effect you need to change the terminal font to the installed font**
 
 ### Install Plugins for Vim or Nvim

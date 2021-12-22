@@ -71,6 +71,7 @@ package_install()
         if ! command -v brew &> /dev/null
         then
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            # Hack Nerd Font Installation
             brew bundle
             brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
         fi
@@ -80,6 +81,11 @@ package_install()
         then
             apt update && apt upgrade -y
             apt install git vim tmux neovim curl
+            # Hack Nerd Font Installation
+            cd /tmp
+            git clone https://github.com/ryanoasis/nerd-fonts.git
+            cd nerd-fonts
+            ./install.sh Hack
         fi
     fi
 }
