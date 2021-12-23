@@ -64,6 +64,15 @@ link()
     ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
 }
 
+clean()
+{
+    rm ~/.vimrc
+    rm ~/.tmux.conf
+    rm ~/.zshrc
+    rm ~/.gitconfig
+    rm ~/.config/nvim/init.vim
+}
+
 package_install()
 {
     if [[ "$OSTYPE" == "darwin"* ]]
@@ -97,6 +106,9 @@ then
 elif [[ $1 = "install" ]]
 then
     package_install
+elif [[ $1 = "clean" ]]
+then
+    clean
 else
 	setup
 fi
