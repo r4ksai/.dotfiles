@@ -14,11 +14,6 @@ set nocompatible
 filetype off
 
 " Theme
-if !has("nvim")
-    packadd! dracula
-    colorscheme dracula
-    let g:dracula_italic = 0
-endif
 set encoding=UTF-8
 set fileencodings=utf-8
 set background=dark
@@ -152,12 +147,12 @@ nmap <C-w><down> <C-w>-
 if has("nvim")
     let g:plug_home = stdpath('data') . '/plugged'
     call plug#begin()
-    Plug 'dracula/vim', { 'as': 'dracula' }
 else
     call plug#begin('~/.vim/plugged')
 endif
 
 
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'preservim/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'ap/vim-css-color'
@@ -172,10 +167,9 @@ Plug 'tpope/vim-fugitive'
 " Initialize plugin system
 call plug#end()
 
-if has("nvim")
-    " Theme 
-    colorscheme dracula
-endif
+" Theme 
+colorscheme dracula
+let g:dracula_italic = 0
 
 " Activate rainbow plugin
 let g:rainbow_active = 1
