@@ -42,3 +42,7 @@ To install Packages run `./setup.sh install`
 ### Install Plugins for Vim or Nvim
 
 **To install plugins using plugin manager run `:PlugInstall` inside vim or neovim**
+
+### Remove dotfiles
+
+To remove dotfiles run `./setup.sh clean`
