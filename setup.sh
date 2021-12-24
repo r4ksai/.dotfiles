@@ -1,5 +1,32 @@
 #!/bin/zsh
 
+ package_install()
+{
+    if [[ "$OSTYPE" == "darwin"* ]]
+    then
+        if ! command -v brew &> /dev/null
+        then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            # Hack Nerd Font Installation
+            brew bundle
+            brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
+        fi
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]
+    then
+        if ! command -v apt &> /dev/null
+        then
+            apt update && apt upgrade -y
+            apt install git vim tmux neovim curl
+            # Hack Nerd Font Installation
+            cd /tmp
+            git clone https://github.com/ryanoasis/nerd-fonts.git
+            cd nerd-fonts
+            ./install.sh Hack
+            cd ~/.dotfiles
+        fi
+    fi
+}
+
 setup()
 {
     # Install Packages
@@ -7,6 +34,7 @@ setup()
   
 	# Oh-My-Zsh
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # Remove this if using kali and import from patches
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
@@ -69,33 +97,6 @@ clean()
     rm ~/.zshrc
     rm ~/.gitconfig
     rm ~/.config/nvim/init.vim
-}
-
-package_install()
-{
-    if [[ "$OSTYPE" == "darwin"* ]]
-    then
-        if ! command -v brew &> /dev/null
-        then
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            # Hack Nerd Font Installation
-            brew bundle
-            brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
-        fi
-    elif [[ "$OSTYPE" == "linux-gnu"* ]]
-    then
-        if ! command -v apt &> /dev/null
-        then
-            apt update && apt upgrade -y
-            apt install git vim tmux neovim curl
-            # Hack Nerd Font Installation
-            cd /tmp
-            git clone https://github.com/ryanoasis/nerd-fonts.git
-            cd nerd-fonts
-            ./install.sh Hack
-            cd ~/.dotfiles
-        fi
-    fi
 }
 
 if [[ $1 = "link" ]]
