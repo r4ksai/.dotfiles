@@ -34,7 +34,7 @@ setup()
   
 	# Oh-My-Zsh
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    if ! lsb_release -a | grep -Fxq "Kali"
+    if ! lsb_release -a 2>/dev/null | grep -q "Kali"
     then
         git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
