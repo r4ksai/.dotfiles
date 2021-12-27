@@ -12,6 +12,20 @@ plugins=(
   colorize
   web-search
 )
+if [[ "$OSTYPE" == "linux-gnu"* ]]
+then
+    if lsb_release -a | grep -Fxq "Kali"
+    then
+        plugins=( 
+          git
+          z
+          tmux
+          colored-man-pages
+          colorize
+          web-search
+        )
+    fi
+fi
 
 # Path Variable
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -30,6 +44,7 @@ export EDITOR='vim'
 
 # Source
 source $ZSH/oh-my-zsh.sh
+# Source prev rc
 
 # Alias 
 alias cl="clear"
