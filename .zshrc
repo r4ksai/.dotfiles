@@ -14,7 +14,7 @@ plugins=(
 )
 if [[ "$OSTYPE" == "linux-gnu"* ]]
 then
-    if lsb_release -a | grep -Fxq "Kali"
+    if lsb_release -a 2>/dev/null | grep -q "Kali"
     then
         plugins=( 
           git
@@ -24,6 +24,7 @@ then
           colorize
           web-search
         )
+        source ~/.zshrc.pre-oh-my-zsh
     fi
 fi
 
