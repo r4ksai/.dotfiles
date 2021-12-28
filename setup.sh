@@ -46,10 +46,10 @@ setup()
 	# Vim
 	mkdir -p ~/.vim/pack/themes/start
 	cd ~/.vim/pack/themes/start
+	git clone https://github.com/dracula/vim.git dracula
+
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # Plugin Manager
 	mkdir ~/.vim/plugged
-    ## Install dracula mannually - change this to be added in the plugin itself
-	git clone https://github.com/dracula/vim.git dracula
 
 	# NeoVim
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
