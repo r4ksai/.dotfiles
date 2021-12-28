@@ -157,7 +157,6 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 
-
 Plug 'preservim/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'ap/vim-css-color'
