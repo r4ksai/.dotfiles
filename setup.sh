@@ -7,16 +7,16 @@
 		if ! command -v brew &> /dev/null
 		then
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-			# Hack Nerd Font Installation
 			brew bundle
-			brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
+			# Hack Nerd Font Installation
+			# brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
 		fi
 	elif [[ "$OSTYPE" == "linux-gnu"* ]]
 	then
 		if ! command -v apt &> /dev/null
 		then
 			apt update && apt upgrade -y
-			apt install git vim tmux neovim curl
+			apt install git vim tmux neovim curl exa 
 			# Hack Nerd Font Installation
 			cd /tmp
 			git clone https://github.com/ryanoasis/nerd-fonts.git
@@ -60,7 +60,7 @@ setup()
 
 patchfiles()
 {
-	mkdir ~/.patches
+	mkdir -p ~/.patches
 	cd ~/.patches
 
 	diff ~/.dotfiles/.vimrc ~/.vimrc > ~/.patches/.vimrc.patch
@@ -105,13 +105,13 @@ clean()
 
 if [[ $1 = "link" ]]
 then
-	link
+    link
 elif [[ $1 = "install" ]]
 then
-    	package_install
+    package_install
 elif [[ $1 = "clean" ]]
 then
-    	clean
+    clean
 else
 	setup
 fi
