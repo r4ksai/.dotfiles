@@ -8,21 +8,19 @@
 		then
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 			brew bundle
-			# Hack Nerd Font Installation
-			# brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
 		fi
 	elif [[ "$OSTYPE" == "linux-gnu"* ]]
 	then
-		if ! command -v apt &> /dev/null
+		if command -v apt &> /dev/null
 		then
 			apt update && apt upgrade -y
-			apt install git vim tmux neovim curl exa 
+			apt install git vim tmux neovim curl exa -y
 			# Hack Nerd Font Installation
 			cd /tmp
 			git clone https://github.com/ryanoasis/nerd-fonts.git
 			cd nerd-fonts
 			./install.sh Hack
-	    		cd ~/.dotfiles
+            cd ~/.dotfiles
 		fi
 	fi
 }
@@ -34,11 +32,12 @@ setup()
   
 	# Oh-My-Zsh
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	if ! lsb_release -a 2>/dev/null | grep -q "Kali"
-	then
-		git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-	fi
+    
+    if ! lsb_release -a 2>/dev/null | grep -q "Kali"
+    then
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+    fi
 
 	# Tmux
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -48,7 +47,7 @@ setup()
 	cd ~/.vim/pack/themes/start
 	git clone https://github.com/dracula/vim.git dracula
 
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # Plugin Manager
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 	mkdir ~/.vim/plugged
 
 	# NeoVim
