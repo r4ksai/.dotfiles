@@ -12,22 +12,22 @@ plugins=(
   colorize
   web-search
 )
-# FIXME: create a compatable kali version or stick to using bash insted 
-# if [[ "$OSTYPE" == "linux-gnu"* ]]
-# then
-#     if lsb_release -a 2>/dev/null | grep -q "Kali"
-#     then
-#         plugins=( 
-#           git
-#           z
-#           tmux
-#           colored-man-pages
-#           colorize
-#           web-search
-#         )
-#         source ~/.zshrc.pre-oh-my-zsh
-#     fi
-# fi
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]
+then
+    if lsb_release -a 2>/dev/null | grep -q "Kali"
+    then
+        plugins=( 
+          git
+          z
+          tmux
+          colored-man-pages
+          colorize
+          web-search
+        )
+        source ~/.zshrc.pre-oh-my-zsh
+    fi
+fi
 
 # Path Variable
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
