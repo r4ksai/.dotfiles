@@ -33,7 +33,7 @@ set mps+=<:>
 
 " Folding
 set foldmethod=marker foldlevel=0
-set nofoldenable
+set foldenable
 
 " Show numbers
 set number
