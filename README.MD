@@ -20,7 +20,6 @@ A repository that contains dotfiles for :
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
 - Move into .dotfiles `cd .dotfiles`
-- Make the script executable `chmod +x setup.sh`
 - To install the dotfiles run `./setup.sh`
 
 **You need to add Dracula theme to the terminal manually**
