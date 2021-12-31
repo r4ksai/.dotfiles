@@ -82,6 +82,8 @@ backup()
 
 link()
 {
+	# Create nvim directory
+	mkdir -p ~/.config/nvim
 	# Create backups
 	patchfiles
 
