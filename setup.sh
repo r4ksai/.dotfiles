@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
  package_install()
 {
