@@ -85,6 +85,9 @@ link()
     # Create nvim directory
     mkdir -p ~/.config/nvim
 
+    # Clean
+    clean
+
     # Create backups
     backup
 
