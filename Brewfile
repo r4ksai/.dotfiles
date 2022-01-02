@@ -45,8 +45,6 @@ brew "bat"
 brew "fzf"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Code-search similar to ack
-brew "the_silver_searcher"
 
 # Embeded development tools
 # ------------------------------------------------

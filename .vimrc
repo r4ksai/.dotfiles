@@ -205,6 +205,15 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " Open/Close undotree
 nnoremap <leader>m :UndotreeToggle<CR>
 
+" FzF Keymaps
+map <leader>f :Files<CR>
+map <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg<CR>
+
+" FzF Layout
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+
 " Important keybindings to remember
 " ---------------------------------
 " ss & sv -> Split 
