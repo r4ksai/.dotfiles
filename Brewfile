@@ -39,6 +39,14 @@ brew "exa"
 brew "neofetch"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Code-search similar to ack
+brew "the_silver_searcher"
 
 # Embeded development tools
 # ------------------------------------------------

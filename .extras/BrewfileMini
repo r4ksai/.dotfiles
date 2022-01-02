@@ -2,6 +2,8 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Cross-platform make
 brew "cmake"
 # Library for USB device access
@@ -10,6 +12,8 @@ brew "libusb"
 brew "dfu-util"
 # Modern replacement for 'ls'
 brew "exa"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Improved top (interactive process viewer)
 brew "htop"
 # Open controller for the MiniPRO TL866xx series of chip programmers
@@ -34,10 +38,14 @@ brew "pkg-config"
 brew "pyenv"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Text interface for Git repositories
 brew "tig"
 # Terminal multiplexer
 brew "tmux"
+# Vi 'workalike' with many additional features
+brew "vim"
 # Internet file retriever
 brew "wget"
 # 3D creation suite
