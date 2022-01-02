@@ -209,5 +209,5 @@ nnoremap <leader>m :UndotreeToggle<CR>
 " Control + n -> Auto Suggestion 
 " gcc -> Comment
 " Control + y + , -> Emmet
-" Enter -> toggle Undotree
-" Control + n in normal mode -> toggle Nerdtree
+" leader + m -> toggle Undotree
+" leader + n -> toggle Nerdtree
