@@ -13,6 +13,9 @@
 set nocompatible
 filetype off
 
+" Don't load if the file is small
+if !1 | finish | endif
+
 " Theme
 if !has("nvim")
     packadd! dracula
