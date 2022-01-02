@@ -166,6 +166,7 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 
+Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'bling/vim-airline'
