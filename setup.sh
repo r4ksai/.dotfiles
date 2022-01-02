@@ -14,7 +14,7 @@
 		if command -v apt &> /dev/null
 		then
 			apt update && apt upgrade -y
-			apt install git vim tmux neovim curl exa -y
+			apt install git vim tmux neovim curl exa fzf ripgrep silversearcher-ag bat -y
 			# Hack Nerd Font Installation
 			cd /tmp
 			git clone https://github.com/ryanoasis/nerd-fonts.git
