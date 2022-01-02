@@ -27,6 +27,9 @@ set cursorline
 set nowrap
 set title
 
+" Leader
+let mapleader=';'
+
 " Highlight opening and closing brackets
 set showmatch
 set mps+=<:> 
@@ -58,6 +61,12 @@ set expandtab
 " History buffer
 set history=1000
 set hidden
+
+" Persistant Undo
+set undofile
+set undodir=~/.vim/undo
+set undolevels=1000
+set undoreload=10000
 
 " Search
 set ignorecase
@@ -157,6 +166,7 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 
+Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'ap/vim-css-color'
@@ -186,7 +196,10 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
 
 " Open/Close nerdtree
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+" Open/Close undotree
+nnoremap <leader>m :UndotreeToggle<CR>
 
 " Important keybindings to remember
 " ---------------------------------
@@ -196,3 +209,5 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 " Control + n -> Auto Suggestion 
 " gcc -> Comment
 " Control + y + , -> Emmet
+" Enter -> toggle Undotree
+" Control + n in normal mode -> toggle Nerdtree
