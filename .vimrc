@@ -210,9 +210,10 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>m :UndotreeToggle<CR>
 
 " FzF Keymaps
-map <leader>f :Files<CR>
-map <leader>b :Buffers<CR>
-nnoremap <leader>g :Rg<CR>
+noremap <leader>f :Files<CR>
+noremap <leader>g :GFiles<CR>
+noremap <leader>b :Buffers<CR>
+nnoremap <leader>s :Rg<CR>
 
 " FzF Layout
 let g:fzf_preview_window = 'right:50%'
