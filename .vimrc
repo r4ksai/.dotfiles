@@ -78,6 +78,7 @@ set incsearch
 set path+=**
 set wildignore+=*/node_modules/*
 set wildignore+=*/.git/*
+set wildignore+=*/__pycache__/*
 
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
