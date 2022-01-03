@@ -196,6 +196,7 @@ Plug 'bling/vim-airline'
 Plug 'ap/vim-css-color'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
 
 " Commenting
 Plug 'tpope/vim-commentary'
