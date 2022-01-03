@@ -255,6 +255,10 @@ nnoremap <leader>s :Rg<CR>
 let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 
+" Ale UI
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+
 " Important keybindings to remember
 " ---------------------------------
 "
