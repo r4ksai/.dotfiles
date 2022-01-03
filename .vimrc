@@ -186,6 +186,9 @@ endif
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+" Syntax checking 
+" ale requires additional linting packages eg flake8 for python
+Plug 'dense-analysis/ale' 
 
 " Autocompletion
 Plug 'jiangmiao/auto-pairs'
@@ -210,8 +213,6 @@ Plug 'airblade/vim-rooter'
 " Extras
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-surround'
-
-Plug 'dense-analysis/ale'
 
 " Initialize plugin system
 call plug#end()
