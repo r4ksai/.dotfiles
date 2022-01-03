@@ -167,36 +167,56 @@ nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 
 "------------------------------
-" Plugins
+" plugins
 
 if has("nvim")
     let g:plug_home = stdpath('data') . '/plugged'
     call plug#begin()
+
+    " Themes
     Plug 'dracula/vim', { 'as': 'dracula' }
+
+    " Autocompletion
     Plug 'github/copilot.vim'
 else
     call plug#begin('~/.vim/plugged')
 endif
 
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
-Plug 'tpope/vim-surround'
-Plug 'mbbill/undotree'
-Plug 'preservim/nerdtree'
-Plug 'bling/vim-airline'
-Plug 'ap/vim-css-color'
+
+" Autocompletion
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'airblade/vim-gitgutter'
+
+" Themes
+Plug 'bling/vim-airline'
+Plug 'ap/vim-css-color'
 Plug 'luochen1990/rainbow'
+Plug 'ryanoasis/vim-devicons'
+
+" Commenting
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+
+" File Browser
+Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 
+" Extras
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-surround'
+
+Plug 'dense-analysis/ale'
+
 " Initialize plugin system
 call plug#end()
+
+"------------------------------
+" Plugin settings
 
 if has("nvim")
     " Theme 
@@ -214,6 +234,11 @@ let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__r
 
 " Open/Close nerdtree
 nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
+
+" Nerdtree UI
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " Open/Close undotree
 nnoremap <leader>m :UndotreeToggle<CR>
@@ -230,6 +255,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 
 " Important keybindings to remember
 " ---------------------------------
+"
 " ss & sv -> Split 
 " te -> Tab
 " tab -> Move between tabs
