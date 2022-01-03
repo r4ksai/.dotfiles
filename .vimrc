@@ -67,9 +67,13 @@ set hidden
 
 " Persistant Undo
 set undofile
-set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
+if has ("nvim")
+    set undodir=~/.conf/nvim/undo
+else
+    set undodir=~/.vim/undo
+endif
 
 " Search
 set ignorecase
@@ -98,6 +102,9 @@ set scrolloff=10
 
 " Save with root permission
 command! W w !sudo tee > /dev/null %
+
+" Difference between original file
+command! DiffO w !diff % - 
 
 " Delete without yank and paste from clipbaord 0
 nnoremap <leader>d "_d
@@ -166,9 +173,11 @@ if has("nvim")
     let g:plug_home = stdpath('data') . '/plugged'
     call plug#begin()
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'github/copilot.vim'
 else
     call plug#begin('~/.vim/plugged')
 endif
+
 
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
@@ -229,3 +238,4 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 " Control + y + , -> Emmet
 " leader + m -> toggle Undotree
 " leader + n -> toggle Nerdtree
+" ysWf<function_name> -> Create a function around a string

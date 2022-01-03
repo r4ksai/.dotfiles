@@ -52,6 +52,7 @@ setup()
 	mkdir ~/.vim/plugged
 
 	# NeoVim
+    mkdir -p ~/.config/nvim/undo
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 	# Link files
