@@ -70,7 +70,7 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 if has ("nvim")
-    set undodir=~/.conf/nvim/undo
+    set undodir=~/.config/nvim/undo
 else
     set undodir=~/.vim/undo
 endif
