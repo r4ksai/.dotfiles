@@ -11,6 +11,7 @@ plugins=(
   colored-man-pages
   colorize
   web-search
+  vi-mode
 )
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]
@@ -24,6 +25,7 @@ then
           colored-man-pages
           colorize
           web-search
+          vi-mode
         )
         source ~/.zshrc.pre-oh-my-zsh
     fi
