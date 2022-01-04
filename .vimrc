@@ -80,6 +80,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
+" nnoremap <silent> <esc> :noh<return><esc>
 
 " Finding files - Search down into subfolders
 set path+=**
