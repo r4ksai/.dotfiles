@@ -239,8 +239,10 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen = 1
 
 " Nerdtree UI
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Open/Close undotree
 nnoremap <leader>m :UndotreeToggle<CR>
