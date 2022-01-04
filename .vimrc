@@ -1,13 +1,13 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
-"               
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 "               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-"               ██║   ██║██║██╔████╔██║██████╔╝██║     
-"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
+"               ██║   ██║██║██╔████╔██║██████╔╝██║
+"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
 "                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-"               
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Depreciated
 set nocompatible
@@ -35,7 +35,7 @@ let mapleader=';'
 
 " Highlight opening and closing brackets
 set showmatch
-set mps+=<:> 
+set mps+=<:>
 
 " Folding
 set foldmethod=marker foldlevel=0
@@ -54,7 +54,7 @@ set t_BE=
 
 " Indent
 filetype plugin indent on
-set autoindent 
+set autoindent
 set smarttab
 set tabstop=4
 set shiftwidth=4
@@ -104,7 +104,10 @@ set scrolloff=10
 command! W w !sudo tee > /dev/null %
 
 " Difference between original file
-command! DiffO w !diff % - 
+command! DiffO w !diff % -
+
+" Remove trailing whitespaces
+command! RmEndWhitespace %s/\s\+$//e
 
 " Delete without yank and paste from clipbaord 0
 nnoremap <leader>d "_d
@@ -154,7 +157,7 @@ endif
 " tabs
 
 " Open current directory
-nmap te :tabedit 
+nmap te :tabedit
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
@@ -200,9 +203,9 @@ endif
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" Syntax checking 
+" Syntax checking
 " ale requires additional linting packages eg flake8 for python
-Plug 'dense-analysis/ale' 
+Plug 'dense-analysis/ale'
 
 " Autocompletion
 Plug 'jiangmiao/auto-pairs'
@@ -235,7 +238,7 @@ call plug#end()
 " Plugin settings
 
 if has("nvim")
-    " Theme 
+    " Theme
     colorscheme dracula
 endif
 
@@ -278,10 +281,10 @@ let g:ale_sign_warning = '.'
 " Important keybindings to remember
 " ---------------------------------
 "
-" ss & sv -> Split 
+" ss & sv -> Split
 " te -> Tab
 " tab -> Move between tabs
-" Control + n -> Auto Suggestion 
+" Control + n -> Auto Suggestion
 " gcc -> Comment
 " Control + y + , -> Emmet
 " leader + m -> toggle Undotree
