@@ -201,4 +201,4 @@ md='mkdir -p'
 rd=rmdir
 run-help=man
 which-command=whence
-z='_z 2>&1
+z='_z 2>&1'
