@@ -137,7 +137,21 @@ if has('nvim')
 endif
 
 "-----------------------------
-" Tabs
+" Langauge Specific
+
+" Python
+if executable('yapf') == 1
+    if &filetype == 'python'
+        command! PyFormat 0,%!yapf
+    endif
+endif
+
+" autocmd FileType python set shiftwidth=2
+" autocmd FileType python set tabstop=2
+" autocmd FileType python set softtabstop=2
+
+"-----------------------------
+" tabs
 
 " Open current directory
 nmap te :tabedit 
