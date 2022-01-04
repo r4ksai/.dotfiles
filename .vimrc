@@ -142,7 +142,7 @@ endif
 " Python
 if executable('yapf') == 1
     if &filetype == 'python'
-        command! PyFormat 0,%!yapf
+        command! PyFormat 0,$!yapf
     endif
 endif
 
