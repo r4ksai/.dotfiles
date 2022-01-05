@@ -50,6 +50,8 @@ export EDITOR='vim'
 source $ZSH/oh-my-zsh.sh
 # Source prev rc
 
+# unsetopt BEEP
+
 # Alias 
 alias cl="clear"
 alias l="exa --icons"
