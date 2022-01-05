@@ -158,7 +158,7 @@ endif
 " tabs
 
 " Open current directory
-nmap te :tabedit
+nmap te :tabedit 
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
