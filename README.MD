@@ -11,18 +11,35 @@ A repository that contains dotfiles for :
 ## Requirements
 
 - Default shell should be Zsh
+- Oh my Zsh
 - Git, Tmux and Vim should be installed
 
 ## Installation 
 
 **You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup** 
 
+- Install Oh my Zsh `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
 - Move into .dotfiles `cd .dotfiles`
 - To install the dotfiles run `./setup.sh`
 
 **You need to add Dracula theme to the terminal manually**
+
+### Linux Users
+
+**Install below packages**
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install git vim tmux neovim curl exa fzf ripgrep bat -y
+```
+**Font installation**
+```
+cd /tmp
+git cone https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+./install.sh hack
+```
 
 ### Only linking
 

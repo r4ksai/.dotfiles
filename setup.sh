@@ -9,20 +9,7 @@
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 			brew bundle
 		fi
-	elif [[ "$OSTYPE" == "linux-gnu"* ]]
-	then
-		if command -v apt &> /dev/null
-		then
-			apt update && apt upgrade -y
-			apt install git vim tmux neovim curl exa fzf ripgrep silversearcher-ag bat -y
-			# Hack Nerd Font Installation
-			cd /tmp
-			git clone https://github.com/ryanoasis/nerd-fonts.git
-			cd nerd-fonts
-			./install.sh Hack
-            cd ~/.dotfiles
-		fi
-	fi
+    fi
 }
 
 setup()
@@ -31,9 +18,9 @@ setup()
 	package_install
   
 	# Oh-My-Zsh
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     
-    if ! lsb_release -a 2>/dev/null | grep -q "Kali"
+    if ! (command -v lsb_release && lsb_release -a 2>/dev/null | grep -q "Kali")
     then
         git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
@@ -56,7 +43,7 @@ setup()
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 	# Link files
-	link
+	link_files
 }
 
 
@@ -82,7 +69,7 @@ backup()
     fi
 }
 
-link()
+link_files()
 {
     # Create nvim directory
     mkdir -p ~/.config/nvim
@@ -140,7 +127,7 @@ clean()
 
 if [[ $1 = "link" ]]
 then
-    link
+    link_files
 elif [[ $1 = "install" ]]
 then
     package_install
