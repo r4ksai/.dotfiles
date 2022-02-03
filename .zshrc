@@ -14,23 +14,6 @@ plugins=(
   vi-mode
 )
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]
-then
-    if lsb_release -a 2>/dev/null | grep -q "Kali"
-    then
-        plugins=( 
-          git
-          z
-          tmux
-          colored-man-pages
-          colorize
-          web-search
-          vi-mode
-        )
-        source ~/.zshrc.pre-oh-my-zsh
-    fi
-fi
-
 # Path Variable
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -48,7 +31,9 @@ export EDITOR='vim'
 
 # Source
 source $ZSH/oh-my-zsh.sh
+
 # Source prev rc
+# source ~/.zshrc.pre-oh-my-zsh
 
 # unsetopt BEEP
 

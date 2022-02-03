@@ -7,9 +7,11 @@
 		if ! command -v brew &> /dev/null
 		then
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-			brew bundle
 		fi
+        brew bundle
     fi
+    
+    # Linux installation is there in the README File
 }
 
 setup()
@@ -17,9 +19,6 @@ setup()
 	# Install Packages
 	package_install
   
-	# Oh-My-Zsh
-	# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    
     if ! (command -v lsb_release && lsb_release -a 2>/dev/null | grep -q "Kali")
     then
         git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
