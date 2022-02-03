@@ -36,7 +36,7 @@ sudo apt install git vim tmux neovim curl exa fzf ripgrep bat -y
 **Font installation**
 ```
 cd /tmp
-git cone https://github.com/ryanoasis/nerd-fonts.git
+git clone https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-fonts
 ./install.sh hack
 ```
