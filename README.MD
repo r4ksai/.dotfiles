@@ -31,14 +31,7 @@ A repository that contains dotfiles for :
 **Install below packages**
 ```
 sudo apt update && sudo apt upgrade -y
-sudo apt install git vim tmux neovim curl exa fzf ripgrep bat -y
-```
-**Font installation**
-```
-cd /tmp
-git clone https://github.com/ryanoasis/nerd-fonts.git
-cd nerd-fonts
-./install.sh hack
+sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty -y
 ```
 
 ### Only linking

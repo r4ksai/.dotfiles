@@ -10,8 +10,6 @@
 		fi
         brew bundle
     fi
-    
-    # Linux installation is there in the README File
 }
 
 setup()
