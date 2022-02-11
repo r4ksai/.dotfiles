@@ -2,10 +2,19 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
 # Modern replacement for 'ls'
 brew "exa"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Distributed revision control system
 brew "git"
+# World's fastest and most advanced password recovery utility
+brew "hashcat"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
@@ -20,6 +29,8 @@ brew "peco"
 brew "pyenv"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Text interface for Git repositories
 brew "tig"
 # Terminal multiplexer
@@ -32,4 +43,12 @@ brew "w3m"
 brew "wget"
 # 3D creation suite
 cask "blender"
+# Browser for SQLite databases
+cask "db-browser-for-sqlite"
 cask "font-hack-nerd-font"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Calculator and converter application
+cask "numi"
+# Music streaming service
+cask "spotify"

@@ -12,6 +12,8 @@ brew "tig"
 
 # Terminal apps
 # ------------------------------------------------
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # Port scanning utility for large networks
 brew "nmap"
 # Improved top (interactive process viewer)
@@ -71,8 +73,14 @@ brew "node"
 # Python version management
 brew "pyenv"
 
+cask "font-hack-nerd-font"
+
+
+# Cask
+# ------------------------------------------------
+# Calculator and converter application
+cask "numi"
 # 3D creation suite
 cask "blender"
-cask "font-hack-nerd-font"
 
 #To install from brewfile run 'brew bundle --file <this-file>'
