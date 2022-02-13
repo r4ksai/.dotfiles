@@ -263,7 +263,7 @@ let NERDTreeQuitOnOpen = 1
 " let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Open/Close undotree
-nnoremap <leader>m :UndotreeToggle<CR>
+nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
 
 " FzF Keymaps
 noremap <leader>f :Files<CR>
