@@ -145,9 +145,7 @@ endif
 
 " Python
 if executable('yapf') == 1
-    if &filetype == 'python'
-        command! PyFormat 0,$!yapf
-    endif
+    command! PyFormat 0,$!yapf
 endif
 
 " autocmd FileType python set shiftwidth=2
