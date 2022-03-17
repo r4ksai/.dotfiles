@@ -157,6 +157,7 @@ endif
 
 " Open current directory
 nmap te :tabedit 
+nmap to <C-w>T
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
