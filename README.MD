@@ -19,6 +19,7 @@ A repository that contains dotfiles for :
 **You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup** 
 
 - Install Oh my Zsh `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+- Get a new terminal or export zshrc file again to get new oh-my-zsh environment variables
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
 - Move into .dotfiles `cd .dotfiles`
