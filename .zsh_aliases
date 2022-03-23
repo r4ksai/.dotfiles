@@ -60,6 +60,7 @@ alias gcm='git checkout $(git_main_branch)'
 alias gcmsg='git commit -m'
 alias 'gcn!'='git commit -v --no-edit --amend'
 alias gco='git checkout'
+alias gcol="gb | peco | xargs git checkout"
 alias gcor='git checkout --recurse-submodules'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
@@ -197,7 +198,9 @@ alias ls=l
 alias lsa='ls -lah'
 alias lt='l --tree --level=2'
 alias md='mkdir -p'
+alias nv="nvim"
 alias rd=rmdir
 alias run-help=man
 alias which-command=whence
+alias v="nvim"
 alias z='_z 2>&1'
