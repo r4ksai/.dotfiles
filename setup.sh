@@ -9,6 +9,9 @@
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		fi
         brew bundle
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]
+    then
+        sudo apt update -qq && sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty -y qq
     fi
 }
 
