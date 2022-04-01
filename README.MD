@@ -27,14 +27,6 @@ A repository that contains dotfiles for :
 
 **You need to add Dracula theme to the terminal manually**
 
-### Linux Users
-
-**Install below packages**
-```
-sudo apt update && sudo apt upgrade -y
-sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty -y
-```
-
 ### Only linking
 
 **Use this only to link dotfiles, this does not contain installation**
