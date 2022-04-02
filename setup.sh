@@ -20,11 +20,11 @@ setup()
 	# Install Packages
 	package_install
   
-    if ! (command -v lsb_release && lsb_release -a 2>/dev/null | grep -q "Kali")
-    then
-        git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-    fi
+    # if ! (command -v lsb_release && lsb_release -a 2>/dev/null | grep -q "Kali")
+    # then
+    #     git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+    #     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+    # fi
 
 	# Tmux
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
