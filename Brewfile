@@ -20,6 +20,8 @@ brew "nmap"
 brew "htop"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
 brew "openvpn"
+# Tools for the WireGuard secure network tunnel
+brew "wireguard-tools"
 # Terminal multiplexer
 brew "tmux"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -82,5 +84,7 @@ cask "font-hack-nerd-font"
 cask "numi"
 # 3D creation suite
 cask "blender"
+# Multimedia player
+cask "vlc"
 
 #To install from brewfile run 'brew bundle --file <this-file>'
