@@ -173,13 +173,13 @@ map sh <C-w>h
 map sk <C-w>k
 map sj <C-w>j
 map sl <C-w>l
+
 " Resize window
 nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
-" Maximize pane
-map se <C-w>=
+map s= <C-w>=
 
 "------------------------------
 " plugins
