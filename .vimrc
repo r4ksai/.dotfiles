@@ -193,37 +193,70 @@ if has("nvim")
 
     " Autocompletion
     Plug 'github/copilot.vim'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/nvim-lsp-installer'
+    Plug 'tami5/lspsaga.nvim'
+    Plug 'folke/lsp-colors.nvim'
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'onsails/lspkind-nvim'
+
+    " File Browser
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'kristijanhusak/defx-git'
+    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+
+    " File Browser Icons
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'kristijanhusak/defx-icons'
+
+    " Syntax
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+    " Theme
+    Plug 'hoob3rt/lualine.nvim'
+
+    " Auto Pairs
+    Plug 'windwp/nvim-autopairs'
+    Plug 'windwp/nvim-ts-autotag'
+
 else
     call plug#begin('~/.vim/plugged')
+
+    " Syntax checking
+    " ale requires additional linting packages eg flake8 for python
+    Plug 'dense-analysis/ale'
+    Plug 'sheerun/vim-polyglot'
+
+    " Autocompletion
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'mattn/emmet-vim'
+
+    " File Browser
+    Plug 'preservim/nerdtree'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'airblade/vim-rooter'
+
+    " Theme
+    Plug 'bling/vim-airline'
+
 endif
 
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" Syntax checking
-" ale requires additional linting packages eg flake8 for python
-Plug 'dense-analysis/ale'
-
-" Autocompletion
-Plug 'jiangmiao/auto-pairs'
-Plug 'mattn/emmet-vim'
-
 " Themes
-Plug 'bling/vim-airline'
 Plug 'ap/vim-css-color'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
-Plug 'sheerun/vim-polyglot'
 
 " Commenting
 Plug 'tpope/vim-commentary'
-
-" File Browser
-Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
 
 " Extras
 Plug 'mbbill/undotree'
@@ -238,43 +271,38 @@ call plug#end()
 if has("nvim")
     " Theme
     colorscheme dracula
+else
+
+    " Open/Close nerdtree
+    nnoremap <leader>n :NERDTreeToggle<CR>
+    let NERDTreeQuitOnOpen = 1
+
+    " FzF Keymaps
+    noremap <leader>f :Files<CR>
+    noremap <leader>g :GFiles<CR>
+    noremap <leader>b :Buffers<CR>
+    nnoremap <leader>s :Rg<CR>
+
+    " FzF Layout
+    let g:fzf_preview_window = 'right:50%'
+    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+
+    " Ale UI
+    let g:ale_sign_error = '●'
+    let g:ale_sign_warning = '.'
+
+    " Airline theme
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts=1
+    let g:airline#extensions#whitespace#enabled = 0
+    let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
+
 endif
 
 " Activate rainbow plugin
 let g:rainbow_active = 1
-
-" Airline theme
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts=1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
-
-" Open/Close nerdtree
-nnoremap <leader>n :NERDTreeToggle<CR>
-let NERDTreeQuitOnOpen = 1
-
-" Nerdtree UI
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-" let g:NERDTreeDirArrowExpandable = '▸'
-" let g:NERDTreeDirArrowCollapsible = '▾'
-
 " Open/Close undotree
 nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
-
-" FzF Keymaps
-noremap <leader>f :Files<CR>
-noremap <leader>g :GFiles<CR>
-noremap <leader>b :Buffers<CR>
-nnoremap <leader>s :Rg<CR>
-
-" FzF Layout
-let g:fzf_preview_window = 'right:50%'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
-
-" Ale UI
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
 
 " Important keybindings to remember
 " ---------------------------------

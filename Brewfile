@@ -1,3 +1,4 @@
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -32,6 +33,8 @@ brew "vim"
 brew "w3m"
 # Internet file retriever
 brew "wget"
+# Everything you need to get started with Heroku
+brew "heroku/brew/heroku"
 
 # Extra terminal apps
 # ------------------------------------------------
@@ -49,6 +52,8 @@ brew "bat"
 brew "fzf"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Just-In-Time Compiler (JIT) for the Lua programming language
+brew "luajit", args: ["HEAD"]
 
 # Embeded development tools
 # ------------------------------------------------
@@ -86,5 +91,7 @@ cask "numi"
 cask "blender"
 # Multimedia player
 cask "vlc"
+# Browser for SQLite databases
+cask "db-browser-for-sqlite"
 
 #To install from brewfile run 'brew bundle --file <this-file>'

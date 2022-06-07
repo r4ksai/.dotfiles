@@ -42,6 +42,8 @@ setup()
 	# NeoVim
     mkdir -p ~/.config/nvim/undo
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    npm install -g typescript typescript-language-server diagnostic-languageserver
+    pip3 install --user pynvim
 
 	# Link files
 	link_files
@@ -68,12 +70,16 @@ backup()
     if [ -f ~/.config/nvim/init.vim ]; then 
         mv ~/.config/nvim/init.vim ~./.backups/.nvim.backup
     fi
+    if [ -f ~/.config/nvim/after/plugin ]; then 
+        mv ~/.config/nvim/after/plugin ~./.backups/.nvim.plugin.backup
+    fi
 }
 
 link_files()
 {
     # Create nvim directory
     mkdir -p ~/.config/nvim
+    mkdir -p ~/.config/nvim/after/plugin
 
     # Clean
     clean
@@ -87,6 +93,7 @@ link_files()
     ln -s ~/.dotfiles/.zshrc ~/.zshrc
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
     ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
+    ln -s ~/.dotfiles/plugin ~/.config/nvim/after/plugin
 }
 
 clean()
@@ -107,6 +114,9 @@ clean()
     if [ -L ~/.config/nvim/init.vim ]; then 
         rm ~/.config/nvim/init.vim
     fi
+    if [ -L ~/.config/nvim/after/plugin ]; then 
+        rm -rf ~/.config/nvim/after/plugin
+    fi
     
     # Restore Backups
     if [ -f ~/.backups/.vimrc.backup ]; then 
@@ -123,6 +133,8 @@ clean()
     fi
     if [ -f ~/.config/nvim/init.vim ]; then 
         mv ~./.backups/.nvim.backup ~/.config/nvim/init.vim 
+    if [ -f ~/.config/nvim/after/after/plugin ]; then 
+        mv ~./.backups/.nvim.plugin.backup ~/.config/nvim/after/plugin
     fi
 }
 
