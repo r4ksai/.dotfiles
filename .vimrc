@@ -179,7 +179,9 @@ nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
-map s= <C-w>=
+" Maximize window
+map sm <C-w>_
+map se <C-w>=
 
 "------------------------------
 " plugins
