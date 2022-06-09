@@ -74,7 +74,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 
 nvim_lsp.flow.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+}
+
+nvim_lsp.pyright.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
 }
 
 nvim_lsp.tsserver.setup {

@@ -42,7 +42,7 @@ setup()
 	# NeoVim
     mkdir -p ~/.config/nvim/undo
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    npm install -g typescript typescript-language-server diagnostic-languageserver
+    npm install -g typescript typescript-language-server diagnostic-languageserver pyright
     pip3 install --user pynvim
 
 	# Link files
