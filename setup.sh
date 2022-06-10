@@ -64,6 +64,9 @@ backup()
     if [ -f ~/.zshrc ]; then 
         mv ~/.zshrc ~/.backups/.zshrc.backup 
     fi
+    if [ -f ~/.inputrc ]; then 
+        mv ~/.inputrc ~/.backups/.inputrc.backup 
+    fi
     if [ -f ~/.tmux.conf ]; then 
         mv ~/.tmux.conf ~/.backups/.tmux.conf.backup 
     fi
@@ -91,6 +94,7 @@ link_files()
     ln -s ~/.dotfiles/.vimrc ~/.vimrc
     ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln -s ~/.dotfiles/.zshrc ~/.zshrc
+    ln -s ~/.dotfiles/.inputrc ~/.inputrc
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
     ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
     ln -s ~/.dotfiles/plugin ~/.config/nvim/after/plugin
@@ -107,6 +111,9 @@ clean()
     fi
     if [ -L ~/.zshrc ]; then 
         rm ~/.zshrc
+    fi
+    if [ -L ~/.inputrc ]; then 
+        rm ~/.inputrc
     fi
     if [ -L ~/.gitconfig ]; then 
         rm ~/.gitconfig
@@ -127,6 +134,9 @@ clean()
     fi
     if [ -f ~/.backups/.zshrc.backup ]; then 
         mv ~/.backups/.zshrc.backup ~/.zshrc  
+    fi
+    if [ -f ~/.backups/.inputrc.backup ]; then 
+        mv ~/.backups/.inputrc.backup ~/.inputrc
     fi
     if [ -f ~/.backups/.tmux.conf.backup ]; then 
         mv ~/.backups/.tmux.conf.backup ~/.tmux.conf 
