@@ -334,6 +334,12 @@ nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
 " delays and poor user experience.
 set updatetime=300
 
+let g:coc_global_extensions = [
+            \'coc-json',
+            \'coc-tsserver',
+            \'coc-jedi',
+            \]
+
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
