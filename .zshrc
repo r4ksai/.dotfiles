@@ -34,6 +34,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Source prev rc
 # source ~/.zshrc.pre-oh-my-zsh
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # unsetopt BEEP
 
