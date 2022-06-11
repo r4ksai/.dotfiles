@@ -35,6 +35,8 @@ brew "w3m"
 brew "wget"
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 
 # Extra terminal apps
 # ------------------------------------------------

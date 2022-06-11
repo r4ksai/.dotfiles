@@ -1,36 +1,66 @@
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
+
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
+# High performance key/value database
+brew "berkeley-db", link: true
+# Cross-platform make
+brew "cmake"
+# Library for USB device access
+brew "libusb"
+# USB programmer
+brew "dfu-util"
 # Modern replacement for 'ls'
 brew "exa"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
 brew "git"
-# World's fastest and most advanced password recovery utility
-brew "hashcat"
+# Manage compile and link flags for libraries
+brew "pkg-config"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Improved top (interactive process viewer)
+brew "htop"
+# Just-In-Time Compiler (JIT) for the Lua programming language
+brew "luajit", args: ["HEAD"]
+# Open controller for the MiniPRO TL866xx series of chip programmers
+brew "minipro"
+# Fast, highly customisable system info script
+brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Small build system for use with gyp or CMake
+brew "ninja"
 # Port scanning utility for large networks
 brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
+# Development kit for the Java programming language
+brew "openjdk"
+# Library to simplify the interaction with PKCS#11
+brew "pkcs11-helper"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
 brew "openvpn"
 # Simplistic interactive filtering tool
 brew "peco"
+# Object-relational database system
+brew "postgresql", restart_service: true
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Text interface for Git repositories
 brew "tig"
 # Terminal multiplexer
@@ -41,6 +71,10 @@ brew "vim"
 brew "w3m"
 # Internet file retriever
 brew "wget"
+# Tools for the WireGuard secure network tunnel
+brew "wireguard-tools"
+# Everything you need to get started with Heroku
+brew "heroku/brew/heroku"
 # 3D creation suite
 cask "blender"
 # Browser for SQLite databases
@@ -50,5 +84,5 @@ cask "font-hack-nerd-font"
 cask "iterm2"
 # Calculator and converter application
 cask "numi"
-# Music streaming service
-cask "spotify"
+# Multimedia player
+cask "vlc"
