@@ -277,6 +277,11 @@ call plug#end()
 "------------------------------
 " Plugin settings
 
+" Activate rainbow plugin
+let g:rainbow_active = 1
+" Open/Close undotree
+nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
+
 if has("nvim")
     " Theme
     colorscheme dracula
@@ -307,13 +312,6 @@ else
     let g:airline_powerline_fonts=1
     let g:airline#extensions#whitespace#enabled = 0
     let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
-
-endif
-
-" Activate rainbow plugin
-let g:rainbow_active = 1
-" Open/Close undotree
-nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
 
 " Important keybindings to remember
 " ---------------------------------
@@ -487,3 +485,5 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Rettier
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+endif
