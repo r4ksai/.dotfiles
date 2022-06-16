@@ -12,7 +12,7 @@
         brew bundle
     elif [[ "$OSTYPE" == "linux-gnu"* ]]
     then
-        sudo apt update -qq && sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty -y qq
+        sudo apt update -qq && sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty nodejs npm -y qq
     fi
 }
 
