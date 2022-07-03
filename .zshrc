@@ -44,6 +44,8 @@ alias l="exa --icons"
 alias ls="l" # For acessing ls type \ls
 alias ll="exa -lg --icons"
 alias la="exa -lga --icons"
+alias lld="ll --group-directories-first"
+alias lad="ll --group-directories-first"
 alias lt="l --tree --level=2"
 alias llt="ll --tree --level=2"
 alias lat="la --tree --level=2"
