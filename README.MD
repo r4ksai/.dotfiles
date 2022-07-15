@@ -3,6 +3,7 @@
 # DOTFILES
 
 A repository that contains dotfiles for :
+
 - [Vim](.vimrc)
 - [ZSH](.zshrc)
 - [Git](.gitconfig)
@@ -14,17 +15,25 @@ A repository that contains dotfiles for :
 - Oh my Zsh
 - Git, Tmux and Vim should be installed
 
-## Installation 
+## Installation
 
-**You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup** 
+**You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup**
 
-- Install Oh my Zsh `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+- Install Oh my Zsh
+
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
 - Get a new terminal or source zshrc file again to get new oh-my-zsh environment variables `source ~/.zshrc`
-- Install auto suggestions ```
-        git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+- Install auto suggestions
 
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-        ```
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+```
+
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
 - Move into .dotfiles `cd .dotfiles`
