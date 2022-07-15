@@ -22,6 +22,7 @@ A repository that contains dotfiles for :
 - Get a new terminal or source zshrc file again to get new oh-my-zsh environment variables `source ~/.zshrc`
 - Install auto suggestions ```
         git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
         ```
 - Move to home directory `cd ~`
@@ -52,3 +53,11 @@ To install Packages run `./setup.sh install`
 ### Remove dotfiles
 
 To remove dotfiles run `./setup.sh clean`
+
+## Todo
+
+1. Add script for installing in terminal
+2. Add script for kali linux
+3. Add option to choose between zsh and bash
+4. Add option for quick simple installation
+5. Fix vimrc to install less plugins if environment variable is specified

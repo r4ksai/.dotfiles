@@ -16,6 +16,83 @@
     fi
 }
 
+server_setup()
+{
+    sudo apt update -qq && sudo apt install git vim tmux curl exa fzf ripgrep bat -y qq
+
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+	# Vim
+	mkdir -p ~/.vim/undo
+	mkdir -p ~/.vim/pack/themes/start
+	cd ~/.vim/pack/themes/start
+	git clone https://github.com/dracula/vim.git dracula
+
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
+	mkdir ~/.vim/plugged
+
+    # Remove Links if exists
+    if [ -L ~/.vimrc ]; then 
+        rm ~/.vimrc
+    fi
+    if [ -L ~/.tmux.conf ]; then 
+        rm ~/.tmux.conf
+    fi
+    if [ -L ~/.zshrc ]; then 
+        rm ~/.zshrc
+    fi
+    if [ -L ~/.inputrc ]; then 
+        rm ~/.inputrc
+    fi
+    if [ -L ~/.gitconfig ]; then 
+        rm ~/.gitconfig
+    fi
+
+    # Restore Backups
+    if [ -f ~/.backups/.vimrc.backup ]; then 
+        mv ~/.backups/.vimrc.backup ~/.vimrc 
+    fi
+    if [ -f ~/.backups/.gitconfig.backup ]; then 
+        mv ~/.backups/.gitconfig.backup ~/.gitconfig 
+    fi
+    if [ -f ~/.backups/.zshrc.backup ]; then 
+        mv ~/.backups/.zshrc.backup ~/.zshrc  
+    fi
+    if [ -f ~/.backups/.inputrc.backup ]; then 
+        mv ~/.backups/.inputrc.backup ~/.inputrc
+    fi
+    if [ -f ~/.backups/.tmux.conf.backup ]; then 
+        mv ~/.backups/.tmux.conf.backup ~/.tmux.conf 
+    fi
+
+    # Make backup
+	mkdir -p ~/.backups
+	cd ~/.backups
+
+    if [ -f ~/.vimrc ]; then 
+        mv ~/.vimrc ~/.backups/.vimrc.backup
+    fi
+    if [ -f ~/.gitconfig ]; then 
+        mv ~/.gitconfig ~/.backups/.gitconfig.backup 
+    fi
+    if [ -f ~/.zshrc ]; then 
+        mv ~/.zshrc ~/.backups/.zshrc.backup 
+    fi
+    if [ -f ~/.inputrc ]; then 
+        mv ~/.inputrc ~/.backups/.inputrc.backup 
+    fi
+    if [ -f ~/.tmux.conf ]; then 
+        mv ~/.tmux.conf ~/.backups/.tmux.conf.backup 
+    fi
+
+    # Link
+    ln -s ~/.dotfiles/.vimrc ~/.vimrc
+    ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+    ln -s ~/.dotfiles/.zshrc ~/.zshrc
+    ln -s ~/.dotfiles/.inputrc ~/.inputrc
+    ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+}
+
 setup()
 {
 	# Install Packages
@@ -157,6 +234,9 @@ then
 elif [[ $1 = "clean" ]]
 then
     clean
+elif [[ $1 = "server" ]]
+then
+    server_setup
 else
 	setup
 fi
