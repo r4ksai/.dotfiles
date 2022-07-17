@@ -38,6 +38,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
 - Move into .dotfiles `cd .dotfiles`
 - To install the dotfiles run `./setup.sh`
+    **To install for server user `./setup.sh server`**
 
 **You need to add Dracula theme to the terminal manually**
 
