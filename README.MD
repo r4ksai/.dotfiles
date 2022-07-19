@@ -66,7 +66,7 @@ To remove dotfiles run `./setup.sh clean`
 
 ## Todo
 
-1. Add script for installing in terminal
+1. Refactor script for installing in server
 2. Add script for kali linux
 3. Add option to choose between zsh and bash
 4. Add option for quick simple installation
