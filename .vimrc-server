@@ -129,13 +129,6 @@ set showcmd
 set cmdheight=1
 set laststatus=2
 
-" autocmd FileType python set shiftwidth=2
-" autocmd FileType python set tabstop=2
-" autocmd FileType python set softtabstop=2
-
-"-----------------------------
-" tabs
-
 " Open current directory
 nmap te :tabedit 
 nmap to <C-w>T
@@ -148,6 +141,7 @@ nmap <Tab> :tabnext<Return>
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
+
 " Move window
 nmap <Space> <C-w>w
 map sh <C-w>h
@@ -160,6 +154,7 @@ nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
+
 " Maximize window
 map sm <C-w>_
 map se <C-w>=
@@ -244,21 +239,3 @@ nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
     let g:airline_powerline_fonts=1
     let g:airline#extensions#whitespace#enabled = 0
     let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
-
-" Important keybindings to remember
-" ---------------------------------
-"
-" ss & sv -> Split
-" te -> Tab
-" tab -> Move between tabs
-" Control + n -> Auto Suggestion
-" gcc -> Comment
-" Control + y + , -> Emmet
-" leader + m -> toggle Undotree
-" leader + n -> toggle Nerdtree
-" ysWf<function_name> -> Create a function around a string
-
-" Install coc-typeserver coc-json coc-jedi
-" Pip install jedi
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.

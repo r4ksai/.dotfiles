@@ -6,103 +6,29 @@
 	then
 		if ! command -v brew &> /dev/null
 		then
+            echo 'Installing Homebrew'
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		fi
         export PATH=/opt/homebrew/bin:$PATH
+        echo 'Installing brew bundle'
         brew bundle
     elif [[ "$OSTYPE" == "linux-gnu"* ]]
     then
-        sudo apt update -qq && sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty nodejs npm -y qq
+        echo 'Updating'
+        sudo apt update -qq
+        echo 'Installing'
+        sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty nodejs npm -y qq
+        if [[ "$DOTINSTALL" != "server" ]]
+        then
+            sudo apt install neovim kitty nodejs -y qq
+        fi
     fi
-}
-
-server_setup()
-{
-    sudo apt update -qq && sudo apt install git vim tmux curl exa fzf ripgrep bat -y qq
-
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-	# Vim
-	mkdir -p ~/.vim/undo
-	mkdir -p ~/.vim/pack/themes/start
-	cd ~/.vim/pack/themes/start
-	git clone https://github.com/dracula/vim.git dracula
-
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
-	mkdir ~/.vim/plugged
-
-    # Remove Links if exists
-    if [ -L ~/.vimrc ]; then 
-        rm ~/.vimrc
-    fi
-    if [ -L ~/.tmux.conf ]; then 
-        rm ~/.tmux.conf
-    fi
-    if [ -L ~/.zshrc ]; then 
-        rm ~/.zshrc
-    fi
-    if [ -L ~/.inputrc ]; then 
-        rm ~/.inputrc
-    fi
-    if [ -L ~/.gitconfig ]; then 
-        rm ~/.gitconfig
-    fi
-
-    # Restore Backups
-    if [ -f ~/.backups/.vimrc.backup ]; then 
-        mv ~/.backups/.vimrc.backup ~/.vimrc 
-    fi
-    if [ -f ~/.backups/.gitconfig.backup ]; then 
-        mv ~/.backups/.gitconfig.backup ~/.gitconfig 
-    fi
-    if [ -f ~/.backups/.zshrc.backup ]; then 
-        mv ~/.backups/.zshrc.backup ~/.zshrc  
-    fi
-    if [ -f ~/.backups/.inputrc.backup ]; then 
-        mv ~/.backups/.inputrc.backup ~/.inputrc
-    fi
-    if [ -f ~/.backups/.tmux.conf.backup ]; then 
-        mv ~/.backups/.tmux.conf.backup ~/.tmux.conf 
-    fi
-
-    # Make backup
-	mkdir -p ~/.backups
-	cd ~/.backups
-
-    if [ -f ~/.vimrc ]; then 
-        mv ~/.vimrc ~/.backups/.vimrc.backup
-    fi
-    if [ -f ~/.gitconfig ]; then 
-        mv ~/.gitconfig ~/.backups/.gitconfig.backup 
-    fi
-    if [ -f ~/.zshrc ]; then 
-        mv ~/.zshrc ~/.backups/.zshrc.backup 
-    fi
-    if [ -f ~/.inputrc ]; then 
-        mv ~/.inputrc ~/.backups/.inputrc.backup 
-    fi
-    if [ -f ~/.tmux.conf ]; then 
-        mv ~/.tmux.conf ~/.backups/.tmux.conf.backup 
-    fi
-
-    # Link
-    ln -s ~/.dotfiles/.vimrc ~/.vimrc-server
-    ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-    ln -s ~/.dotfiles/.zshrc ~/.zshrc
-    ln -s ~/.dotfiles/.inputrc ~/.inputrc
-    ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 }
 
 setup()
 {
 	# Install Packages
 	package_install
-  
-    # if ! (command -v lsb_release && lsb_release -a 2>/dev/null | grep -q "Kali")
-    # then
-    #     git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-    #     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-    # fi
 
 	# Tmux
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -115,17 +41,52 @@ setup()
 
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 	mkdir ~/.vim/plugged
-    npm install -g typescript typescript-language-server diagnostic-languageserver pyright prettier
 
-	# NeoVim
-    mkdir -p ~/.config/nvim/undo
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    pip3 install --user pynvim
+    if [[ "$DOTINSTALL" != "server" ]]
+    then
+        npm install -g typescript typescript-language-server diagnostic-languageserver pyright prettier
+
+        # NeoVim
+        mkdir -p ~/.config/nvim/undo
+        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        pip3 install --user pynvim
+    fi
 
 	# Link files
 	link_files
 }
 
+link_files()
+{
+    if [[ "$DOTINSTALL" != "server" ]]
+    then
+        # Create nvim directory
+        mkdir -p ~/.config/nvim
+        mkdir -p ~/.config/nvim/after/plugin
+    fi
+
+    # Clean
+    clean
+
+    # Create backups
+    backup
+
+    # Link
+    ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+    ln -s ~/.dotfiles/.zshrc ~/.zshrc
+    ln -s ~/.dotfiles/.inputrc ~/.inputrc
+    ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+
+    if [[ "$DOTINSTALL" != "server" ]]
+    then
+        ln -s ~/.dotfiles/.vimrc ~/.vimrc
+        ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
+        ln -s ~/.dotfiles/plugin ~/.config/nvim/after/plugin
+    else
+        ln -s ~/.dotfiles/.vimrc ~/.vimrc-server
+    fi
+
+}
 
 backup()
 {
@@ -147,34 +108,16 @@ backup()
     if [ -f ~/.tmux.conf ]; then 
         mv ~/.tmux.conf ~/.backups/.tmux.conf.backup 
     fi
-    if [ -f ~/.config/nvim/init.vim ]; then 
-        mv ~/.config/nvim/init.vim ~./.backups/.nvim.backup
+
+    if [[ "$DOTINSTALL" != "server" ]]
+    then
+        if [ -f ~/.config/nvim/init.vim ]; then 
+            mv ~/.config/nvim/init.vim ~./.backups/.nvim.backup
+        fi
+        if [ -f ~/.config/nvim/after/plugin ]; then 
+            mv ~/.config/nvim/after/plugin ~./.backups/.nvim.plugin.backup
+        fi
     fi
-    if [ -f ~/.config/nvim/after/plugin ]; then 
-        mv ~/.config/nvim/after/plugin ~./.backups/.nvim.plugin.backup
-    fi
-}
-
-link_files()
-{
-    # Create nvim directory
-    mkdir -p ~/.config/nvim
-    mkdir -p ~/.config/nvim/after/plugin
-
-    # Clean
-    clean
-
-    # Create backups
-    backup
-
-    # Link
-    ln -s ~/.dotfiles/.vimrc ~/.vimrc
-    ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-    ln -s ~/.dotfiles/.zshrc ~/.zshrc
-    ln -s ~/.dotfiles/.inputrc ~/.inputrc
-    ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-    ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
-    ln -s ~/.dotfiles/plugin ~/.config/nvim/after/plugin
 }
 
 clean()
@@ -195,11 +138,15 @@ clean()
     if [ -L ~/.gitconfig ]; then 
         rm ~/.gitconfig
     fi
-    if [ -L ~/.config/nvim/init.vim ]; then 
-        rm ~/.config/nvim/init.vim
-    fi
-    if [ -L ~/.config/nvim/after/plugin ]; then 
-        rm -rf ~/.config/nvim/after/plugin
+
+    if [[ "$DOTINSTALL" != "server" ]]
+    then
+        if [ -L ~/.config/nvim/init.vim ]; then 
+            rm ~/.config/nvim/init.vim
+        fi
+        if [ -L ~/.config/nvim/after/plugin ]; then 
+            rm -rf ~/.config/nvim/after/plugin
+        fi
     fi
     
     # Restore Backups
@@ -218,25 +165,35 @@ clean()
     if [ -f ~/.backups/.tmux.conf.backup ]; then 
         mv ~/.backups/.tmux.conf.backup ~/.tmux.conf 
     fi
-    if [ -f ~/.config/nvim/init.vim ]; then 
-        mv ~./.backups/.nvim.backup ~/.config/nvim/init.vim 
-    if [ -f ~/.config/nvim/after/after/plugin ]; then 
-        mv ~./.backups/.nvim.plugin.backup ~/.config/nvim/after/plugin
+    if [[ "$DOTINSTALL" != "server" ]]
+    then
+        if [ -f ~/.config/nvim/init.vim ]; then 
+            mv ~./.backups/.nvim.backup ~/.config/nvim/init.vim 
+        fi
+        if [ -f ~/.config/nvim/after/after/plugin ]; then 
+            mv ~./.backups/.nvim.plugin.backup ~/.config/nvim/after/plugin
+        fi
     fi
-}
+    }
 
-if [[ $1 = "link" ]]
-then
-    link_files
-elif [[ $1 = "install" ]]
-then
-    package_install
-elif [[ $1 = "clean" ]]
-then
-    clean
-elif [[ $1 = "server" ]]
-then
-    server_setup
-else
-	setup
-fi
+echo 'Dotfiles installation'
+echo '---------------------'
+echo ''
+echo '1. Setup Dotfiles'
+echo '2. Link Dotfiles'
+echo '3. Install Supporting deps'
+echo '4. Clean Dotfiles'
+echo '5. Setup Dotfiles for Server'
+echo '6. Exit'
+while true; do
+    read -p 'Select option [1,5]: ' option
+    case $option in
+        1 ) setup; break;;
+        2 ) link_files; break;;
+        3 ) package_install; break;;
+        4 ) clean; break;;
+        5 ) DOTINSTALL='server';setup; break;;
+        6 ) exit;;
+        * ) echo "Please select a valid input !";;
+    esac
+done
