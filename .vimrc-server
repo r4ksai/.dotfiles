@@ -214,28 +214,28 @@ let g:rainbow_active = 1
 " Open/Close undotree
 nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
 
-    " Open/Close nerdtree
-    nnoremap <leader>n :NERDTreeToggle<CR>
-    let NERDTreeQuitOnOpen = 1
+" Open/Close nerdtree
+nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
 
-    " FzF Keymaps
-    noremap <leader>f :Files<CR>
-    noremap <leader>g :GFiles<CR>
-    noremap <leader>b :Buffers<CR>
-    nnoremap <leader>s :Rg<CR>
+" FzF Keymaps
+noremap <leader>f :Files<CR>
+noremap <leader>g :GFiles<CR>
+noremap <leader>b :Buffers<CR>
+nnoremap <leader>s :Rg<CR>
 
-    " FzF Layout
-    let g:fzf_preview_window = 'right:50%'
-    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+" FzF Layout
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 
-    let $FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-    let g:fzf_buffers_jump = 1
-    command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
-    let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+let $FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+let g:fzf_buffers_jump = 1
+command! -bang -nargs=? -complete=dir Files
+\ call fzf#vim#files(<q-args>, {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
-    " Airline theme
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline_powerline_fonts=1
-    let g:airline#extensions#whitespace#enabled = 0
-    let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
+" Airline theme
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts=1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_section_z = airline#section#create('%3p%% %#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__# %3v')
