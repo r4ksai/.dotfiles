@@ -71,6 +71,7 @@ link_files()
     # Create backups
     backup
 
+    echo "Linking files"
     # Link
     ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln -s ~/.dotfiles/.zshrc ~/.zshrc
@@ -90,6 +91,8 @@ link_files()
 
 backup()
 {
+
+    echo "Backing up files"
 	mkdir -p ~/.backups
 	cd ~/.backups
 
@@ -122,6 +125,7 @@ backup()
 
 clean()
 {
+    echo "Cleaning the old files"
     # Remove Links
     if [ -L ~/.vimrc ]; then 
         rm ~/.vimrc
@@ -176,6 +180,25 @@ clean()
     fi
     }
 
+    install_ohmyzsh() {
+        if [ -d ~/.oh-my-zsh ]; then
+            echo 'Oh my Zsh is already installed'
+        else
+            echo 'Installing Oh my Zsh'
+            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            source ~/.zshrc
+        fi
+
+		if ! command -v git &> /dev/null
+        then
+            echo 'Git not installed try again after installing git'
+        else
+            echo 'Installing zsh suggestions and syntax highlighting'
+            git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+        fi
+    }
+
 echo 'Dotfiles installation'
 echo '---------------------'
 echo ''
@@ -184,7 +207,8 @@ echo '2. Link Dotfiles'
 echo '3. Install Supporting deps'
 echo '4. Clean Dotfiles'
 echo '5. Setup Dotfiles for Server'
-echo '6. Exit'
+echo '6. Install Oh my Zsh'
+echo '7. Exit'
 while true; do
     read -p 'Select option [1,5]: ' option
     case $option in
@@ -193,7 +217,8 @@ while true; do
         3 ) package_install; break;;
         4 ) clean; break;;
         5 ) DOTINSTALL='server';setup; break;;
-        6 ) exit;;
+        6 ) ;break;;
+        7 ) exit;;
         * ) echo "Please select a valid input !";;
     esac
 done

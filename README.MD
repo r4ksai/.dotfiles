@@ -19,26 +19,12 @@ A repository that contains dotfiles for :
 
 **You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup**
 
-- Install Oh my Zsh
-
-```bash
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-- Get a new terminal or source zshrc file again to get new oh-my-zsh environment variables `source ~/.zshrc`
-- Install auto suggestions
-
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-```
-
+- Install Oh my Zsh **Installation is found in the setup script**
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
 - Move into .dotfiles `cd .dotfiles`
 - To install the dotfiles run `./setup.sh`
-    **To install for server user `./setup.sh server`**
+  **To install for server user `./setup.sh server`**
 
 **You need to add Dracula theme to the terminal manually**
 
@@ -52,7 +38,7 @@ To only link the dotfiles run `./setup.sh link`
 
 To install Packages run `./setup.sh install`
 
-### Install Font to support  Icons
+### Install Font to support Icons
 
 **For this to take effect you need to change the terminal font to the installed font**
 
@@ -66,8 +52,7 @@ To remove dotfiles run `./setup.sh clean`
 
 ## Todo
 
-1. Refactor script for installing in server
-2. Add script for kali linux
-3. Add option to choose between zsh and bash
-4. Add option for quick simple installation
-5. Fix vimrc to install less plugins if environment variable is specified
+1. Add script for kali linux and bash
+2. Add option to choose between zsh and bash
+3. Fix vimrc to install less plugins if environment variable is specified
+4. Add conditional code in vimrc with environment variable
