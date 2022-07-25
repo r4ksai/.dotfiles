@@ -125,7 +125,7 @@ backup()
 
 clean()
 {
-    echo "Cleaning the old files"
+    echo "Removing linked files"
     # Remove Links
     if [ -L ~/.vimrc ]; then 
         rm ~/.vimrc
@@ -154,6 +154,7 @@ clean()
     fi
     
     # Restore Backups
+    echo "Restoring old files"
     if [ -f ~/.backups/.vimrc.backup ]; then 
         mv ~/.backups/.vimrc.backup ~/.vimrc 
     fi
