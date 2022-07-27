@@ -29,6 +29,12 @@
     "typeParameter": "\uf728",
     "default": "\uf29c"
   },
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "typescript"]
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ]
 }
-
