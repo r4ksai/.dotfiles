@@ -211,14 +211,14 @@ echo '5. Setup Dotfiles for Server'
 echo '6. Install Oh my Zsh'
 echo '7. Exit'
 while true; do
-    read -p 'Select option [1,5]: ' option
+    read -p 'Select option [1,7]: ' option
     case $option in
         1 ) setup; break;;
         2 ) link_files; break;;
         3 ) package_install; break;;
         4 ) clean; break;;
         5 ) DOTINSTALL='server';setup; break;;
-        6 ) ;break;;
+        6 ) break;;
         7 ) exit;;
         * ) echo "Please select a valid input !";;
     esac
