@@ -17,10 +17,10 @@
         echo 'Updating'
         sudo apt update -qq
         echo 'Installing'
-        sudo apt install git vim tmux neovim curl exa fzf ripgrep bat kitty nodejs npm -y qq
+        sudo apt install git vim tmux curl exa fzf ripgrep bat -y -qq
         if [[ "$DOTINSTALL" != "server" ]]
         then
-            sudo apt install neovim kitty nodejs -y qq
+            sudo apt install neovim kitty nodejs npm -y -qq
         fi
     fi
 }
@@ -84,7 +84,7 @@ link_files()
         ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
         ln -s ~/.dotfiles/plugin ~/.config/nvim/after/plugin
     else
-        ln -s ~/.dotfiles/.vimrc ~/.vimrc-server
+        ln -s ~/.dotfiles/.vimrc-server ~/.vimrc
     fi
 
 }
@@ -182,6 +182,7 @@ clean()
     }
 
     install_ohmyzsh() {
+        # Zsh should be installed already
         if [ -d ~/.oh-my-zsh ]; then
             echo 'Oh my Zsh is already installed'
         else
