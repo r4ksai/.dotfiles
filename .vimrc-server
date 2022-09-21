@@ -164,44 +164,44 @@ map se <C-w>=
 
 call plug#begin('~/.vim/plugged')
 
-" Syntax checking
-Plug 'sheerun/vim-polyglot'
-Plug 'vim-syntastic/syntastic'
+    " Syntax checking
+    Plug 'sheerun/vim-polyglot'
+    Plug 'vim-syntastic/syntastic'
 
-" Autocompletion
-Plug 'jiangmiao/auto-pairs'
-Plug 'mattn/emmet-vim'
+    " Autocompletion
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'mattn/emmet-vim'
 
-" File Browser
-Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
+    " File Browser
+    Plug 'preservim/nerdtree'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'airblade/vim-rooter'
 
-" Langauge
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+    " Langauge
+    Plug 'pangloss/vim-javascript'
+    Plug 'mxw/vim-jsx'
 
-Plug 'othree/html5.vim'
+    Plug 'othree/html5.vim'
 
-" Theme
-Plug 'bling/vim-airline'
+    " Theme
+    Plug 'bling/vim-airline'
 
-" Git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+    " Git
+    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
 
-" Themes
-Plug 'ap/vim-css-color'
-Plug 'luochen1990/rainbow'
-Plug 'ryanoasis/vim-devicons'
+    " Themes
+    Plug 'ap/vim-css-color'
+    Plug 'luochen1990/rainbow'
+    Plug 'ryanoasis/vim-devicons'
 
-" Commenting
-Plug 'tpope/vim-commentary'
+    " Commenting
+    Plug 'tpope/vim-commentary'
 
-" Extras
-Plug 'mbbill/undotree'
-Plug 'tpope/vim-surround'
+    " Extras
+    Plug 'mbbill/undotree'
+    Plug 'tpope/vim-surround'
 
 " Initialize plugin system
 call plug#end()

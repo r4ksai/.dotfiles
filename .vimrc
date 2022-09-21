@@ -111,8 +111,9 @@ command! DiffO w !diff % -
 command! RmEndWhitespace %s/\s\+$//e
 
 " Delete without yank and paste from clipbaord 0
-nnoremap <leader>d "_d
-nnoremap x "_x
+noremap <leader>d "_d
+noremap <leader>p "_dP
+noremap x "_x
 nnoremap <S-C-p> "0p
 
 " Increment/decrement
