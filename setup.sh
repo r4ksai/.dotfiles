@@ -195,9 +195,13 @@ clean()
         then
             echo 'Git not installed try again after installing git'
         else
-            echo 'Installing zsh suggestions and syntax highlighting'
-            git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+            if [[ -z "${ZSH_CUSTOM }" ]]; then
+                echo 'oh my zsh environment variable not found, try again or manually copy the lines from the script'
+            else
+                echo 'Installing zsh suggestions and syntax highlighting'
+                git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+                git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+            fi
         fi
     }
 
@@ -219,7 +223,7 @@ while true; do
         3 ) package_install; break;;
         4 ) clean; break;;
         5 ) DOTINSTALL='server';setup; break;;
-        6 ) break;;
+        6 ) install_ohmyzsh; break;;
         7 ) exit;;
         * ) echo "Please select a valid input !";;
     esac
