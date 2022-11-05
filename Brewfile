@@ -69,6 +69,7 @@ brew "dfu-util"
 brew "libusb"
 # Open controller for the MiniPRO TL866xx series of chip programmers
 brew "minipro"
+# Ruby version management
 brew "rbenv"
 
 
