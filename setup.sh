@@ -196,13 +196,25 @@ clean()
             echo 'Git not installed try again after installing git'
         else
             if [[ -z "${ZSH_CUSTOM }" ]]; then
-                echo 'oh my zsh environment variable not found, try again or manually copy the lines from the script'
+                echo 'oh my zsh environment variable not found, try again or run oh my zsh plugin installation'
             else
                 echo 'Installing zsh suggestions and syntax highlighting'
                 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
                 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
             fi
         fi
+    }
+
+    install_ohmyzsh_plugin() {
+        if [ -d ~/.oh-my-zsh ]; then
+            echo 'Installing zsh suggestions and syntax highlighting'
+            mkdir -p ~/.oh-my-zsh/custom
+            git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        else
+            echo 'You need to install Oh My Zsh before running this !'
+        fi
+
     }
 
 echo 'Dotfiles installation'
@@ -214,7 +226,8 @@ echo '3. Install Supporting deps'
 echo '4. Clean Dotfiles'
 echo '5. Setup Dotfiles for Server'
 echo '6. Install Oh my Zsh'
-echo '7. Exit'
+echo '7. Install Oh my Zsh Plugins'
+echo '8. Exit'
 while true; do
     read -p 'Select option [1,7]: ' option
     case $option in
@@ -224,7 +237,8 @@ while true; do
         4 ) clean; break;;
         5 ) DOTINSTALL='server';setup; break;;
         6 ) install_ohmyzsh; break;;
-        7 ) exit;;
+        7 ) install_ohmyzsh_plugin; break;;
+        8 ) exit;;
         * ) echo "Please select a valid input !";;
     esac
 done
