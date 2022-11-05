@@ -25,7 +25,8 @@ A repository that contains dotfiles for :
 - Move into .dotfiles `cd .dotfiles`
 - To install the dotfiles run `./setup.sh`
 
->> For mac users **You'll need to add brew environment variables and brew bins to path by export in** `.zprofile`
+> For mac users **You'll need to add brew environment variables and brew bins to path  in.zprofile** or **run the command below**
+`echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile`
 
 >> **You need to add Dracula theme to the terminal manually**
 
@@ -53,7 +54,7 @@ To remove dotfiles run the script and select the option to clean
 
 ## Todo
 
-1. Add script for kali linux and bash
-2. Add option to choose between zsh, bash and fish
-3. Fix vimrc to install less plugins if environment variable is specified
-4. Add conditional code in vimrc with environment variable
+- [ ] Add script for kali linux and bash
+- [ ] Add option to choose between zsh, bash and fish
+- [ ] Fix vimrc to install less plugins if environment variable is specified
+- [ ] Add conditional code in vimrc with environment variable
