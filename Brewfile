@@ -33,8 +33,6 @@ brew "vim"
 brew "w3m"
 # Internet file retriever
 brew "wget"
-# Everything you need to get started with Heroku
-brew "heroku/brew/heroku"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 
@@ -83,9 +81,6 @@ brew "node"
 # Python version management
 brew "pyenv"
 
-cask "font-hack-nerd-font"
-
-
 # Cask
 # ------------------------------------------------
 # Calculator and converter application
@@ -96,5 +91,8 @@ cask "blender"
 cask "vlc"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
+# Font for showing Icons
+cask "font-hack-nerd-font"
+
 
 #To install from brewfile run 'brew bundle --file <this-file>'

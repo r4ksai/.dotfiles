@@ -19,24 +19,23 @@ A repository that contains dotfiles for :
 
 **You do not have to backup your current dotfiles, This will prefix your current dotfiles with .backup**
 
-- Install Oh my Zsh **Installation is found in the setup script**
+- Install Oh my Zsh **Run setup.sh and select installation for oh my zsh**
 - Move to home directory `cd ~`
 - Get this repository `git clone https://github.com/r4ksai/.dotfiles.git`
 - Move into .dotfiles `cd .dotfiles`
 - To install the dotfiles run `./setup.sh`
-  **To install for server user `./setup.sh server`**
 
-**You need to add Dracula theme to the terminal manually**
+>> **You need to add Dracula theme to the terminal manually**
 
 ### Only linking
 
 **Use this only to link dotfiles, this does not contain installation**
 
-To only link the dotfiles run `./setup.sh link`
+To only link the dotfiles run the installation script and choose linking option
 
 ### Package Installation
 
-To install Packages run `./setup.sh install`
+To install Packages run the installation script and choose install
 
 ### Install Font to support Icons
 
@@ -48,7 +47,7 @@ To install Packages run `./setup.sh install`
 
 ### Remove dotfiles
 
-To remove dotfiles run `./setup.sh clean`
+To remove dotfiles run the script and select the option to clean
 
 ## Todo
 
