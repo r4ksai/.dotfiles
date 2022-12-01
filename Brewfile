@@ -94,6 +94,16 @@ cask "vlc"
 cask "db-browser-for-sqlite"
 # Font for showing Icons
 cask "font-hack-nerd-font"
+# Multi-track audio editor and recorder
+cask "audacity"
+# Web browser
+cask "google-chrome"
+# Electronics design automation suite
+cask "kicad"
+# App to write, plan, collaborate, and get organized
+cask "notion"
+# Voice and text chat software
+cask "discord"
 
 
 #To install from brewfile run 'brew bundle --file <this-file>'
