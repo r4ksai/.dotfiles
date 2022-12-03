@@ -2,8 +2,13 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# High performance key/value database
+brew "berkeley-db", link: true
+# Manage compile and link flags for libraries
+brew "pkg-config"
 # Cross-platform make
 brew "cmake"
 # Library for USB device access
@@ -12,16 +17,30 @@ brew "libusb"
 brew "dfu-util"
 # Modern replacement for 'ls'
 brew "exa"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Improved top (interactive process viewer)
 brew "htop"
+# Network authentication protocol
+brew "krb5"
+# LLVM's OpenMP runtime library
+brew "libomp"
+# Postgres C API library
+brew "libpq"
+# Just-In-Time Compiler (JIT) for the Lua programming language
+brew "luajit", args: ["HEAD"]
 # Open controller for the MiniPRO TL866xx series of chip programmers
 brew "minipro"
+# Open source relational database management system
+brew "mysql"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# HTTP/2 C Library
+brew "nghttp2"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Port scanning utility for large networks
@@ -30,16 +49,26 @@ brew "nmap"
 brew "node"
 # Development kit for the Java programming language
 brew "openjdk"
+# Library to simplify the interaction with PKCS#11
+brew "pkcs11-helper"
+# SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
+brew "openvpn"
 # Simplistic interactive filtering tool
 brew "peco"
-# Manage compile and link flags for libraries
-brew "pkg-config"
+# Object-relational database system
+brew "postgresql@14"
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Text interface for Git repositories
 brew "tig"
 # Terminal multiplexer
@@ -48,6 +77,19 @@ brew "tmux"
 brew "vim"
 # Internet file retriever
 brew "wget"
+# Tools for the WireGuard secure network tunnel
+brew "wireguard-tools"
+# Multi-track audio editor and recorder
+cask "audacity"
 # 3D creation suite
 cask "blender"
+# Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Electronics design automation suite
+cask "kicad"
+# Collaboration platform for API development
+cask "postman"
+# Network protocol analyzer
+cask "wireshark"
