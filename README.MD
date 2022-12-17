@@ -29,6 +29,7 @@ A repository that contains dotfiles for :
 `echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile`
 
 >> **You need to add Dracula theme to the terminal manually**
+Download it from https://draculatheme.com
 
 ### Only linking
 
