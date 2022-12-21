@@ -30,6 +30,24 @@ setup()
 	# Install Packages
 	package_install
 
+    echo 'Select a default SHELL'
+    echo '---------------------'
+    echo ''
+    echo '1. Bash'
+    echo '2. ZSH'
+    echo '3. Fish'
+
+    while true; do
+        read -p 'Select option [2]: ' option
+        option=${option:-2}
+        case $option in
+            1 ) install_ohmybash; break;;
+            2 ) install_ohmyzsh; break;;
+            3 ) install_ohmyfish; break;;
+            * ) echo "Please select a valid input !";;
+        esac
+    done
+
 	# Tmux
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -74,6 +92,7 @@ link_files()
     echo "Linking files"
     # Link
     ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+    ln -s ~/.dotfiles/.bashrc ~/.bashrc
     ln -s ~/.dotfiles/.zshrc ~/.zshrc
     ln -s ~/.dotfiles/.inputrc ~/.inputrc
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
@@ -101,6 +120,9 @@ backup()
     fi
     if [ -f ~/.gitconfig ]; then 
         mv ~/.gitconfig ~/.backups/.gitconfig.backup 
+    fi
+    if [ -f ~/.bashrc ]; then 
+        mv ~/.bashrc ~/.backups/.bashrc.backup 
     fi
     if [ -f ~/.zshrc ]; then 
         mv ~/.zshrc ~/.backups/.zshrc.backup 
@@ -133,6 +155,9 @@ clean()
     if [ -L ~/.tmux.conf ]; then 
         rm ~/.tmux.conf
     fi
+    if [ -L ~/.bashrc ]; then 
+        rm ~/.bashrc
+    fi
     if [ -L ~/.zshrc ]; then 
         rm ~/.zshrc
     fi
@@ -161,6 +186,9 @@ clean()
     if [ -f ~/.backups/.gitconfig.backup ]; then 
         mv ~/.backups/.gitconfig.backup ~/.gitconfig 
     fi
+    if [ -f ~/.backups/.bashrc.backup ]; then 
+        mv ~/.backups/.bashrc.backup ~/.bashrc  
+    fi
     if [ -f ~/.backups/.zshrc.backup ]; then 
         mv ~/.backups/.zshrc.backup ~/.zshrc  
     fi
@@ -182,7 +210,14 @@ clean()
     }
 
     install_ohmyzsh() {
-        # Zsh should be installed already
+        if [[ "$OSTYPE" == "darwin"* ]]
+        then
+            brew install zsh
+        elif [[ "$OSTYPE" == "linux-gnu"* ]]
+        then
+            sudo apt install zsh
+        fi
+
         if [ -d ~/.oh-my-zsh ]; then
             echo 'Oh my Zsh is already installed'
         else
@@ -196,7 +231,10 @@ clean()
             echo 'Git not installed try again after installing git'
         else
             if [[ -z "${ZSH_CUSTOM }" ]]; then
-                echo 'oh my zsh environment variable not found, try again or run oh my zsh plugin installation'
+                echo 'Installing zsh suggestions and syntax highlighting without environment variable'
+                mkdir -p ~/.oh-my-zsh/custom
+                git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+                git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
             else
                 echo 'Installing zsh suggestions and syntax highlighting'
                 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -205,17 +243,39 @@ clean()
         fi
     }
 
-    # Not using anymore
-    install_ohmyzsh_plugin() {
-        if [ -d ~/.oh-my-zsh ]; then
-            echo 'Installing zsh suggestions and syntax highlighting'
-            mkdir -p ~/.oh-my-zsh/custom
-            git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-        else
-            echo 'You need to install Oh My Zsh before running this !'
+    install_ohmybash() {
+        if [[ "$OSTYPE" == "darwin"* ]]
+        then
+            brew install bash
+        elif [[ "$OSTYPE" == "linux-gnu"* ]]
+        then
+            sudo apt install bash
         fi
 
+        if [ -d ~/.oh-my-bash ]; then
+            echo 'Oh my Bash is already installed'
+        else
+            echo 'Installing Oh my Bash'
+            bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+            source ~/.bashrc
+        fi
+    }
+
+    install_ohmyfish() {
+        if [[ "$OSTYPE" == "darwin"* ]]
+        then
+            brew install fish
+        elif [[ "$OSTYPE" == "linux-gnu"* ]]
+        then
+            sudo apt install fish
+        fi
+
+        if [ -d ~/.oh-my-fish ]; then
+            echo 'Oh my Fish is already installed'
+        else
+            echo 'Installing Oh my Fish'
+            curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish 
+        fi
     }
 
 echo 'Dotfiles installation'
@@ -226,10 +286,7 @@ echo '2. Link Dotfiles'
 echo '3. Install Supporting deps'
 echo '4. Clean Dotfiles'
 echo '5. Setup Dotfiles for Server'
-echo '6. Install Oh my Zsh'
-echo '7. Install Oh my Bash'
-echo '8. Install Oh my Fish'
-echo '9. Exit'
+echo '6. Exit'
 while true; do
     read -p 'Select option [1,7]: ' option
     case $option in
@@ -238,10 +295,7 @@ while true; do
         3 ) package_install; break;;
         4 ) clean; break;;
         5 ) DOTINSTALL='server';setup; break;;
-        6 ) install_ohmyzsh; break;;
-        7 ) bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"; break;;
-        8 ) curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish ; break;;
-        9 ) exit;;
+        6 ) exit;;
         * ) echo "Please select a valid input !";;
     esac
 done
