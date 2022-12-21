@@ -205,6 +205,7 @@ clean()
         fi
     }
 
+    # Not using anymore
     install_ohmyzsh_plugin() {
         if [ -d ~/.oh-my-zsh ]; then
             echo 'Installing zsh suggestions and syntax highlighting'
@@ -226,8 +227,9 @@ echo '3. Install Supporting deps'
 echo '4. Clean Dotfiles'
 echo '5. Setup Dotfiles for Server'
 echo '6. Install Oh my Zsh'
-echo '7. Install Oh my Zsh Plugins'
-echo '8. Exit'
+echo '7. Install Oh my Bash'
+echo '8. Install Oh my Fish'
+echo '9. Exit'
 while true; do
     read -p 'Select option [1,7]: ' option
     case $option in
@@ -237,8 +239,9 @@ while true; do
         4 ) clean; break;;
         5 ) DOTINSTALL='server';setup; break;;
         6 ) install_ohmyzsh; break;;
-        7 ) install_ohmyzsh_plugin; break;;
-        8 ) exit;;
+        7 ) bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"; break;;
+        8 ) curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish ; break;;
+        9 ) exit;;
         * ) echo "Please select a valid input !";;
     esac
 done
