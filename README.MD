@@ -52,11 +52,3 @@ To install Packages run the installation script and choose install
 ### Remove dotfiles
 
 To remove dotfiles run the script and select the option to clean
-
-## Todo
-
-- [ ] Add script for kali linux and bash
-- [ ] Add option to choose between zsh, bash and fish
-- [ ] Fix vimrc to install less plugins if environment variable is specified
-- [ ] Add conditional code in vimrc with environment variable
-- [ ] Add support for embeded developmemt and C
