@@ -3,6 +3,7 @@ vim
 tmux
 curl
 exa
+peco
 fzf
 ripgrep
 bat
