@@ -7,7 +7,7 @@ peco
 fzf
 ripgrep
 bat
+python3-pip
 neovim
-kitty
 nodejs
 npm

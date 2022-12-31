@@ -11,13 +11,29 @@
 		fi
         export PATH=/opt/homebrew/bin:$PATH
         echo 'Installing brew bundle'
+        # Create seperate bundles for brew categories and add options to choose between
         brew bundle
     elif [[ "$OSTYPE" == "linux-gnu"* ]]
     then
         echo 'Updating'
         sudo apt update -qq
         echo 'Installing'
-        sudo apt install $(cat Aptlist) -y -qq
+
+        echo 'Dotfiles Environment'
+        echo '---------------------'
+        echo ''
+        echo '1. Server'
+        echo '2. Desktop'
+
+        while true; do
+            read -p 'Select option [2]: ' option
+            option=${option:-2}
+            case $option in
+                1 ) sudo apt install $(cat AptServerlist) -y -qq; DOTENV=server; break;;
+                2 ) sudo apt install $(cat AptServerlist) -y -qq; sudo apt install $(cat AptDesktopList) -y -qq; DOTENV=desktop; break;;
+                * ) echo "Please select a valid input !";;
+            esac
+        done
     fi
 }
 
@@ -57,7 +73,10 @@ setup()
 	mkdir ~/.vim/plugged
 
     # Language Support from Vim
-    npm install -g typescript typescript-language-server diagnostic-languageserver pyright prettier
+    if [[ "$DOTENV" != "server"]]
+    then
+        npm install -g typescript typescript-language-server diagnostic-languageserver pyright prettier
+    fi
 
     # NeoVim
     mkdir -p ~/.config/nvim/undo
@@ -83,9 +102,14 @@ link_files()
     echo "Linking files"
     # Link
     ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-    ln -s ~/.dotfiles/.bashrc ~/.bashrc
-    ln -s ~/.dotfiles/.zshrc ~/.zshrc
     ln -s ~/.dotfiles/.inputrc ~/.inputrc
+    if [[ "$SHELL" == *"zsh" ]]
+    then
+        ln -s ~/.dotfiles/.zshrc ~/.zshrc
+    elif [[ "$SHELL" == *"bash" ]]
+    then
+        ln -s ~/.dotfiles/.bashrc ~/.bashrc
+    fi
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 
     ln -s ~/.dotfiles/.vimrc ~/.vimrc
@@ -121,8 +145,13 @@ backup()
 
     backupFiles vimrc
     backupFiles tmux.conf
-    backupFiles bashrc
-    backupFiles zshrc
+    if [[ "$SHELL" == *"zsh" ]]
+    then
+        backupFiles zshrc
+    elif [[ "$SHELL" == *"bash" ]]
+    then
+        backupFiles bashrc
+    fi
     backupFiles inputrc
     backupFiles gitconfig
 
@@ -140,8 +169,13 @@ clean()
     # Remove Links
     removeLinkedFiles ~/.vimrc
     removeLinkedFiles ~/.tmux.conf
-    removeLinkedFiles ~/.bashrc
-    removeLinkedFiles ~/.zshrc
+    if [[ "$SHELL" == *"zsh" ]]
+    then
+        removeLinkedFiles ~/.zshrc
+    elif [[ "$SHELL" == *"bash" ]]
+    then
+        removeLinkedFiles ~/.bashrc
+    fi
     removeLinkedFiles ~/.inputrc
     removeLinkedFiles ~/.gitconfig
     removeLinkedFiles ~/.config/nvim/init.vim
@@ -151,8 +185,13 @@ clean()
     echo "Restoring old files"
     restoreBackupFiles vimrc
     restoreBackupFiles tmux.conf
-    restoreBackupFiles bashrc
-    restoreBackupFiles zshrc
+    if [[ "$SHELL" == *"zsh" ]]
+    then
+        restoreBackupFiles zshrc
+    elif [[ "$SHELL" == *"bash" ]]
+    then
+        restoreBackupFiles bashrc
+    fi
     restoreBackupFiles inputrc
     restoreBackupFiles gitconfig
 
@@ -165,10 +204,10 @@ clean()
     }
 
 install_ohmyzsh() {
-    if [[ "$OSTYPE" == "darwin"* ]]
+    if [ "$OSTYPE" == "darwin"* ] && [ "$SHELL" != *"zsh" ]
     then
         brew install zsh
-    elif [[ "$OSTYPE" == "linux-gnu"* ]]
+    elif [ "$OSTYPE" == "linux-gnu"* ] && ["$SHELL" != *"zsh"]
     then
         sudo apt install zsh
     fi
@@ -199,10 +238,10 @@ install_ohmyzsh() {
 }
 
 install_ohmybash() {
-    if [[ "$OSTYPE" == "darwin"* ]]
+    if [ "$OSTYPE" == "darwin"* ] && [ "$SHELL" != *"bash" ]
     then
         brew install bash
-    elif [[ "$OSTYPE" == "linux-gnu"* ]]
+    elif [ "$OSTYPE" == "linux-gnu"* ] && ["$SHELL" != *"bash"]
     then
         sudo apt install bash
     fi
@@ -217,10 +256,10 @@ install_ohmybash() {
 }
 
 install_ohmyfish() {
-    if [[ "$OSTYPE" == "darwin"* ]]
+    if [ "$OSTYPE" == "darwin"* ] && [ "$SHELL" != *"fish" ]
     then
         brew install fish
-    elif [[ "$OSTYPE" == "linux-gnu"* ]]
+    elif [ "$OSTYPE" == "linux-gnu"* ] && ["$SHELL" != *"fish"]
     then
         sudo apt install fish
     fi
