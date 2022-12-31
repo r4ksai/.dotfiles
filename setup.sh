@@ -29,8 +29,8 @@
             read -p 'Select option [2]: ' option
             option=${option:-2}
             case $option in
-                1 ) sudo apt install $(cat AptServerlist) -y -qq; DOTENV=server; break;;
-                2 ) sudo apt install $(cat AptServerlist) -y -qq; sudo apt install $(cat AptDesktopList) -y -qq; DOTENV=desktop; break;;
+                1 ) sudo apt install $(cat AptServerList) -y -qq; DOTENV=server; break;;
+                2 ) sudo apt install $(cat AptServerList) -y -qq; sudo apt install $(cat AptDesktopList) -y -qq; DOTENV=desktop; break;;
                 * ) echo "Please select a valid input !";;
             esac
         done
@@ -73,7 +73,7 @@ setup()
 	mkdir ~/.vim/plugged
 
     # Language Support from Vim
-    if [[ "$DOTENV" != "server"]]
+    if [ "$DOTENV" != "server"]
     then
         npm install -g typescript typescript-language-server diagnostic-languageserver pyright prettier
     fi
