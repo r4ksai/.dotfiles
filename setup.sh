@@ -224,7 +224,7 @@ install_ohmyzsh() {
     then
         echo 'Git not installed try again after installing git'
     else
-        if [[ -z "$ZSH_CUSTOM" ]]; then
+        if [[ -z "${ZSH_CUSTOM}" ]]; then
             echo 'Installing zsh suggestions and syntax highlighting without environment variable'
             mkdir -p ~/.oh-my-zsh/custom
             git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
