@@ -22,6 +22,7 @@ if !has("nvim")
     colorscheme dracula
     let g:dracula_italic = 0
 endif
+" set termguicolors
 set encoding=UTF-8
 set fileencodings=utf-8
 set background=dark
@@ -29,6 +30,11 @@ syntax enable
 set cursorline
 set nowrap
 set title
+set ruler
+
+" Tab completion
+" set wildmode=longest,list
+set wildmode=longest:list,full
 
 " Leader
 let mapleader=';'
@@ -84,9 +90,14 @@ set incsearch
 
 " Finding files - Search down into subfolders
 set path+=**
-set wildignore+=*/node_modules/*
-set wildignore+=*/.git/*
-set wildignore+=*/__pycache__/*
+
+" Ignore certain files and folders when globing
+set wildignore+=*.o,*.obj,*.dylib,*.bin,*.dll,*.exe
+set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**,*/node_modules/*
+set wildignore+=*.jpg,*.png,*.jpeg,*.bmp,*.gif,*.tiff,*.svg,*.ico
+set wildignore+=*.pyc,*.pkl
+set wildignore+=*.DS_Store
+set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.xdv
 
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
