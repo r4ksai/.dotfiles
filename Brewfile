@@ -81,6 +81,8 @@ brew "node"
 brew "pyenv"
 # Ruby version management
 brew "rbenv"
+# Arduino command-line interface
+brew "arduino-cli"
 
 # Cask
 # ------------------------------------------------
@@ -104,6 +106,14 @@ cask "kicad"
 cask "notion"
 # Voice and text chat software
 cask "discord"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# HTTP client that helps testing and describing APIs
+cask "rapidapi"
+# Open-source code editor
+cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
 
 
 #To install from brewfile run 'brew bundle --file <this-file>'
