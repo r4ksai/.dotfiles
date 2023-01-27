@@ -17,11 +17,9 @@ filetype off
 if !1 | finish | endif
 
 " Theme
-if !has("nvim")
-    packadd! dracula
-    colorscheme dracula
-    let g:dracula_italic = 0
-endif
+packadd! dracula
+colorscheme dracula
+let g:dracula_italic = 0
 " set termguicolors
 set encoding=UTF-8
 set fileencodings=utf-8
@@ -67,6 +65,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" set list
+" set listchars=trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂
+
 " History buffer
 set history=1000
 set hidden
@@ -75,11 +76,7 @@ set hidden
 set undofile
 set undolevels=1000
 set undoreload=10000
-if has ("nvim")
-    set undodir=~/.config/nvim/undo
-else
-    set undodir=~/.vim/undo
-endif
+set undodir=~/.vim/undo
 
 " Search
 set ignorecase
@@ -146,11 +143,6 @@ set backspace=indent,eol,start
 set showcmd
 set cmdheight=1
 set laststatus=2
-
-" incremental substitution (neovim)
-if has('nvim')
-  set inccommand=split
-endif
 
 "-----------------------------
 " Langauge Specific

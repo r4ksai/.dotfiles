@@ -19,26 +19,34 @@
         sudo apt update -qq
         echo 'Installing'
 
-        echo 'Dotfiles Environment'
-        echo '---------------------'
-        echo ''
-        echo '1. Server'
-        echo '2. Desktop'
+        if [ "$DOTENV" == "server"]
+        then
+            sudo apt install $(cat AptServerList) -y -qq;
+        else
+            sudo apt install $(cat AptServerList) -y -qq; sudo apt install $(cat AptDesktopList) -y -qq;
+        fi
 
-        while true; do
-            read -p 'Select option [2]: ' option
-            option=${option:-2}
-            case $option in
-                1 ) sudo apt install $(cat AptServerList) -y -qq; DOTENV=server; break;;
-                2 ) sudo apt install $(cat AptServerList) -y -qq; sudo apt install $(cat AptDesktopList) -y -qq; DOTENV=desktop; break;;
-                * ) echo "Please select a valid input !";;
-            esac
-        done
     fi
 }
 
 setup()
 {
+
+    echo 'Dotfiles Environment'
+    echo '---------------------'
+    echo ''
+    echo '1. Server'
+    echo '2. Desktop'
+
+    while true; do
+        read -p 'Select option [2]: ' option
+        option=${option:-2}
+        case $option in
+            1 ) DOTENV=server; break;;
+            2 ) DOTENV=desktop; break;;
+            * ) echo "Please select a valid input !";;
+        esac
+    done
 	# Install Packages
 	package_install
 
@@ -56,6 +64,22 @@ setup()
             1 ) install_ohmybash; break;;
             2 ) install_ohmyzsh; break;;
             3 ) install_ohmyfish; break;;
+            * ) echo "Please select a valid input !";;
+        esac
+    done
+
+    echo 'Configure Text Editor'
+    echo '---------------------'
+    echo ''
+    echo '1. Vim'
+    echo '2. NeoVim'
+
+    while true; do
+        read -p 'Select option [2]: ' option
+        option=${option:-2}
+        case $option in
+            1 ) EDITOR=vim; break;;
+            2 ) EDITOR=neovim; break;;
             * ) echo "Please select a valid input !";;
         esac
     done
