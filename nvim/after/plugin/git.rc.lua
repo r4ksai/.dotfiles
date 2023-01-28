@@ -7,5 +7,7 @@ git.setup({
         blame = "<Leader>gb",
         -- Open file/folder in git repository
         browse = "<Leader>go",
+        -- Open git diff window
+        diff = "<Leader>gd"
     }
 })
