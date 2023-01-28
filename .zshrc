@@ -27,7 +27,7 @@ export LANG=en_US.UTF-8
 export TERM=screen-256color
 
 # Default Editor
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Source
 source $ZSH/oh-my-zsh.sh

@@ -192,7 +192,6 @@ map se <C-w>=
 
 if has("nvim")
     " Autocompletion
-    Plug 'github/copilot.vim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'tami5/lspsaga.nvim'
@@ -204,9 +203,6 @@ if has("nvim")
     Plug 'onsails/lspkind-nvim'
 
     " File Browser
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'kristijanhusak/defx-git'
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
     call plug#begin('~/.vim/plugged')
@@ -264,11 +260,6 @@ call plug#end()
 let g:rainbow_active = 1
 " Open/Close undotree
 nnoremap <leader>m :UndotreeToggle<CR>:UndotreeFocus<CR>
-
-if has("nvim")
-    " Theme
-    colorscheme dracula
-else
 
     " Open/Close nerdtree
     nnoremap <leader>n :NERDTreeToggle<CR>
@@ -469,5 +460,3 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Pettier
 " command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument " Manual
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
-endif
