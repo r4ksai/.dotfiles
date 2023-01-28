@@ -8,7 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
     use 'wbthomason/packer.nvim'
-    use {'dracula/vim', as = 'dracula'} -- Dracula theme
+    use { 'dracula/vim', as = 'dracula' } -- Dracula theme
     use 'nvim-lualine/lualine.nvim' -- Statusline
     use 'kyazdani42/nvim-web-devicons' -- File icons
     use 'onsails/lspkind-nvim' -- VScode like pictograms
@@ -18,11 +18,11 @@ packer.startup(function(use)
     use 'hrsh7th/nvim-cmp' -- Completion
 
     use 'neovim/nvim-lspconfig' -- LSP
-    use 'williamboman/mason.nvim'
+    use 'williamboman/mason.nvim' -- Langauge server manager
     use 'williamboman/mason-lspconfig.nvim'
 
-    -- use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-    -- use 'glepnir/lspsaga.nvim' -- LSP UIs
+    use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+    use 'glepnir/lspsaga.nvim' -- LSP UIs
 
     use 'L3MON4D3/LuaSnip' -- Snipper support
 
