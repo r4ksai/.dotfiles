@@ -191,12 +191,6 @@ map se <C-w>=
 " plugins
 
 if has("nvim")
-    let g:plug_home = stdpath('data') . '/plugged'
-    call plug#begin()
-
-    " Themes
-    Plug 'dracula/vim', { 'as': 'dracula' }
-
     " Autocompletion
     Plug 'github/copilot.vim'
     Plug 'neovim/nvim-lspconfig'
@@ -214,21 +208,6 @@ if has("nvim")
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'kristijanhusak/defx-git'
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-
-    " File Browser Icons
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'kristijanhusak/defx-icons'
-
-    " Syntax
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-    " Theme
-    Plug 'hoob3rt/lualine.nvim'
-
-    " Auto Pairs
-    Plug 'windwp/nvim-autopairs'
-    Plug 'windwp/nvim-ts-autotag'
-
 else
     call plug#begin('~/.vim/plugged')
 
