@@ -137,8 +137,7 @@ link_files()
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 
     ln -s ~/.dotfiles/.vimrc ~/.vimrc
-    ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
-    ln -s ~/.dotfiles/plugin ~/.config/nvim/after/plugin
+    ln -s ~/.dotfiles/nvim ~/.config/nvim
 
 }
 
@@ -150,7 +149,7 @@ backupFiles() {
 
 removeLinkedFiles() {
     if [ -L $1 ]; then 
-        rm $1
+        rm -r $1
     fi
 }
 
@@ -180,10 +179,7 @@ backup()
     backupFiles gitconfig
 
     if [ -f ~/.config/nvim/init.vim ]; then 
-        mv ~/.config/nvim/init.vim ~./.backups/.nvim.backup
-    fi
-    if [ -f ~/.config/nvim/after/plugin ]; then 
-        mv ~/.config/nvim/after/plugin ~./.backups/.nvim.plugin.backup
+        mv ~/.config/nvim ~./.backups/.nvim.backup
     fi
 }
 
@@ -202,8 +198,7 @@ clean()
     fi
     removeLinkedFiles ~/.inputrc
     removeLinkedFiles ~/.gitconfig
-    removeLinkedFiles ~/.config/nvim/init.vim
-    removeLinkedFiles ~/.config.nvim.after/plugin
+    removeLinkedFiles ~/.config/nvim
 
     # Restore Backups
     echo "Restoring old files"
@@ -220,10 +215,7 @@ clean()
     restoreBackupFiles gitconfig
 
     if [ -f ~/.config/nvim/init.vim ]; then 
-        mv ~./.backups/.nvim.backup ~/.config/nvim/init.vim 
-    fi
-    if [ -f ~/.config/nvim/after/after/plugin ]; then 
-        mv ~./.backups/.nvim.plugin.backup ~/.config/nvim/after/plugin
+        mv ~./.backups/.nvim.backup ~/.config/nvim
     fi
     }
 
