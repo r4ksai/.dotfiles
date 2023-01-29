@@ -40,7 +40,7 @@ packer.startup(function(use)
     use 'kylechui/nvim-surround' -- Shortcuts to for enclosing surrounds
 
     use {
-        'folke/todo-comments.nvim',
+        'folke/todo-comments.nvim', -- TODO comments
         requires = {
             'nvim-lua/plenary.nvim'
         }
@@ -50,6 +50,7 @@ packer.startup(function(use)
             'JoosepAlviste/nvim-ts-context-commentstring'
         }
     }
+    use 'mbbill/undotree'
 
     use 'norcalli/nvim-colorizer.lua' -- Highlight color tags
     use 'folke/zen-mode.nvim' -- Zen Mode coding
