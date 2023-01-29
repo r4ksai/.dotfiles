@@ -39,7 +39,12 @@ packer.startup(function(use)
     use 'windwp/nvim-ts-autotag' -- Automatic tag completion
     use 'kylechui/nvim-surround' -- Shortcuts to for enclosing surrounds
 
-
+    use {
+        'folke/todo-comments.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
+    }
     use { 'numToStr/Comment.nvim', -- Commenting
         requires = {
             'JoosepAlviste/nvim-ts-context-commentstring'
