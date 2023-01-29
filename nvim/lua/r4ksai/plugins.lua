@@ -31,6 +31,8 @@ packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
+    use 'p00f/nvim-ts-rainbow' -- Colored brackers and tags
+    use 'norcalli/nvim-colorizer.lua' -- Highlight color tags
 
     use 'nvim-telescope/telescope.nvim' -- File Browser
     use 'nvim-telescope/telescope-file-browser.nvim'
@@ -50,9 +52,8 @@ packer.startup(function(use)
             'JoosepAlviste/nvim-ts-context-commentstring'
         }
     }
-    use 'mbbill/undotree'
+    use 'mbbill/undotree' -- Interactive undo tree
 
-    use 'norcalli/nvim-colorizer.lua' -- Highlight color tags
     use 'folke/zen-mode.nvim' -- Zen Mode coding
 
     use({

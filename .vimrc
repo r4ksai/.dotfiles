@@ -190,21 +190,6 @@ map se <C-w>=
 "------------------------------
 " plugins
 
-if has("nvim")
-    " Autocompletion
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/nvim-lsp-installer'
-    Plug 'tami5/lspsaga.nvim'
-    Plug 'folke/lsp-colors.nvim'
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'onsails/lspkind-nvim'
-
-    " File Browser
-    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
     call plug#begin('~/.vim/plugged')
 
     " Syntax checking
@@ -232,7 +217,6 @@ else
     " Theme
     Plug 'bling/vim-airline'
 
-endif
 
 " Git
 Plug 'airblade/vim-gitgutter'
