@@ -108,8 +108,8 @@ lspconfig.cssls.setup {
 
 
 -- Python Server
-lspconfig.pylsp.setup {
-    on_attach = on_attach,
+lspconfig.jedi_language_server.setup {
+    on_attach    = on_attach,
     capabilities = capabilities
 }
 
