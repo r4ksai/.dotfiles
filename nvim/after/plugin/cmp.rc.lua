@@ -1,6 +1,12 @@
-local status, cmp = pcall(require, "cmp")
-if (not status) then return end
+local cmp_status, cmp = pcall(require, "cmp")
+if (not cmp_status) then return end
+
+local luasnip_status, luasnip = pcall(require, "luasnip")
+if (not luasnip_status) then return end
+
 local lspkind = require 'lspkind'
+
+require('luasnip.loaders.from_vscode').lazy_load()
 
 local function formatForTailwindCSS(entry, vim_item)
     if vim_item.kind == 'Color' and entry.completion_item.documentation then
@@ -23,7 +29,7 @@ end
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -42,6 +48,8 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'path' }, -- Autocomplete path
         { name = 'buffer' },
     }),
     formatting = {
@@ -55,7 +63,8 @@ cmp.setup({
     }
 })
 
+vim.opt.completeopt = "menuone,noinsert,noselect"
+
 vim.cmd [[
-  set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]]

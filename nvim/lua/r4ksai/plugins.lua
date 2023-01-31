@@ -1,6 +1,6 @@
-local status, packer = pcall(require, "packer")
+local status, packer = pcall(require, 'packer')
 if (not status) then
-    print("Packer is not installed")
+    print('Packer is not installed')
     return
 end
 
@@ -14,6 +14,8 @@ packer.startup(function(use)
     use 'onsails/lspkind-nvim' -- VScode like pictograms
 
     use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
+    use 'hrsh7th/cmp-path' -- nvim-cmp source for file paths
+    use 'saadparwaiz1/cmp_luasnip' -- nvim-cmp source for luasnip
     use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
     use 'hrsh7th/nvim-cmp' -- Completion
 
@@ -24,7 +26,8 @@ packer.startup(function(use)
     use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
     use 'glepnir/lspsaga.nvim' -- LSP UIs
 
-    use 'L3MON4D3/LuaSnip' -- Snipper support
+    use 'L3MON4D3/LuaSnip' -- Snippet engine
+    use 'rafamadriz/friendly-snippets' -- Snippets for different programming langauges
 
     use 'nvim-lua/plenary.nvim' -- Common utilities for treesitter
     use {
@@ -57,8 +60,8 @@ packer.startup(function(use)
     use 'folke/zen-mode.nvim' -- Zen Mode coding
 
     use({
-        "iamcco/markdown-preview.nvim", -- Preview Markdown
-        run = function() vim.fn["mkdp#util#install"]() end,
+        'iamcco/markdown-preview.nvim', -- Preview Markdown
+        run = function() vim.fn['mkdp#util#install']() end,
     })
 
     use 'akinsho/nvim-bufferline.lua' -- Top tab navigation
