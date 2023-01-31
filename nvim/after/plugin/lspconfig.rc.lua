@@ -97,14 +97,32 @@ lspconfig.cssls.setup {
     capabilities = capabilities
 }
 
+-- -- Python Server
+-- lspconfig.pyright.setup {
+--     on_attach = on_attach,
+--     flags = {
+--         debounce_text_changes = 150,
+--     },
+--     capabilities = capabilities
+-- }
+
+
 -- Python Server
-lspconfig.pyright.setup {
+lspconfig.pylsp.setup {
     on_attach = on_attach,
-    flags = {
-        debounce_text_changes = 150,
-    },
     capabilities = capabilities
 }
+
+-- To remove line too long error and line break erros
+-- copy this into ~/.config/pycodestyle
+-- ------------------------------
+-- [pycodestyle]
+-- count = False
+-- ignore = E226,E302,E71,E305
+-- max-line-length = 160
+-- statistics = True
+-- ------------------------------
+
 
 -- C/C++ Server
 lspconfig.ccls.setup {
