@@ -1,4 +1,4 @@
-local status, nvim_lsp = pcall(require, "lspconfig")
+local status, lspconfig = pcall(require, "lspconfig")
 if (not status) then return end
 
 local protocol = require('vim.lsp.protocol')
@@ -66,21 +66,39 @@ protocol.CompletionItemKind = {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- JS Server
-nvim_lsp.flow.setup {
+lspconfig.flow.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+-- HTML Server
+lspconfig.html.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
 
 -- TS Server
-nvim_lsp.tsserver.setup {
+lspconfig.tsserver.setup {
     on_attach = on_attach,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities
 }
 
+-- Tailwind Server
+lspconfig.tailwindcss.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+-- CSS Server
+lspconfig.cssls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
 -- Python Server
-nvim_lsp.pyright.setup {
+lspconfig.pyright.setup {
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
@@ -89,13 +107,13 @@ nvim_lsp.pyright.setup {
 }
 
 -- C/C++ Server
-nvim_lsp.ccls.setup {
+lspconfig.ccls.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
 
 -- Lua Server
-nvim_lsp.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
@@ -115,18 +133,6 @@ nvim_lsp.sumneko_lua.setup {
             },
         },
     },
-}
-
--- Tailwind Server
-nvim_lsp.tailwindcss.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
--- CSS Server
-nvim_lsp.cssls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
