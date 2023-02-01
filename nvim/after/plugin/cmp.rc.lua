@@ -6,7 +6,7 @@ if (not luasnip_status) then return end
 
 local lspkind = require 'lspkind'
 
-require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load() -- Snippets
 
 local function formatForTailwindCSS(entry, vim_item)
     if vim_item.kind == 'Color' and entry.completion_item.documentation then
@@ -48,7 +48,7 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = 'luasnip' }, -- Snippets
         { name = 'path' }, -- Autocomplete path
         { name = 'buffer' },
     }),
