@@ -3,7 +3,7 @@ local O = vim.opt
 
 -- Depreciated
 o.compatible = false
-o.filetype = false
+-- o.filetype = false
 
 -- Decrease update time
 o.updatetime = 250
@@ -13,7 +13,7 @@ o.termguicolors = true
 o.encoding = 'UTF-8'
 o.fileencodings = 'UTF-8'
 o.background = 'dark'
-o.syntax = true
+-- o.syntax = true
 o.cursorline = true
 o.wrap = false
 o.title = true
@@ -89,7 +89,7 @@ O.wildignore:append { '*.DS_Store' }
 O.wildignore:append { '*.aux', '*.bbl', '*.blg', '*.brf', '*.fls', '*.fdb_latexmk', '*.synctex.gz', '*.xdv' }
 
 -- Add asterisks in block comments
-O.formatoptions:append { 'r' }
+O.formatoptions:remove { 'c', 'r', 'o' }
 
 -- Good for performance
 o.lazyredraw = true

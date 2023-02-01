@@ -141,6 +141,10 @@ lspconfig.sumneko_lua.setup {
     end,
     settings = {
         Lua = {
+            completion = {
+                -- Neodev will replace completion
+                callSnippet = "Replace"
+            },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
                 globals = { 'vim' },
