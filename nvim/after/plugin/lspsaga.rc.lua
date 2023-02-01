@@ -19,6 +19,7 @@ vim.keymap.set('n', 'gi', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set('n', 'gd', '<Cmd>Lspsaga goto_definition<CR>', opts)
 vim.keymap.set('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', opts)
 vim.keymap.set('n', '<leader>r', '<Cmd>Lspsaga rename<CR>', opts)
+vim.keymap.set('n', '<leader>o', '<Cmd>Lspsaga outline<CR>', opts)
 vim.keymap.set('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
 -- code action
