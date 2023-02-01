@@ -5,6 +5,10 @@ local O = vim.opt
 o.compatible = false
 o.filetype = false
 
+-- Decrease update time
+o.updatetime = 250
+-- vim.wo.signcolumn = true
+
 o.termguicolors = true
 o.encoding = 'UTF-8'
 o.fileencodings = 'UTF-8'
@@ -14,11 +18,11 @@ o.cursorline = true
 o.wrap = false
 o.title = true
 o.ruler = true
-o.mouse = false
+o.mouse = ''
 
 -- Tab completion
 o.wildmenu = true
-o.wildmode='longest:list,full'
+o.wildmode = 'longest:list,full'
 
 -- Show characters
 -- o.list = true
@@ -27,7 +31,7 @@ o.wildmode='longest:list,full'
 
 -- Highlight opening and closing brackets
 o.match = true
-O.mps:append {'<:>'}
+O.mps:append { '<:>' }
 
 -- Folding
 o.foldmethod = 'marker'
@@ -53,6 +57,7 @@ o.tabstop = 4
 o.shiftwidth = 4
 o.softtabstop = 4
 o.expandtab = true
+o.breakindent = true
 
 -- History buffer
 o.history = 1000
@@ -62,7 +67,7 @@ o.hidden = true
 o.undofile = true
 o.undolevels = 1000
 o.undoreload = 10000
--- ~ not expanding 
+-- ~ not expanding
 -- O.undodir = '~/.config/nvim/undo'
 -- o.undodir = vim.fn.expand('~/.config/nvim/undo')
 
@@ -73,18 +78,18 @@ o.hlsearch = true
 o.incsearch = true
 
 -- Finding files - Search down into subfolders
-O.path:append {'**'}
+O.path:append { '**' }
 
 -- Ignore certain files and folders when globing
-O.wildignore:append {'*.o','*.obj','*.dylib','*.bin','*.dll','*.exe'}
-O.wildignore:append {'*/.git/*','*/.svn/*','*/__pycache__/*','*/build/**','*/node_modules/*'}
-O.wildignore:append {'*.jpg','*.png','*.jpeg','*.bmp','*.gif','*.tiff','*.svg','*.ico'}
-O.wildignore:append {'*.pyc','*.pkl'}
-O.wildignore:append {'*.DS_Store'}
-O.wildignore:append {'*.aux','*.bbl','*.blg','*.brf','*.fls','*.fdb_latexmk','*.synctex.gz','*.xdv'}
+O.wildignore:append { '*.o', '*.obj', '*.dylib', '*.bin', '*.dll', '*.exe' }
+O.wildignore:append { '*/.git/*', '*/.svn/*', '*/__pycache__/*', '*/build/**', '*/node_modules/*' }
+O.wildignore:append { '*.jpg', '*.png', '*.jpeg', '*.bmp', '*.gif', '*.tiff', '*.svg', '*.ico' }
+O.wildignore:append { '*.pyc', '*.pkl' }
+O.wildignore:append { '*.DS_Store' }
+O.wildignore:append { '*.aux', '*.bbl', '*.blg', '*.brf', '*.fls', '*.fdb_latexmk', '*.synctex.gz', '*.xdv' }
 
 -- Add asterisks in block comments
-O.formatoptions:append {'r'}
+O.formatoptions:append { 'r' }
 
 -- Good for performance
 o.lazyredraw = true
@@ -92,12 +97,12 @@ o.scrolloff = 10
 
 -- Backup
 o.backup = false
-O.backupskip = {'/tmp/*', '/private/tmp/*'}
+O.backupskip = { '/tmp/*', '/private/tmp/*' }
 
 -- Others
 o.clipboard = 'unnamed'
 o.shell = 'zsh'
-O.backspace = {'indent', 'eol', 'start'}
+O.backspace = { 'indent', 'eol', 'start' }
 
 o.showcmd = true
 o.cmdheight = 1

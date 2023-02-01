@@ -62,8 +62,10 @@ protocol.CompletionItemKind = {
     '', -- TypeParameter
 }
 
+
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- JS Server
 lspconfig.flow.setup {
@@ -143,7 +145,6 @@ lspconfig.sumneko_lua.setup {
                 -- Get the language server to recognize the `vim` global
                 globals = { 'vim' },
             },
-
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
@@ -168,6 +169,7 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
 
 vim.diagnostic.config({
     virtual_text = {

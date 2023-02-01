@@ -1,48 +1,63 @@
+-- Install packer
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local is_bootstrap = false
+
 local status, packer = pcall(require, 'packer')
 if (not status) then
-    print('Packer is not installed')
-    return
+    vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
+    vim.cmd [[packadd packer.nvim]]
 end
 
-vim.cmd [[packadd packer.nvim]]
-
 packer.startup(function(use)
-    use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim' -- Package manager
+
     use { 'dracula/vim', as = 'dracula' } -- Dracula theme
     use 'nvim-lualine/lualine.nvim' -- Statusline
     use 'kyazdani42/nvim-web-devicons' -- File icons
     use 'onsails/lspkind-nvim' -- VScode like pictograms
 
-    use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-    use 'hrsh7th/cmp-path' -- nvim-cmp source for file paths
-    use 'saadparwaiz1/cmp_luasnip' -- nvim-cmp source for luasnip
-    use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-    use 'hrsh7th/nvim-cmp' -- Completion
+    use { 'hrsh7th/nvim-cmp', -- Autocompletion
+        requires = {
+            'hrsh7th/cmp-buffer', -- nvim-cmp source for buffer words
+            'hrsh7th/cmp-path', -- nvim-cmp source for file paths
+            'hrsh7th/cmp-nvim-lsp', -- nvim-cmp source for neovim's built-in LSP
 
-    use 'neovim/nvim-lspconfig' -- LSP
-    use 'williamboman/mason.nvim' -- Langauge server manager
-    use 'williamboman/mason-lspconfig.nvim'
+            'L3MON4D3/LuaSnip', -- Snippet engine
+            'saadparwaiz1/cmp_luasnip', -- nvim-cmp source for luasnip
+            'rafamadriz/friendly-snippets', -- Snippets for different programming langauges
+        }
+    }
 
-    use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-    use 'glepnir/lspsaga.nvim' -- LSP UIs
+    use { 'neovim/nvim-lspconfig', -- LSP Configs
+        requires = {
+            'williamboman/mason.nvim', -- Langauge server manager
+            'williamboman/mason-lspconfig.nvim',
 
-    use 'L3MON4D3/LuaSnip' -- Snippet engine
-    use 'rafamadriz/friendly-snippets' -- Snippets for different programming langauges
+            'jose-elias-alvarez/null-ls.nvim', -- Linting, Formating and Actions
+            'glepnir/lspsaga.nvim', -- LSP UIs
 
-    use 'nvim-lua/plenary.nvim' -- Common utilities for treesitter
+            'j-hui/fidget.nvim', -- Useful status updates for LSP
+            'folke/neodev.nvim', -- Lua support for neovim config
+        }
+    }
+
     use {
         'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+        requires = {
+            'nvim-lua/plenary.nvim', -- Common utilities for treesitter
+            'p00f/nvim-ts-rainbow', -- Colored brackers and tags
+            'windwp/nvim-ts-autotag' -- Automatic tag completion and rename
+        }
     }
-    use 'p00f/nvim-ts-rainbow' -- Colored brackers and tags
+
     use 'norcalli/nvim-colorizer.lua' -- Highlight color tags
 
-    use 'nvim-telescope/telescope.nvim' -- File Browser
-    use 'nvim-telescope/telescope-file-browser.nvim'
+    use 'nvim-telescope/telescope.nvim' -- Fuzzy Finder
+    use 'nvim-telescope/telescope-file-browser.nvim' -- File Browser
 
     use 'windwp/nvim-autopairs' -- Automatic surrounding characters
-    use 'windwp/nvim-ts-autotag' -- Automatic tag completion
-    use 'kylechui/nvim-surround' -- Shortcuts to for enclosing surrounds
+    use 'kylechui/nvim-surround' -- Shortcuts to for automatic surrounds
 
     use {
         'folke/todo-comments.nvim', -- TODO comments
@@ -69,4 +84,24 @@ packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim' -- Git support for file
     use 'dinhhuy258/git.nvim' -- For git blame & browse
 
+    if is_bootstrap then
+        require('packer').sync()
+    end
 end)
+
+if is_bootstrap then
+    print '=================================='
+    print '    Plugins are being installed'
+    print '    Wait until Packer completes,'
+    print '       then restart nvim'
+    print '=================================='
+    return
+end
+
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+    command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
+    group = packer_group,
+    pattern = vim.fn.expand '$MYVIMRC',
+})
