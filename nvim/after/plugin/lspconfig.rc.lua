@@ -1,6 +1,13 @@
 local status, lspconfig = pcall(require, "lspconfig")
 if (not status) then return end
 
+-- NeoDev -> NeoVim Config Completion {{{
+local neodev_status, neodev = pcall(require, "neodev")
+if (not neodev_status) then return end
+
+neodev.setup()
+-- }}}
+
 local protocol = require('vim.lsp.protocol')
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })

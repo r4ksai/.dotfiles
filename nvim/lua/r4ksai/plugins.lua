@@ -84,6 +84,8 @@ packer.startup(function(use)
 
     use 'lewis6991/gitsigns.nvim' -- Git support for file
     use 'dinhhuy258/git.nvim' -- For git blame & browse
+    use 'tpope/vim-fugitive'
+
 
     if is_bootstrap then
         require('packer').sync()

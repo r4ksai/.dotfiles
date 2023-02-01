@@ -13,7 +13,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 vim.keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
-vim.keymap.set('n', 'gl', '<Cmd>Lspsaga show_diagnostic<CR>', opts)
+vim.keymap.set('n', 'ge', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', opts)
 vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
 vim.keymap.set('n', 'gi', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set('n', 'gd', '<Cmd>Lspsaga goto_definition<CR>', opts)

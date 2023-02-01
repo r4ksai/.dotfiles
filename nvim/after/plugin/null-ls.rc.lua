@@ -14,7 +14,7 @@ end
 
 null_ls.setup {
     sources = {
-        null_ls.builtins.formatting.clang_format, -- C, C++ Formatting
+        -- null_ls.builtins.formatting.clang_format, -- C, C++ Formatting
         null_ls.builtins.formatting.prettierd, -- HTML, CSS, etc Formatting
         null_ls.builtins.diagnostics.eslint_d.with({ -- JS Diagnostics
             diagnostics_format = '[eslint] #{m}\n(#{c})'

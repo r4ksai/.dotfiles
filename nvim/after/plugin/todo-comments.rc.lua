@@ -26,4 +26,4 @@ vim.keymap.set("n", "[t", function()
     todo.jump_prev()
 end, { desc = "Previous todo comment" })
 
-vim.keymap.set("n", "<leader>t", ":TodoTelescope<CR>", { desc = "Todo list" })
+vim.keymap.set("n", "<leader>t", ":TodoTelescope<CR>", { desc = "[T]odo list" })
