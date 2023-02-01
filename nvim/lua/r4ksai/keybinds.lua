@@ -41,4 +41,4 @@ keymap.set('', 'sl', '<C-w>l', { desc = "Move to the right split" })
 
 -- Maximize window
 -- keymap.set('n', 'sm', '<C-w>_')
--- keymap.set('n', 'se', '<C-w>=')
+keymap.set('n', 'se', '<C-w>=')
