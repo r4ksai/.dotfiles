@@ -86,6 +86,7 @@ packer.startup(function(use)
     use 'dinhhuy258/git.nvim' -- For git blame & browse
     use 'tpope/vim-fugitive'
 
+    use 'normen/vim-pio' -- Platform IO
 
     if is_bootstrap then
         require('packer').sync()
@@ -106,5 +107,5 @@ local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
     command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
     group = packer_group,
-    pattern = vim.fn.expand '$MYVIMRC',
+    pattern = vim.fn.expand '~/.config/nvim/lua/r4ksai/plugins.lua',
 })

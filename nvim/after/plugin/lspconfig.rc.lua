@@ -122,21 +122,10 @@ lspconfig.jedi_language_server.setup {
     capabilities = capabilities
 }
 
--- To remove line too long error and line break erros
--- copy this into ~/.config/pycodestyle
--- ------------------------------
--- [pycodestyle]
--- count = False
--- ignore = E226,E302,E71,E305
--- max-line-length = 160
--- statistics = True
--- ------------------------------
-
-
 -- C/C++ Server
 lspconfig.ccls.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
 }
 
 -- Lua Server
