@@ -19,7 +19,7 @@ null_ls.setup {
         null_ls.builtins.formatting.isort, -- Python Sorting
         null_ls.builtins.diagnostics.flake8.with { extra_args = { "--ignore=E501,W503,W504" } }, -- Python Formatting
         null_ls.builtins.formatting.prettierd, -- HTML, CSS, etc Formatting
-        null_ls.builtins.diagnostics.eslint_d.with({ -- JS Diagnostics
+        null_ls.builtins.diagnostics.eslint.with({ -- JS Diagnostics
             diagnostics_format = '[eslint] #{m}\n(#{c})'
         }),
     },
