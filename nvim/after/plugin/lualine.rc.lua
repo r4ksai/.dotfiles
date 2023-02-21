@@ -1,12 +1,17 @@
 local status, lualine = pcall(require, "lualine")
+local wpm_status, wpm = pcall(require, "wpm")
+
 if (not status) then return end
+
+if wpm_status then
+    wpm.setup({})
+end
 
 lualine.setup {
     options = {
         icons_enabled = true,
         theme = 'dracula',
         section_separators = { left = '', right = '' },
-        -- component_separators = {left = '', right = ''},
         component_separators = { left = '', right = '' },
         disabled_filetypes = {}
     },
@@ -21,7 +26,8 @@ lualine.setup {
         lualine_x = {
             { 'diagnostics', sources = { "nvim_diagnostic" },
                 symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
-            'encoding'
+            'encoding',
+            wpm.wpm, wpm.historic_graph,
         },
         lualine_y = { 'filetype' },
         lualine_z = { 'progress', 'location' }

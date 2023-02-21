@@ -13,6 +13,7 @@ packer.startup(function(use)
 
     use { 'dracula/vim', as = 'dracula' } -- Dracula theme
     use 'nvim-lualine/lualine.nvim' -- Statusline
+    use 'jcdickinson/wpm.nvim'
 
     use 'kyazdani42/nvim-web-devicons' -- File icons
     use 'onsails/lspkind-nvim' -- VScode like pictograms

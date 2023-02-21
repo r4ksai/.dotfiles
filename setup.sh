@@ -11,7 +11,7 @@
 		fi
         export PATH=/opt/homebrew/bin:$PATH
         echo 'Installing brew bundle'
-        # Create seperate bundles for brew categories and add options to choose between
+        #TODO: Create seperate bundles for brew categories and add options to choose between
         brew bundle
     elif [[ "$OSTYPE" == "linux-gnu"* ]]
     then
@@ -47,6 +47,7 @@ setup()
             * ) echo "Please select a valid input !";;
         esac
     done
+
 	# Install Packages
 	package_install
 
