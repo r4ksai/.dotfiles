@@ -17,7 +17,7 @@ lualine.setup {
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch' },
+        lualine_b = { 'branch', 'diff' },
         lualine_c = { {
             'filename',
             file_status = true, -- displays file status (readonly status, modified status)
@@ -30,7 +30,7 @@ lualine.setup {
             wpm.wpm, wpm.historic_graph,
         },
         lualine_y = { 'filetype' },
-        lualine_z = { 'progress', 'location' }
+        lualine_z = { '%p%%/%L', 'location' }
     },
     inactive_sections = {
         lualine_a = {},
