@@ -115,7 +115,6 @@ setup()
 link_files()
 {
     # Create nvim directory
-    mkdir -p ~/.config/nvim
     mkdir -p ~/.config/nvim/after/plugin
 
     # Clean
@@ -138,7 +137,7 @@ link_files()
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 
     ln -s ~/.dotfiles/.vimrc ~/.vimrc
-    ln -s ~/.dotfiles/nvim ~/.config/nvim
+    ln -s ~/.dotfiles/nvim ~/.config
 
 }
 

@@ -2,50 +2,50 @@ local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
 ts.setup {
-    highlight = {
-        enable = true,
-        disable = {},
-    },
-    indent = {
-        enable = true,
-        disable = {},
-    },
-    ensure_installed = {
-        "json",
-        "yaml",
-        "toml",
-        "markdown",
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  indent = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+    "json",
+    "yaml",
+    "toml",
+    "markdown",
 
-        "tsx",
-        "css",
-        "html",
+    "tsx",
+    "css",
+    "html",
 
-        "bash",
-        "vim",
-        "help",
+    "bash",
+    "vim",
+    "vimdoc",
 
-        "lua",
-        "python",
+    "lua",
+    "python",
 
-        "sql",
-        "gitignore",
-        "dockerfile",
-        -- "dart",
+    "sql",
+    "gitignore",
+    "dockerfile",
+    -- "dart",
 
-        -- "cmake"
-        "make",
-        "arduino",
-        "c",
-        "cpp"
-    },
-    autotag = {
-        enable = true,
-    },
-    rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = nil,
-    }
+    -- "cmake"
+    "make",
+    "arduino",
+    "c",
+    "cpp"
+  },
+  autotag = {
+    enable = true,
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+  }
 }
 
 -- Extend tsx parsers filetypes
