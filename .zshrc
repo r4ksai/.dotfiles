@@ -17,6 +17,8 @@ plugins=(
 # Path Variable
 export PATH=$HOME/.dotfiles/Scripts:$PATH
 
+source $HOME/.dracula-syntax-highlighting.sh
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
