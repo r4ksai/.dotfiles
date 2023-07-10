@@ -35,11 +35,11 @@ packer.startup(function(use)
       'williamboman/mason.nvim', -- Langauge server manager
       'williamboman/mason-lspconfig.nvim',
 
-      'jose-elias-alvarez/null-ls.nvim', -- Linting, Formating and Actions
-      'glepnir/lspsaga.nvim',            -- LSP UIs
+      'jose-elias-alvarez/null-ls.nvim',       -- Linting, Formating and Actions
+      'glepnir/lspsaga.nvim',                  -- LSP UIs
 
-      'j-hui/fidget.nvim',               -- Useful status updates for LSP
-      'folke/neodev.nvim',               -- Lua support for neovim config
+      { 'j-hui/fidget.nvim', tag = 'legacy' }, -- Useful status updates for LSP
+      'folke/neodev.nvim',                     -- Lua support for neovim config
     }
   }
 
