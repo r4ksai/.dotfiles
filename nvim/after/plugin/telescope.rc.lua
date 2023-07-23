@@ -52,7 +52,6 @@ vim.keymap.set('n', '<leader>e', builtin.diagnostics, { desc = '[E]rros and diag
 vim.keymap.set('n', '<leader>k', builtin.keymaps, { desc = '[K]eymaps' })
 -- vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { desc = '[G]oto [R]erefences' })
 vim.keymap.set('n', '<leader><space>', builtin.lsp_document_symbols, { desc = '[ ] Show Symbols' })
-vim.keymap.set('n', '<leader>g', builtin.git_commits, { desc = '[G]it Status' })
 vim.keymap.set('n', 'sf', function()
     telescope.extensions.file_browser.file_browser({
         path = "%:p:h",
