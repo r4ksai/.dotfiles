@@ -4,6 +4,7 @@ if (not status) then return end
 ts.setup {
   highlight = {
     enable = true,
+    use_languagetree = true,
     disable = {},
   },
   indent = {

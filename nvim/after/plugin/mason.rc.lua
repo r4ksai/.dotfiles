@@ -5,17 +5,19 @@ local mason_lspconfig_status, lspconfig = pcall(require, "mason-lspconfig")
 if (not mason_lspconfig_status) then return end
 
 mason.setup {
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
+  ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
+
+  ui = {
+    icons = {
+      package_pending = " ",
+      package_installed = "󰄳 ",
+      package_uninstalled = " 󰚌",
     },
+  },
 }
 
 lspconfig.setup {
-    automatic_installation = true
+  automatic_installation = true
 }
 
 -- lspconfig.setup_handlers {
