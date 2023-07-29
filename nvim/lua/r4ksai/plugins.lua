@@ -15,7 +15,7 @@ packer.startup(function(use)
   use 'nvim-lualine/lualine.nvim'       -- Statusline
   use 'jcdickinson/wpm.nvim'
 
-  use 'kyazdani42/nvim-web-devicons'  -- File icons
+  use 'nvim-tree/nvim-web-devicons'   -- File icons
   use 'onsails/lspkind-nvim'          -- VScode like pictograms
 
   use { 'hrsh7th/nvim-cmp',           -- Autocompletion
