@@ -24,6 +24,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Langauge
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8  
 
 # Color
 export TERM=screen-256color
