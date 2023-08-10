@@ -37,24 +37,6 @@ icons.setup {
       cterm_color = "113",
       name = "Zshenv",
     },
-    ["test.js"] = {
-      icon = "",
-      color = "#ffca28",
-      cterm_color = "220",
-      name = "TestJavascript",
-    },
-    ["test.jsx"] = {
-      icon = "",
-      color = "#00bcd4",
-      cterm_color = "38",
-      name = "TestJavascriptReact",
-    },
-    ["test.ts"] = {
-      icon = "",
-      color = "#00bcd4",
-      cterm_color = "38",
-      name = "TestTypescript",
-    },
     ["yarn.lock"] = {
       icon = "",
       color = "#0288d1",
@@ -308,6 +290,30 @@ icons.setup {
       color = "#ffd54f",
       cterm_color = "221",
       name = "Lock",
+    },
+    ["cjs"] = {
+      icon = "",
+      color = "#ffca28",
+      cterm_color = "220",
+      name = "TestJavascript",
+    },
+    ["test.js"] = {
+      icon = "󰙨",
+      color = "#ffca28",
+      cterm_color = "220",
+      name = "TestJavascript",
+    },
+    ["test.jsx"] = {
+      icon = "󰙨",
+      color = "#00bcd4",
+      cterm_color = "38",
+      name = "TestJavascriptReact",
+    },
+    ["test.ts"] = {
+      icon = "󰙨",
+      color = "#00bcd4",
+      cterm_color = "38",
+      name = "TestTypescript",
     },
   },
 
