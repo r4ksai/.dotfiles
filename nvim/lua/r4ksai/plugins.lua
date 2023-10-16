@@ -45,6 +45,7 @@ packer.startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
+    tag = "v0.9.0",
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     requires = {
       'nvim-lua/plenary.nvim', -- Common utilities for treesitter

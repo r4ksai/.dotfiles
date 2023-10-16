@@ -113,20 +113,20 @@ lspconfig.cssls.setup {
 }
 
 -- -- Python Server
--- lspconfig.pyright.setup {
---     on_attach = on_attach,
---     flags = {
---         debounce_text_changes = 150,
---     },
---     capabilities = capabilities
--- }
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  capabilities = capabilities
+}
 
 
 -- Python Server
-lspconfig.jedi_language_server.setup {
-  on_attach    = on_attach,
-  capabilities = capabilities
-}
+-- lspconfig.jedi_language_server.setup {
+--   on_attach    = on_attach,
+--   capabilities = capabilities
+-- }
 
 -- C/C++ Server
 lspconfig.ccls.setup {
