@@ -1,13 +1,10 @@
 git
 vim
-tmux
 curl
 exa
 peco
 fzf
 ripgrep
 bat
-python3-pip
 neovim
-nodejs
-npm
+python3-pip
