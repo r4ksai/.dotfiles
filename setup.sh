@@ -105,7 +105,7 @@ setup()
     mkdir ~/.vim/plugged
 
     # Language Support from Vim
-    if [[ "$DOTENV" != "lite" ]]
+    if [[ "$EDITOR" != "vim" ]]
     then
       sudo apt install -y -qq nodejs npm
       npm install -g typescript typescript-language-server diagnostic-languageserver pyright prettier
@@ -139,6 +139,7 @@ link_files()
 
     echo "Linking files"
     # Link
+    # TODO: allow only if tmux is there
     ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln -s ~/.dotfiles/.inputrc ~/.inputrc
     if [[ "$SHELL" == *"zsh" ]]
@@ -150,7 +151,9 @@ link_files()
     fi
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 
+    # TODO: allow only if vim is there
     ln -s ~/.dotfiles/.vimrc ~/.vimrc
+    # TODO: allow only if neovim is there
     ln -s ~/.dotfiles/nvim ~/.config
 
   }
