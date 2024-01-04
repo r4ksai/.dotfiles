@@ -74,8 +74,9 @@ setup()
   echo 'Configure Text Editor'
   echo '---------------------'
   echo ''
-  echo '1. Vim'
+  echo '1. Vim (Depreciated)'
   echo '2. NeoVim'
+  echo '3. LazyVim'
 
   while true; do
     read -p 'Select option [2]: ' option
@@ -83,15 +84,13 @@ setup()
     case $option in
       1 ) EDITOR=vim; break;;
       2 ) EDITOR=neovim; break;;
+      3 ) EDITOR=lazyvim; break;;
       * ) echo "Please select a valid input !";;
     esac
   done
 
   # Tmux
-  if command -v tmux &> /dev/null
-  then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  fi
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   # Vim
   if [[ "$EDITOR" == "vim" ]]
@@ -105,7 +104,7 @@ setup()
     mkdir ~/.vim/plugged
 
     # Language Support from Vim
-    if [[ "$EDITOR" != "vim" ]]
+    if [[ "$EDITOR" == "neovim" ]]
     then
       sudo apt install -y -qq nodejs npm
       npm install -g typescript typescript-language-server diagnostic-languageserver pyright prettier
@@ -125,12 +124,6 @@ setup()
 
 link_files()
 {
-  if [["$EDITOR" == "neovim" ]]
-  then
-    # Create nvim directory
-    mkdir -p ~/.config/nvim/after/plugin
-  fi
-
     # Clean
     clean
 
