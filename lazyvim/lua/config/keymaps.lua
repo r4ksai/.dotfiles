@@ -2,15 +2,28 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --
+local discipline = require("r4ksai.discipline")
 
-local opts = { noremap = true, silent = true }
+discipline.cowboy()
+
 local keymap = vim.keymap
-
-keymap.set("n", "x", '"_x', { desc = "Delete character without copy" })
+local opts = { noremap = true, silent = true }
 
 -- Delete without yank and paste from clipbaord 0
+keymap.set("n", "x", '"_x', { desc = "Delete character without copy" })
+keymap.set("v", "<leader>p", '"0p', { desc = "Paste without copy" })
+keymap.set("n", "<leader>p", '"0p', { desc = "Paste without copy" })
+keymap.set("n", "<leader>P", '"0P', { desc = "Paste without copy" })
+
+keymap.set("n", "<leader>c", '"_c', { desc = "Cut without copy" })
+keymap.set("n", "<leader>C", '"_C', { desc = "Cut without copy" })
+keymap.set("v", "<leader>c", '"_c', { desc = "Cut without copy" })
+keymap.set("v", "<leader>C", '"_C', { desc = "Cut without copy" })
+
 keymap.set("n", "<leader>d", '"_d', { desc = "Delete without copy" })
-keymap.set("n", "<leader>p", '"_dP', { desc = "Paste without copy" })
+keymap.set("n", "<leader>D", '"_D', { desc = "Delete without copy" })
+keymap.set("v", "<leader>d", '"_d', { desc = "Delete without copy" })
+keymap.set("v", "<leader>D", '"_D', { desc = "Delete without copy" })
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>", { desc = "Incremnt number under the cursor" })
@@ -54,4 +67,8 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
+end)
+
+keymap.set("n", "<leader>i", function()
+  require("r4ksai.lsp").toggleInlayHints()
 end)

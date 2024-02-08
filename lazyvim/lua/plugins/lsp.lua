@@ -3,10 +3,14 @@ return {
   opts = {
     ensure_installed = {
       "stylua",
-      "shellcheck",
+      "luacheck",
       "selene",
+      "shellcheck",
       "shfmt",
       "flake8",
+      "css-lsp",
+      "tailwindcss-language-server",
+      "typescript-language-server",
     },
     ui = {
       icons = {
