@@ -10,11 +10,21 @@ return {
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "[Z]en Mode", silent = true } },
   },
   {
-    "echasnovski/mini.surround",
-    opts = function(_, opts)
-      opts.mappings.add = "ys"
-      opts.mappings.delete = "ds"
-      opts.mappings.replace = "cs"
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
     end,
+  },
+  {
+    "echasnovski/mini.surround",
+    enabled = false,
+    -- opts = function(_, opts)
+    --   opts.mappings.add = "ys"
+    --   opts.mappings.delete = "ds"
+    --   opts.mappings.replace = "cs"
+    -- end,
   },
 }
