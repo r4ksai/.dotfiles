@@ -31,5 +31,12 @@ return {
   --     })
   --   end,
   -- },
+  --
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./custom-snippets" } })
+    end,
+  },
   { "smjonas/inc-rename.nvim", cmd = "IncRename", config = true },
 }

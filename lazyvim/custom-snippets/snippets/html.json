@@ -1,0 +1,22 @@
+{
+  "html5": {
+    "prefix": "htmltw",
+    "body": [
+      "<!DOCTYPE htmls>",
+      "<html lang=\"$1en\">",
+      "\t<head>",
+      "\t\t<title>$2</title>",
+      "\t\t<meta charset=\"UTF-8\">",
+      "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+      "${3:\t\t<link href=\"https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css\" rel=\"stylesheet\" type=\"text/css\" />}",
+      "\t\t<script src=\"https://cdn.tailwindcss.com\"></script>",
+      "\t</head>",
+      "\t<body>",
+      "\t$0",
+      "\t</body>",
+      "</html>"
+    ],
+    "description": "HTML - Defines a template for a html5 document with Tailwindcss",
+    "scope": "text.html"
+  }
+}
