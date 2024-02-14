@@ -9,21 +9,21 @@ discipline.cowboy()
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
--- Delete without yank and paste from clipbaord 0
+-- Delete without yank and paste from clipboard 0
 keymap.set("n", "x", '"_x', { desc = "Delete character without copy" })
-keymap.set("v", "<leader>p", '"0p', { desc = "Paste without copy" })
-keymap.set("n", "<leader>p", '"0p', { desc = "Paste without copy" })
-keymap.set("n", "<leader>P", '"0P', { desc = "Paste without copy" })
+keymap.set("v", "<leader><leader>p", '"0p', { desc = "Paste without copy" })
+keymap.set("n", "<leader><leader>p", '"0p', { desc = "Paste without copy" })
+keymap.set("n", "<leader><leader>P", '"0P', { desc = "Paste without copy" })
 
-keymap.set("n", "<leader>c", '"_c', { desc = "Cut without copy" })
-keymap.set("n", "<leader>C", '"_C', { desc = "Cut without copy" })
-keymap.set("v", "<leader>c", '"_c', { desc = "Cut without copy" })
-keymap.set("v", "<leader>C", '"_C', { desc = "Cut without copy" })
+keymap.set("n", "<leader><leader>c", '"_c', { desc = "Cut without copy" })
+keymap.set("n", "<leader><leader>C", '"_C', { desc = "Cut without copy" })
+keymap.set("v", "<leader><leader>c", '"_c', { desc = "Cut without copy" })
+keymap.set("v", "<leader><leader>C", '"_C', { desc = "Cut without copy" })
 
-keymap.set("n", "<leader>d", '"_d', { desc = "Delete without copy" })
-keymap.set("n", "<leader>D", '"_D', { desc = "Delete without copy" })
-keymap.set("v", "<leader>d", '"_d', { desc = "Delete without copy" })
-keymap.set("v", "<leader>D", '"_D', { desc = "Delete without copy" })
+keymap.set("n", "<leader><leader>d", '"_d', { desc = "Delete without copy" })
+keymap.set("n", "<leader><leader>D", '"_D', { desc = "Delete without copy" })
+keymap.set("v", "<leader><leader>d", '"_d', { desc = "Delete without copy" })
+keymap.set("v", "<leader><leader>D", '"_D', { desc = "Delete without copy" })
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>", { desc = "Incremnt number under the cursor" })
