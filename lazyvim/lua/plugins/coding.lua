@@ -39,9 +39,4 @@ return {
     end,
   },
   { "smjonas/inc-rename.nvim", cmd = "IncRename", config = true },
-  {
-    "echasnovski/mini.ai",
-    -- Disable to makesure that B and b works for {} and ()
-    enabled = false,
-  },
 }

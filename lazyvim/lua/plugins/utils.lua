@@ -10,6 +10,14 @@ return {
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "[Z]en Mode", silent = true } },
   },
   {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup({
+        disable_filetype = { "TelescopePrompt", "vim" },
+      })
+    end,
+  },
+  {
     "kylechui/nvim-surround",
     event = "VeryLazy",
     config = function()
@@ -19,6 +27,10 @@ return {
     end,
   },
   {
+    "echasnovski/mini.pairs",
+    enabled = false,
+  },
+  {
     "echasnovski/mini.surround",
     enabled = false,
     -- opts = function(_, opts)
@@ -26,5 +38,10 @@ return {
     --   opts.mappings.delete = "ds"
     --   opts.mappings.replace = "cs"
     -- end,
+  },
+  {
+    "echasnovski/mini.ai",
+    -- Disable to makesure that B and b works for {} and ()
+    enabled = false,
   },
 }
