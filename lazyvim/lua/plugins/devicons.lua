@@ -35,59 +35,11 @@ return {
         cterm_color = "113",
         name = "Zshenv",
       },
-      ["yarn.lock"] = {
-        icon = "",
-        color = "#0288d1",
-        cterm_color = "32",
-        name = "YarnLock",
-      },
-      ["yarn-error.log"] = {
-        icon = "",
-        color = "#0288d1",
-        cterm_color = "32",
-        name = "YarnError",
-      },
-      [".prettierrc.json"] = {
-        icon = "",
-        color = "#ea5e5e",
-        cterm_color = "167",
-        name = "Prettier",
-      },
-      [".prettierrc.yml"] = {
-        icon = "",
-        color = "#ea5e5e",
-        cterm_color = "167",
-        name = "Prettier",
-      },
-      [".prettierrc.yaml"] = {
-        icon = "",
-        color = "#ea5e5e",
-        cterm_color = "167",
-        name = "Prettier",
-      },
-      [".prettierrc.js"] = {
-        icon = "",
-        color = "#ea5e5e",
-        cterm_color = "167",
-        name = "Prettier",
-      },
-      [".prettierrc.toml"] = {
-        icon = "",
-        color = "#ea5e5e",
-        cterm_color = "167",
-        name = "Prettier",
-      },
       ["CMakeLists.txt"] = {
         icon = "",
         color = "#6d8086",
         cterm_color = "66",
         name = "CMakeLists",
-      },
-      ["COMMIT_EDITMSG"] = {
-        icon = "",
-        color = "#41535b",
-        cterm_color = "239",
-        name = "GitCommit",
       },
       ["COPYING"] = {
         icon = "",
@@ -136,6 +88,21 @@ return {
         color = "#ffab00",
         cterm_color = "214",
         name = "vite.config.js",
+      },
+      ["postcss.config.ts"] = {
+        icon = "󰔷",
+        color = "#f44336",
+        name = "postcss.config.ts",
+      },
+      ["postcss.config.js"] = {
+        icon = "󰔷",
+        color = "#f44336",
+        name = "postcss.config.js",
+      },
+      ["postcss.config.cjs"] = {
+        icon = "󰔷",
+        color = "#f44336",
+        name = "postcss.config.cjs",
       },
       ["nuxt.config.js"] = {
         icon = "",
