@@ -1,6 +1,4 @@
 -- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
 --
 local opt = vim.opt
 
@@ -33,7 +31,7 @@ opt.mouse = ""
 
 opt.wildmenu = true
 
-vim.o.match = true
+-- vim.o.match = true
 opt.mps:append({ "<:>" })
 
 -- Show numbers
@@ -45,7 +43,7 @@ opt.errorbells = false
 opt.visualbell = false
 
 -- Suppress appending <PasteStart> and <PasteEnd> when pasting
-vim.o.t_BE = ""
+-- vim.o.t_BE = ""
 
 -- Indent
 -- filetype plugin indent on
@@ -165,8 +163,9 @@ end
 -- Folding
 opt.foldmethod = "marker"
 opt.foldlevel = 0
-vim.o.fold = true
-vim.o.file = true
+opt.foldenable = true
+-- vim.op.fold = true
+-- vim.o.file = true
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

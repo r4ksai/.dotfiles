@@ -41,15 +41,15 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Alias 
 alias cl="clear"
-alias l="exa --icons"
+alias l="lsd"
 alias ls="l" # For accessing ls type \ls
-alias ll="exa -lg --icons"
-alias la="exa -lga --icons"
+alias ll="lsd -lg"
+alias la="lsd -lga"
 alias lld="ll --group-directories-first"
 alias lad="ll --group-directories-first"
-alias lt="l --tree --level=2"
-alias llt="ll --tree --level=2"
-alias lat="la --tree --level=2"
+alias lt="l --tree --depth=2"
+alias llt="ll --tree --depth=2"
+alias lat="la --tree --depth=2"
 alias v="nvim"
 alias nv="nvim"
 alias gcol="gb | peco | xargs git checkout"
