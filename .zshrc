@@ -43,8 +43,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 alias cl="clear"
 alias l="lsd"
 alias ls="l" # For accessing ls type \ls
+alias la="lsd -a"
 alias ll="lsd -lg"
-alias la="lsd -lga"
+alias lla="ll -a"
 alias lld="ll --group-directories-first"
 alias lad="ll --group-directories-first"
 alias lt="l --tree --depth=2"
@@ -53,3 +54,7 @@ alias lat="la --tree --depth=2"
 alias v="nvim"
 alias nv="nvim"
 alias gcol="gb | peco | xargs git checkout"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
