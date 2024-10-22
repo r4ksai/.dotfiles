@@ -2,7 +2,7 @@ git
 tmux
 vim
 curl
-exa
+lsd
 peco
 fzf
 ripgrep

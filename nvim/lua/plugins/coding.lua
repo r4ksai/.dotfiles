@@ -28,4 +28,10 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./custom-snippets" } })
     end,
   },
+  {
+    "razak17/tailwind-fold.nvim",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ft = { "html", "svelte", "astro", "vue", "typescriptreact", "php", "blade" },
+  },
 }
