@@ -33,6 +33,8 @@ setup() {
 
   # Link files
   link_files
+
+  mkdir -p ~/.config/nvim
 }
 
 link_files() {
