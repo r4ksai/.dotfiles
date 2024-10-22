@@ -119,9 +119,12 @@ install_ohmyzsh() {
     echo 'Oh my Zsh is already installed'
   else
     echo 'Installing Oh my Zsh'
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
     source ~/.zshrc
   fi
+
+  git clone https://github.com/dracula/zsh-syntax-highlighting.git /tmp/zsh-syntax-highlighting
+  mv /tmp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/.dracula-syntax-highlighting.sh
 
   if ! command -v git &>/dev/null; then
     echo 'Git not installed try again after installing git'
