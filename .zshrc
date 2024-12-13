@@ -1,11 +1,21 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Theme
-ZSH_THEME="candy"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins 
 plugins=( 
+  command-not-found
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  # fast-syntax-highlighting
+  # zsh-autocomplete
   z
   tmux
   colored-man-pages
@@ -24,10 +34,10 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Language
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8  
+export LC_ALL=en_US.UTF-8
 
 # Color
-export TERM=screen-256color
+export TERM=xterm-256color
 
 # Default Editor
 export EDITOR='nvim'
@@ -57,3 +67,22 @@ alias gcol="gb | peco | xargs git checkout"
 
 # Local binary files
 export PATH="$HOME/.local/bin:$PATH"
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# FZF
+eval "$(fzf --zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
