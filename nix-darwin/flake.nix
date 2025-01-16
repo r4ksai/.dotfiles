@@ -70,17 +70,30 @@
 
         services = {
           tailscale.enable = true;
-          postgresql.enable = true;
-          aerospace.enable = true;
-          prometheus.exporters.node.enable = true;
+          postgresql = {
+            enable = true;
+            dataDir = "/usr/local/var/postgres";
+            package = pkgs.postgresql_13;
+          };
+          aerospace.enable = false;
+          # prometheus.exporters.node.enable = true;
         };
 
         homebrew = {
           enable = true;
+          # taps = [
+          #   "osx-cross/avr"
+          # ];
           brews = [
             "go" # Go
             "nvm" # Node Version Manager
             "mas" # Install Mac Stuff from Terminal
+
+            # Python stuff
+            "readline"
+            "xz"
+            "httpie"
+            "yazi"
           ];
           casks = [
             "spotify" # Music
@@ -94,12 +107,22 @@
             "postman" # API testing - Advance
             "pgadmin4" # Postgresql client
             "kicad"
+            "db-browser-for-sqlite"
             # "diffusionbee" # AI Image Generator
             # "raspberry-pi-imager"
 
             # Note Taking
             "obsidian"
             "notion"
+
+            # Productivity
+            "libreoffice"
+
+            # Editing
+            "inkscape"
+            "obs"
+            "blender"
+            "audacity"
 
             # 3D Printing
             # "creality-print"
@@ -114,7 +137,11 @@
             "the-unarchiver" # GUI Extractor
             "flux" # Blue light filter
             "appcleaner" # Remove app completely
-            "aerospace" # Tiling window manager 
+            "bartender" # Menu bar items manager
+            "nordvpn"
+            "paragon-ntfs"
+            # "jordanbaird-ice" # Menubar Organisor
+            # "aerospace" # Tiling window manager 
 
             # Browser
             "firefox"
@@ -160,10 +187,14 @@
           remapCapsLockToEscape=true;
         };
 
+        security.pam.enableSudoTouchIdAuth = true;
+
         system.defaults = {
           dock.autohide=true;
           dock.showhidden = true;
+          dock.mru-spaces = false;
           dock.expose-animation-duration = 0.15;
+          dock.show-recents = false;
           dock.persistent-apps = [
             "/System/Applications/Launchpad.app"
             "/System/Applications/Messages.app"
