@@ -35,6 +35,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Language
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export SHELL='/bin/zsh'
 
 # Color
 export TERM=xterm-256color
@@ -63,6 +64,9 @@ alias llt="ll --tree --depth=2"
 alias lat="la --tree --depth=2"
 alias v="nvim"
 alias nv="nvim"
+alias yz="yazi"
+alias y="yarn"
+alias yd="yarn dev"
 alias gcol="gb | peco | xargs git checkout"
 
 # Local binary files
