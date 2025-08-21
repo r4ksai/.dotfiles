@@ -81,9 +81,9 @@
 
         homebrew = {
           enable = true;
-          # taps = [
-          #   "osx-cross/avr"
-          # ];
+          taps = [
+            "osx-cross/avr"
+          ];
           brews = [
             "go" # Go
             "nvm" # Node Version Manager
@@ -94,6 +94,18 @@
             "xz"
             "httpie"
             "yazi"
+
+            # Embedded stuff
+            "cmake"
+            "make"
+            "avr-gcc"
+            "avrdude"
+            "minicom"
+            "platformio"
+            "arduino-cli"
+            "bear" # Creates compile commands - bear -- <your-build-command>
+
+            "mpv" # CLI Video player
           ];
           casks = [
             "spotify" # Music
@@ -128,6 +140,7 @@
             # "creality-print"
             # "ultimaker-cura"
             "creality-slicer"
+            "bambu-studio"
             # "orcaslicer"
 
             # Utilities
@@ -212,8 +225,7 @@
             "/Applications/Obsidian.app"
             "/Applications/WezTerm.app"
             "/Applications/Iterm.app"
-            "/Applications/Spotify.app"
-            "/Applications/Silicio.app"
+            "/System/Applications/Music.app"
             "/System/Applications/System Settings.app"
           ];
           loginwindow.GuestEnabled = false;
