@@ -2,9 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- local discipline = require("r4ksai.discipline")
--- discipline.cowboy()
-
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -66,8 +63,4 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
-end)
-
-keymap.set("n", "<leader>i", function()
-  require("r4ksai.lsp").toggleInlayHints()
 end)

@@ -1,6 +1,6 @@
 return {
   {
-    "telescope.nvim",
+    "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
     },
@@ -39,6 +39,9 @@ return {
       local actions = require("telescope.actions")
       local fb_actions = telescope.extensions.file_browser.actions
 
+      opts = opts or {}
+      opts.defaults = opts.defaults or {}
+
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
         file_ignore_patterns = { ".git", "node_modules" },
         wrap_results = true,
@@ -46,7 +49,7 @@ return {
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         winblend = 0,
-        mappers = {
+        mappings = {
           n = {
             ["q"] = actions.close,
           },

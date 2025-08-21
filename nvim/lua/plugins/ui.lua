@@ -19,22 +19,6 @@ return {
     end,
   },
   {
-    "echasnovski/mini.animate",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      opts.open = {
-        enable = false,
-      }
-      opts.close = {
-        enable = false,
-      }
-      opts.scroll = {
-        enable = false,
-      }
-    end,
-  },
-
-  {
     "folke/noice.nvim",
     opts = function(_, opts)
       table.insert(opts.routes, {

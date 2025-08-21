@@ -1,5 +1,7 @@
 -- Options are automatically loaded before lazy.nvim startup
---
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
 local opt = vim.opt
 
 -- This file is automatically loaded by plugins.core
@@ -8,6 +10,8 @@ vim.g.maplocalleader = "\\"
 
 -- Enable LazyVim auto format
 vim.g.autoformat = true
+
+vim.g.snacks_animate = true
 
 -- LazyVim root dir detection
 -- Each entry can be:
@@ -107,7 +111,7 @@ opt.laststatus = 2
 opt.inccommand = "split"
 
 opt.autowrite = true -- Enable auto write
-opt.clipboard = "unnamedplus" -- Sync with system clipboard
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -158,6 +162,12 @@ opt.fillchars = {
 
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
+  opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+  opt.foldmethod = "expr"
+  opt.foldtext = ""
+else
+  opt.foldmethod = "indent"
+  opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
 end
 
 -- Folding
