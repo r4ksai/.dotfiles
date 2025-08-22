@@ -17,6 +17,7 @@
           [ 
             # Development
             pkgs.lazygit # Interactive terminal git
+            pkgs.lazysql # Interactive terminal sql
             pkgs.commitizen # Commit message creator
             pkgs.tig # Terminal git
             pkgs.pyenv # Manage python environment
@@ -200,7 +201,9 @@
           remapCapsLockToEscape=true;
         };
 
-        security.pam.enableSudoTouchIdAuth = true;
+        security.pam.services.sudo_local.touchIdAuth = true;
+
+        system.primaryUser = "sai";
 
         system.defaults = {
           dock.autohide=true;
