@@ -1,20 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  -- dependencies = {
-  --   "p00f/nvim-ts-rainbow",
-  --   "windwp/nvim-ts-autotag",
-  -- },
-  opts = {
-    highlight = {
-      enable = true,
-      use_languagetree = true,
-      disable = {},
-    },
-    indent = {
-      enable = true,
-      disable = {},
-    },
-    ensure_installed = {
+  opts = function(_, opts)
+    vim.list_extend(opts.ensure_installed, {
 
       "json",
       "yaml",
@@ -51,16 +38,18 @@ return {
       "arduino",
       "c",
       "cpp",
-    },
-    -- autotag = {
-    --   enable = true,
-    -- },
-    -- rainbow = {
-    --   enable = true,
-    --   extended_mode = true,
-    --   max_file_lines = nil,
-    -- },
-  },
+    })
+    opts.highlight = {
+      enable = true,
+      use_languagetree = true,
+      disable = {},
+    }
+    opts.indent = {
+      enable = true,
+      disable = {},
+    }
+  end,
+
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
 

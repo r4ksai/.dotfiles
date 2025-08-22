@@ -4,6 +4,11 @@ return {
     event = "VeryLazy",
     opts = function(_, opts)
       opts.options.theme = "dracula"
+      -- table.insert(opts.sections.lualine_x, {
+      --   function()
+      --     return "💫"
+      --   end,
+      -- })
     end,
   },
   {
