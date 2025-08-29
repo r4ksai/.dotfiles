@@ -68,6 +68,7 @@ alias yz="yazi"
 alias y="yarn"
 alias yd="yarn dev"
 alias gcol="gb | peco | xargs git checkout"
+alias cat="bat"
 
 # Local binary files
 export PATH="$HOME/.local/bin:$PATH"
