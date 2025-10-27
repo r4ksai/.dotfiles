@@ -69,6 +69,7 @@ alias y="yarn"
 alias yd="yarn dev"
 alias gcol="gb | peco | xargs git checkout"
 alias cat="bat"
+alias weather="curl wttr.in"
 
 # Local binary files
 export PATH="$HOME/.local/bin:$PATH"
