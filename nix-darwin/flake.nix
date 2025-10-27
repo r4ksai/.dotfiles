@@ -16,6 +16,7 @@
         environment.systemPackages =
           [ 
             # Development
+            pkgs.lazydocker
             pkgs.lazygit # Interactive terminal git
             pkgs.lazysql # Interactive terminal sql
             pkgs.commitizen # Commit message creator
@@ -60,6 +61,9 @@
             pkgs.ffmpeg # FFMPEG : Video stuff
             pkgs.gnupg # GPG
             pkgs.fdupes # Get duplicates
+
+            pkgs.ttyd # Terminal over Browser
+            pkgs.jrnl # Journaling app
 
             # Docs
             pkgs.tlrc # "man" command replacement
@@ -109,14 +113,14 @@
             "mpv" # CLI Video player
           ];
           casks = [
-            "spotify" # Music
+            # "spotify" # Music
 
             # Development
             "boop" # Developer toolsuite
-            "yubico-yubikey-manager"
+            # "yubico-yubikey-manager" -> End of Life
             "ngrok" # Share local web page
-            "wireshark" # Test network packets
-            "httpie" # API testing
+            "wireshark-app" # Test network packets
+            "httpie-desktop" # API testing
             "postman" # API testing - Advance
             "pgadmin4" # Postgresql client
             "kicad"
@@ -130,9 +134,10 @@
 
             # Productivity
             "libreoffice"
+            "opal-app"
 
             # Editing
-            "inkscape"
+            # "inkscape"
             "obs"
             "blender"
             "audacity"
@@ -149,9 +154,9 @@
             "numi" # Calculator Notepad
             "shottr" # Screenshots
             "the-unarchiver" # GUI Extractor
-            "flux" # Blue light filter
+            "flux-app" # Blue light filter
             "appcleaner" # Remove app completely
-            "bartender" # Menu bar items manager
+            # "bartender" # Menu bar items manager
             "nordvpn"
             "paragon-ntfs"
             # "jordanbaird-ice" # Menubar Organisor
@@ -166,7 +171,7 @@
             "iterm2"
 
             # Entertainment
-            "iina" # VLC Alternative
+            # "iina" # VLC Alternative
             "vlc"
             "discord"
             # "steam"
@@ -183,7 +188,8 @@
             "Tailscale" = 1475387142; # Tailscale VPN
             "Keynote" = 409183694; # Create Presentation
             "Microsoft Remote Desktop" = 1295203466; # RDP Client
-            "Silicio" = 933627574; # Spotify Client
+            # "Silicio" = 933627574; # Spotify Client
+            "Yubico Authenticator" = 1497506650; # Yubikey
           };
           onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
@@ -212,7 +218,7 @@
           dock.expose-animation-duration = 0.15;
           dock.show-recents = false;
           dock.persistent-apps = [
-            "/System/Applications/Launchpad.app"
+            "/System/Applications/Apps.app"
             "/System/Applications/Messages.app"
             "/System/Applications/Photos.app"
             "/System/Applications/FaceTime.app"
@@ -222,7 +228,6 @@
             "/Applications/Firefox.app"
             "/Applications/NordVPN.app"
             "/Applications/Tailscale.app"
-            "/Applications/WireGuard.app"
             "/Applications/TickTick.app"
             "/Applications/Notion.app"
             "/Applications/Obsidian.app"
