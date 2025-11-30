@@ -71,6 +71,35 @@ alias gcol="gb | peco | xargs git checkout"
 alias cat="bat"
 alias weather="curl wttr.in"
 
+copycat() {
+  # Detect real cat (ignores alias to bat)
+  CAT_CMD=$(command -v cat)
+
+  # Detect clipboard command
+  if command -v pbcopy >/dev/null 2>&1; then
+    CLIP="pbcopy"
+  elif command -v xclip >/dev/null 2>&1; then
+    CLIP="xclip -selection clipboard"
+  elif command -v xsel >/dev/null 2>&1; then
+    CLIP="xsel --clipboard --input"
+  else
+    echo "No clipboard tool found (install pbcopy, xclip, or xsel)" >&2
+    return 1
+  fi
+
+  # If stdin is a terminal, use filenames
+  if [[ -t 0 ]]; then
+    if (( $# == 0 )); then
+      echo "Usage: copycat file..." >&2
+      return 1
+    fi
+    "$CAT_CMD" -- "$@" | eval "$CLIP"
+  else
+    # stdin is piped → copy directly
+    eval "$CLIP"
+  fi
+}
+
 # Local binary files
 export PATH="$HOME/.local/bin:$PATH"
 
