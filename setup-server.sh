@@ -1,5 +1,5 @@
 sudo apt update && sudo apt upgrade -y
-sudo apt install git tmux curl lsd fzf ripgrep bat fd neovim -y
+sudo apt install git tmux curl lsd fzf ripgrep bat fd neovim python3-pip -y
 sudo apt install zsh -y
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
