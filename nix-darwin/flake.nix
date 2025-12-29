@@ -33,7 +33,7 @@
             pkgs.htop # "top" command replacement
 
             # Essentials
-            pkgs.neovim 
+            # pkgs.neovim 
             pkgs.git 
             pkgs.tmux # Terminal splitting
 
@@ -53,7 +53,6 @@
             # Networking
             pkgs.wget # "curl" command replacement
             pkgs.nmap # Network Vuln Testing
-            pkgs.wireguard-tools # Wireguard VPN
             pkgs.yt-dlp # Download Youtube videos
 
             # Utils
@@ -74,7 +73,6 @@
         ];
 
         services = {
-          tailscale.enable = true;
           postgresql = {
             enable = true;
             dataDir = "/usr/local/var/postgres";
@@ -93,12 +91,18 @@
             "go" # Go
             "nvm" # Node Version Manager
             "mas" # Install Mac Stuff from Terminal
+            "neovim"
+            "tailscale"
+            "ansible"
+            "imagemagick"
 
             # Python stuff
             "readline"
             "xz"
             "httpie"
             "yazi"
+            "uv"
+            "wireguard-tools"
 
             # Embedded stuff
             "cmake"
@@ -106,6 +110,7 @@
             "avr-gcc"
             "avrdude"
             "minicom"
+            "minipro"
             "platformio"
             "arduino-cli"
             "bear" # Creates compile commands - bear -- <your-build-command>
@@ -131,6 +136,7 @@
             # Note Taking
             "obsidian"
             "notion"
+            "affine"
 
             # Productivity
             "libreoffice"
@@ -159,8 +165,14 @@
             # "bartender" # Menu bar items manager
             "nordvpn"
             "paragon-ntfs"
+            "tailscale-app"
             # "jordanbaird-ice" # Menubar Organisor
             # "aerospace" # Tiling window manager 
+            "karabiner-elements"
+            "whatsapp"
+            "bitwarden"
+            "ticktick"
+            "yubico-authenticator"
 
             # Browser
             "firefox"
@@ -168,7 +180,7 @@
 
             # Terminal
             "wezterm"
-            "iterm2"
+            "raycast"
 
             # Entertainment
             # "iina" # VLC Alternative
@@ -178,18 +190,12 @@
           ];
           masApps = {
             "Pandan" = 1569600264; # Time tracking 
-            "Whatsapp" = 310633997;
             "Magnet" = 441258766; # Window splitting manager
-            "TickTick" = 966085870; # "reminders" app alternative
-            "Bitwarden" = 1352778147; # Password manager
             "Steam Link" = 1246969117; # Remote play steam
             "Amphetamine" = 937984704; # Keep the screen on
-            "Wireguard" = 1451685025; # Wireguard VPN
-            "Tailscale" = 1475387142; # Tailscale VPN
             "Keynote" = 409183694; # Create Presentation
             "Microsoft Remote Desktop" = 1295203466; # RDP Client
             # "Silicio" = 933627574; # Spotify Client
-            "Yubico Authenticator" = 1497506650; # Yubikey
           };
           onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
@@ -219,20 +225,21 @@
           dock.show-recents = false;
           dock.persistent-apps = [
             "/System/Applications/Apps.app"
-            "/System/Applications/Messages.app"
             "/System/Applications/Photos.app"
+            "/System/Applications/Messages.app"
+            "/Applications/Whatsapp.app"
             "/System/Applications/FaceTime.app"
             "/System/Applications/Notes.app"
             "/System/Applications/App Store.app"
             "/Applications/Google Chrome.app"
-            "/Applications/Firefox.app"
+            "/System/Applications/Mail.app"
             "/Applications/NordVPN.app"
-            "/Applications/Tailscale.app"
+            # "/Applications/Tailscale.app"
             "/Applications/TickTick.app"
             "/Applications/Notion.app"
+            "/Applications/AFFiNE.app"
             "/Applications/Obsidian.app"
             "/Applications/WezTerm.app"
-            "/Applications/Iterm.app"
             "/System/Applications/Music.app"
             "/System/Applications/System Settings.app"
           ];
