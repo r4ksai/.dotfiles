@@ -102,6 +102,7 @@ copycat() {
 
 # Local binary files
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # History
 HISTSIZE=5000
