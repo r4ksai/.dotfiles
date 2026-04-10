@@ -122,3 +122,19 @@ eval "$(fzf --zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+mqttsub() {
+  mosquitto_sub -h "$1" -t "#" -v | gawk '
+  function color(v){
+    if(v=="ALIVE"||v=="ON"||v=="CLEAR") return "\033[32m"v"\033[0m"
+    if(v=="OFFLINE"||v=="OFF"||v=="BROKEN") return "\033[31m"v"\033[0m"
+    return v
+  }
+  {
+    data[$1]=$2
+    printf "\033[H\033[J"
+    n = asorti(data, keys)
+    for(i=1;i<=n;i++)
+      printf "%-40s %s\n", keys[i], color(data[keys[i]])
+  }'
+}
