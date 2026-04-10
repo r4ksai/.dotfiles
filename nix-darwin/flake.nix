@@ -88,6 +88,15 @@
             "osx-cross/avr"
           ];
           brews = [
+            "iperf3"
+            "mole"
+            "watch"
+            "mosquitto"
+
+            # "coreutils"
+            "openssh"
+            "libfido2"
+
             "go" # Go
             "nvm" # Node Version Manager
             "mas" # Install Mac Stuff from Terminal
@@ -118,6 +127,10 @@
             "mpv" # CLI Video player
           ];
           casks = [
+            "anydesk"
+            "balenaetcher"
+            "mqttx"
+            "telegram"
             # "spotify" # Music
 
             # Development
@@ -134,9 +147,9 @@
             # "raspberry-pi-imager"
 
             # Note Taking
-            "obsidian"
+            # "obsidian"
             "notion"
-            "affine"
+            # "affine"
 
             # Productivity
             "libreoffice"
@@ -234,11 +247,11 @@
             "/Applications/Google Chrome.app"
             "/System/Applications/Mail.app"
             "/Applications/NordVPN.app"
-            # "/Applications/Tailscale.app"
+            "/Applications/Tailscale.app"
             "/Applications/TickTick.app"
             "/Applications/Notion.app"
-            "/Applications/AFFiNE.app"
-            "/Applications/Obsidian.app"
+            # "/Applications/AFFiNE.app"
+            # "/Applications/Obsidian.app"
             "/Applications/WezTerm.app"
             "/System/Applications/Music.app"
             "/System/Applications/System Settings.app"
