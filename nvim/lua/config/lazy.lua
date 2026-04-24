@@ -20,7 +20,10 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
-      opts = { colorscheme = "tokyonight", news = { lazyvim = true, neovim = true } },
+      opts = {
+        colorscheme = "tokyonight",
+        news = { lazyvim = true, neovim = true },
+      },
     },
 
     -- use mini.starter instead of alpha

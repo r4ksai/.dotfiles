@@ -9,6 +9,7 @@ return {
   --   -- opts = { plugins = { gitsigns = true, tmux = true, kitty = { enabled = false, font = "+2" } } },
   --   keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "[Z]en Mode", silent = true } },
   -- },
+
   {
     "windwp/nvim-autopairs",
     config = function()
@@ -27,20 +28,20 @@ return {
     end,
   },
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     enabled = false,
   },
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     enabled = false,
-    -- opts = function(_, opts)
-    --   opts.mappings.add = "ys"
-    --   opts.mappings.delete = "ds"
-    --   opts.mappings.replace = "cs"
-    -- end,
+    opts = function(_, opts)
+      opts.mappings.add = "ys"
+      opts.mappings.delete = "ds"
+      opts.mappings.replace = "cs"
+    end,
   },
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     -- Disable to makesure that B and b works for {} and ()
     enabled = false,
   },

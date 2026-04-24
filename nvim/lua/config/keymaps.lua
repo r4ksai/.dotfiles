@@ -5,6 +5,9 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+keymap.set("n", "s", "<Nop>")
+keymap.set("n", "S", "<Nop>")
+
 -- Delete without yank and paste from clipboard 0
 keymap.set("n", "x", '"_x', { desc = "Delete character without copy" })
 keymap.set("v", "<leader><leader>p", '"0p', { desc = "Paste without copy" })
@@ -26,7 +29,7 @@ keymap.set("n", "+", "<C-a>", { desc = "Incremnt number under the cursor" })
 keymap.set("n", "-", "<C-x>", { desc = "Decrement number under the cursor" })
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v><S-g>", { desc = "Select all" })
+keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- New Tab
 keymap.set("n", "te", ":tabedit ", { desc = "[T]ab [E]dit", noremap = true, silent = true })

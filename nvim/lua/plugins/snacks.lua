@@ -47,7 +47,9 @@ return {
           { section = "startup" },
         },
       },
-      explorer = { enabled = true },
+      explorer = {
+        enabled = true,
+      },
       indent = { enabled = true },
       input = { enabled = true },
       picker = { enabled = true },

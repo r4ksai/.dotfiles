@@ -18,7 +18,7 @@ return {
       transparent = true,
       styles = {
         sidebars = "transparent",
-        gloats = "transparent",
+        floats = "transparent",
       },
       style = "moon",
     }

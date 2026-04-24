@@ -1,5 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
   opts = function(_, opts)
     vim.list_extend(opts.ensure_installed, {
 
@@ -39,6 +40,7 @@ return {
       "c",
       "cpp",
     })
+    opts.folds = { enable = true }
     opts.highlight = {
       enable = true,
       use_languagetree = true,
@@ -48,16 +50,5 @@ return {
       enable = true,
       disable = {},
     }
-  end,
-
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-
-    vim.filetype.add({
-      extension = {
-        mdx = "mdx",
-      },
-    })
-    vim.treesitter.language.register("markdown", "mdx")
   end,
 }
