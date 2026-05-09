@@ -27,8 +27,6 @@ plugins=(
 # Path Variable
 export PATH=$HOME/.dotfiles/Scripts:$PATH
 
-source $HOME/.dracula-syntax-highlighting.sh
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -37,14 +35,13 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export SHELL='/bin/zsh'
 
-# Color
-export TERM=xterm-256color
-
 # Default Editor
 export EDITOR='nvim'
 
 # Source
 source $ZSH/oh-my-zsh.sh
+
+source $HOME/.dracula-syntax-highlighting.sh
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -108,7 +105,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
-HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space

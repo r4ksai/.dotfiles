@@ -1,34 +1,77 @@
-sudo apt update && sudo apt upgrade -y
-sudo apt install git tmux curl lsd fzf ripgrep bat fd neovim python3-pip -y
-sudo apt install zsh -y
+#!/bin/bash
+set -e
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+DOTFILES="$HOME/.dotfiles"
 
-mkdir -p ~/.config/nvim
+# ── Dependencies ──────────────────────────────────────────────────────────────
+sudo apt update -qq && sudo apt upgrade -y
+sudo apt install -y git tmux curl zsh fzf ripgrep fd-find python3-pip
 
-mkdir ~/.backups
-mv ~/.zshrc ~/.backups/.zshrc
-mv ~/.inputrc ~/.backups/.inputrc
-mv ~/.gitconfig ~/.backups/.gitconfig
-mv ~/.tmux.conf ~/.backups/.tmux.conf
-mv ~/.p10k.zsh ~/.backups/.p10k.zsh
-mv ~/.zprofile ~/.backups/.zprofile
-mv ~/.config/nvim ~/.backups/nvim
+# Better ls/cat if available in apt
+sudo apt install -y lsd bat 2>/dev/null || true
+# Ubuntu/Debian name bat as batcat and fd as fdfind — make proper symlinks
+[ -f /usr/bin/batcat ] && mkdir -p ~/.local/bin && ln -sf /usr/bin/batcat ~/.local/bin/bat
+[ -f /usr/bin/fdfind ] && mkdir -p ~/.local/bin && ln -sf /usr/bin/fdfind ~/.local/bin/fd
 
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.inputrc ~/.inputrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh
-ln -s ~/.dotfiles/.zprofile ~/.zprofile
-ln -s ~/.dotfiles/nvim ~/.config/nvim
+# Neovim (get latest stable, apt version is often stale)
+if ! command -v nvim &>/dev/null; then
+  curl -Lo /tmp/nvim.tar.gz \
+    "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
+  tar -C /tmp -xzf /tmp/nvim.tar.gz
+  sudo mv /tmp/nvim-linux-x86_64 /opt/nvim
+  sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+fi
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+# ── Clone dotfiles ────────────────────────────────────────────────────────────
+if [ ! -d "$DOTFILES" ]; then
+  git clone https://github.com/r4ksai/dotfiles "$DOTFILES"
+fi
 
-git clone https://github.com/dracula/zsh-syntax-highlighting.git /tmp/zsh-syntax-highlighting
-mv /tmp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/.dracula-syntax-highlighting.sh
+# ── Tmux plugin manager ───────────────────────────────────────────────────────
+[ ! -d ~/.tmux/plugins/tpm ] && \
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+# ── Oh My Zsh ────────────────────────────────────────────────────────────────
+if [ ! -d ~/.oh-my-zsh ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+    "" --unattended
+fi
 
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+# Plugins
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] && \
+  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions \
+    "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+[ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] && \
+  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting \
+    "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+
+# ── Symlinks ──────────────────────────────────────────────────────────────────
+backup_and_link() {
+  local src="$1" dst="$2"
+  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+    mv "$dst" "${dst}.backup"
+    echo "Backed up $dst"
+  fi
+  ln -sf "$src" "$dst"
+  echo "Linked $dst"
+}
+
+mkdir -p ~/.config
+
+backup_and_link "$DOTFILES/server/.zshrc"   ~/.zshrc
+backup_and_link "$DOTFILES/server/.zprofile" ~/.zprofile
+backup_and_link "$DOTFILES/.tmux.conf"       ~/.tmux.conf
+backup_and_link "$DOTFILES/.inputrc"         ~/.inputrc
+backup_and_link "$DOTFILES/.gitconfig"       ~/.gitconfig
+backup_and_link "$DOTFILES/nvim-server"      ~/.config/nvim
+
+# ── Set default shell to zsh ──────────────────────────────────────────────────
+if [ "$SHELL" != "$(which zsh)" ]; then
+  chsh -s "$(which zsh)"
+  echo "Shell changed to zsh — re-login to apply"
+fi
+
+echo ""
+echo "Done! Start a new shell or run: exec zsh"
+echo "Then install tmux plugins with: tmux + prefix + I"

@@ -215,8 +215,8 @@
           onActivation.upgrade = true;
         };
 
-        # Necessary for using flakes on this system.
-        nix.settings.experimental-features = "nix-command flakes";
+        # Determinate manages the Nix daemon; nix-darwin must not conflict.
+        nix.enable = false;
 
         # Enable alternative shell support in nix-darwin.
         programs.zsh.enable = true;

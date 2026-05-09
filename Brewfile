@@ -1,8 +1,4 @@
 tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
 
 # Version Control
 # ------------------------------------------------
@@ -41,7 +37,7 @@ brew "fd"
 # Simplistic interactive filtering tool
 brew "peco"
 # Modern replacement for 'ls'
-brew "exa"
+brew "eza"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Reattach process (e.g., tmux) to background

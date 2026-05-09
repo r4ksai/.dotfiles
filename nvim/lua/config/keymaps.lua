@@ -25,7 +25,7 @@ keymap.set("v", "<leader><leader>d", '"_d', { desc = "Delete without copy" })
 keymap.set("v", "<leader><leader>D", '"_D', { desc = "Delete without copy" })
 
 -- Increment/decrement
-keymap.set("n", "+", "<C-a>", { desc = "Incremnt number under the cursor" })
+keymap.set("n", "+", "<C-a>", { desc = "Increment number under the cursor" })
 keymap.set("n", "-", "<C-x>", { desc = "Decrement number under the cursor" })
 
 -- Select all

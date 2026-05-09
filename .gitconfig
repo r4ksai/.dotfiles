@@ -18,13 +18,13 @@
 	defaultBranch = main
 [user]
 	name = Sai
-	email = r4ksai@gmail.com 
+	email = r4ksai@gmail.com
 [github]
   user = r4ksai
 [diff]
 	tool = vimdiff
   wordRegex = [[:alnum:]_]+|[^[:alnum:]_[:space:]]+
-[difftoll "nvimdiff"]
+[difftool "nvimdiff"]
   cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
   path = 
 [mergetool "nvimdiff"]

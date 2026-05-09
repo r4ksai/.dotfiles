@@ -121,7 +121,7 @@ return {
     event = "VeryLazy",
     opts = function(_, opts)
       opts.options.diagnostics = "nvim_lsp"
-      opts.options.diagnostics_idicator = function(_, _, diag)
+      opts.options.diagnostics_indicator = function(_, _, diag)
         local icons = LazyVim.config.icons.diagnostics
         local ret = (diag.error and icons.Error .. diag.error .. " " or "")
           .. (diag.warning and icons.Warn .. diag.warning or "")
