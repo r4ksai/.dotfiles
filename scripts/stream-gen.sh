@@ -71,4 +71,4 @@ esac
 RTSP_URL="rtsp://$USERNAME:$ENCODED_PASSWORD@$IP_ADDRESS:$PORT/$STREAM_PATH"
 
 # Output the URL
-echo $RTSP_URL"
+echo "$RTSP_URL"
