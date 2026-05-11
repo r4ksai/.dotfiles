@@ -1,0 +1,122 @@
+# ── Includes ──────────────────────────────────────────────────────────────────
+Include ~/.colima/ssh_config
+
+# ── VCS ───────────────────────────────────────────────────────────────────────
+Host github.com
+  Hostname github.com
+  User git
+  IdentityFile ~/.ssh/keys/github
+  IdentitiesOnly yes
+
+Host gitlab
+  Hostname gitlab.local
+  IdentityFile ~/.ssh/gitlab
+
+# ── Remote Servers ────────────────────────────────────────────────────────────
+Host bixz
+  Hostname 172.104.51.243
+  User bixz
+  Port 9020
+  StrictHostKeyChecking yes
+  PasswordAuthentication no
+  IdentityFile ~/.ssh/keys/bixz
+
+Host tesla
+  Hostname 69.62.85.156
+  User tesla
+  Port 9021
+  StrictHostKeyChecking yes
+  PasswordAuthentication no
+  IdentityFile ~/.ssh/keys/bixz
+
+# ── Site Remote Access (Tailscale) ────────────────────────────────────────────
+Host sahara-remote
+  Hostname erimayur
+  Port 9360
+  IdentityFile ~/.ssh/keys/remote_sahara
+
+Host ultra-remote
+  Hostname ultra
+  Port 9361
+  IdentityFile ~/.ssh/keys/remote_ultra
+
+Host walayar-remote
+  Hostname walayar
+  Port 9362
+  IdentityFile ~/.ssh/keys/remote_walayar
+
+Host kannanur-remote
+  Hostname kannanur
+  Port 9363
+  IdentityFile ~/.ssh/keys/remote_kannanur
+
+Host vadakkencherry-remote
+  Hostname vadakkencherry
+  Port 9364
+  IdentityFile ~/.ssh/keys/remote_vadakkancherry
+
+Host kallekad-remote
+  Hostname kallekad
+  IdentityFile ~/.ssh/keys/remote_kallekad
+
+Host *-remote
+  User zoro
+
+# ── Local Network ─────────────────────────────────────────────────────────────
+Host sonicpad
+  Hostname 10.10.1.121
+  HostkeyAlgorithms +ssh-rsa
+
+Host sahara-storage
+  Hostname 192.168.1.166
+  User sahara
+  Port 9609
+  IdentityFile ~/.ssh/keys/local_sahara
+
+# ── NAS ───────────────────────────────────────────────────────────────────────
+Host ultra-nas
+  Hostname 10.20.10.10
+  User sahara
+  IdentityFile ~/.ssh/keys/remote_kallekad
+
+Host walayar-nas
+  Hostname 10.21.10.10
+  User nas
+  IdentityFile ~/.ssh/keys/remote_kallekad
+
+Host kallekkad-nas
+  Hostname 10.22.10.10
+  User nas
+  IdentityFile ~/.ssh/keys/remote_kallekad
+
+# ── NVR ───────────────────────────────────────────────────────────────────────
+Host ultra-nvr
+  Hostname ultra-nvr.local
+  User nvr
+  IdentityFile ~/.ssh/pi_nvr
+
+# ── Weighbridges ──────────────────────────────────────────────────────────────
+Host weighbridge-sahara
+  Hostname 10.10.30.101
+
+Host weighbridge-southern
+  Hostname 10.30.30.101
+
+Host weighbridge-ultra
+  Hostname 10.20.10.101
+
+Host weighbridge-kannanur
+  Hostname 10.11.10.101
+
+Host weighbridge-palathurai
+  Hostname 10.40.10.101
+
+Host weighbridge-walayar
+  Hostname 10.21.10.101
+
+Host weighbridge-kallekkad
+  Hostname 10.22.10.101
+
+Host weighbridge-*
+  User weighbridge
+  IdentityFile ~/.ssh/keys/remote_kallekad

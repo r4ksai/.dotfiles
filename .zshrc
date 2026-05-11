@@ -25,7 +25,7 @@ plugins=(
 )
 
 # Path Variable
-export PATH=$HOME/.dotfiles/Scripts:$PATH
+export PATH=$HOME/.dotfiles/scripts:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"

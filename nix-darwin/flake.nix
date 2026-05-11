@@ -66,6 +66,9 @@
 
             # Docs
             pkgs.tlrc # "man" command replacement
+
+            # Installer UI
+            pkgs.gum
           ];
 
         fonts.packages = [
