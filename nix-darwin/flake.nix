@@ -11,8 +11,6 @@
     let
       configuration = { pkgs, ... }: {
         nixpkgs.config.allowUnfree = true;
-        # List packages installed in system profile. To search by name, run:
-        # $ nix-env -qaP | grep wget
         environment.systemPackages =
           [ 
             # Development
@@ -33,15 +31,15 @@
             pkgs.htop # "top" command replacement
 
             # Essentials
-            # pkgs.neovim 
-            pkgs.git 
+            # pkgs.neovim
+            pkgs.git
             pkgs.tmux # Terminal splitting
 
             # Window Manager
             # pkgs.aerospace # Tiling window manager
 
             # Terminal
-            pkgs.fish # "zsh" shell replacement
+            pkgs.fish # Fish shell
             pkgs.lsd # "ls" command replacement
             pkgs.bat # "cat" command replacement
             pkgs.fzf # Fuzzy Finder
@@ -60,8 +58,7 @@
             pkgs.ffmpeg # FFMPEG : Video stuff
             pkgs.gnupg # GPG
             pkgs.fdupes # Get duplicates
-
-            pkgs.ttyd # Terminal over Browser
+            pkgs.ttyd # Terminal over browser
             pkgs.jrnl # Journaling app
 
             # Docs
@@ -81,7 +78,6 @@
             dataDir = "/usr/local/var/postgres";
             package = pkgs.postgresql_13;
           };
-          aerospace.enable = false;
           # prometheus.exporters.node.enable = true;
         };
 
@@ -91,43 +87,46 @@
             "osx-cross/avr"
           ];
           brews = [
+            # Networking
             "iperf3"
-            "mole"
-            "watch"
-            "mosquitto"
-
-            # "coreutils"
+            "mole"           # SSH tunnel manager
+            "mosquitto"      # MQTT broker
             "openssh"
-            "libfido2"
-
-            "go" # Go
-            "nvm" # Node Version Manager
-            "mas" # Install Mac Stuff from Terminal
-            "neovim"
+            "libfido2"       # FIDO2 hardware key support
+            "wireguard-tools"
             "tailscale"
+            "watch"
+
+            # Runtimes
+            "go"
+            "nvm"            # Node Version Manager
+            "uv"             # Fast Python package manager
+
+            # Dev tools
+            "neovim"
+            "mas"            # Mac App Store CLI
             "ansible"
             "imagemagick"
+            "httpie"         # HTTP client
+            "yazi"           # Terminal file manager
 
-            # Python stuff
+            # Python build deps
             "readline"
             "xz"
-            "httpie"
-            "yazi"
-            "uv"
-            "wireguard-tools"
 
-            # Embedded stuff
+            # Embedded
             "cmake"
             "make"
             "avr-gcc"
             "avrdude"
-            "minicom"
-            "minipro"
+            "minicom"        # Serial terminal
+            "minipro"        # EPROM programmer
             "platformio"
             "arduino-cli"
-            "bear" # Creates compile commands - bear -- <your-build-command>
+            "bear"           # Generates compile_commands.json
 
-            "mpv" # CLI Video player
+            # Media
+            "mpv"            # CLI video player
           ];
           casks = [
             "anydesk"
@@ -183,7 +182,7 @@
             "paragon-ntfs"
             "tailscale-app"
             # "jordanbaird-ice" # Menubar Organisor
-            # "aerospace" # Tiling window manager 
+            # "aerospace" # Tiling window manager
             "karabiner-elements"
             "whatsapp"
             "bitwarden"
@@ -205,7 +204,7 @@
             # "steam"
           ];
           masApps = {
-            "Pandan" = 1569600264; # Time tracking 
+            "Pandan" = 1569600264; # Time tracking
             "Magnet" = 441258766; # Window splitting manager
             "Steam Link" = 1246969117; # Remote play steam
             "Amphetamine" = 937984704; # Keep the screen on
@@ -225,8 +224,8 @@
         programs.zsh.enable = true;
 
         system.keyboard = {
-          enableKeyMapping=true;
-          remapCapsLockToEscape=true;
+          enableKeyMapping = true;
+          remapCapsLockToEscape = true;
         };
 
         security.pam.services.sudo_local.touchIdAuth = true;
@@ -234,7 +233,7 @@
         system.primaryUser = "sai";
 
         system.defaults = {
-          dock.autohide=true;
+          dock.autohide = true;
           dock.showhidden = true;
           dock.mru-spaces = false;
           dock.expose-animation-duration = 0.15;
@@ -294,16 +293,6 @@
           controlcenter.FocusModes = true;
           controlcenter.NowPlaying = true;
           controlcenter.Sound = true;
-
-          # "com.apple.appstore" = {
-          #   InAppReviewEnabled = 0;
-          # };
-          #
-          # "com.apple.desktopservices" = {
-          #   DSDontWriteNetworkStores = true;
-          #   DSDontWriteUSBStores = true;
-          # };
-
         };
 
         # Set Git commit hash for darwin-version.
