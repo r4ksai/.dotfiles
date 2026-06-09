@@ -72,9 +72,9 @@
 
         services = {
           postgresql = {
-            enable = true;
+            enable = false;
             dataDir = "/usr/local/var/postgres";
-            package = pkgs.postgresql_13;
+            package = pkgs.postgresql_16;
           };
           # prometheus.exporters.node.enable = true;
         };
@@ -222,12 +222,8 @@
           onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
+          onActivation.extraFlags = [ "--force-cleanup" ]; # required by brew-bundle >=1.4
         };
-
-        # postgresql_13 removed in nixpkgs 25.11 — override default to unblock build.
-        # Service is disabled; using Docker for postgres instead.
-        services.postgresql.package = pkgs.postgresql_16;
-        # services.postgresql.enable = true;
 
         # Determinate manages the Nix daemon; nix-darwin must not conflict.
         nix.enable = false;
