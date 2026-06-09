@@ -2,8 +2,8 @@
   description = "Sai's nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    nixpkgs.url     = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nix-darwin.url  = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -11,86 +11,82 @@
     let
       configuration = { pkgs, ... }: {
         nixpkgs.config.allowUnfree = true;
-        environment.systemPackages =
-          [ 
-            # Development
-            pkgs.lazydocker
-            pkgs.lazygit # Interactive terminal git
-            pkgs.lazysql # Interactive terminal sql
-            pkgs.commitizen # Commit message creator
-            pkgs.tig # Terminal git
-            pkgs.pyenv # Manage python environment
+        nixpkgs.hostPlatform = "aarch64-darwin";
 
-            # Testing
-            pkgs.k6 # Test API endpoints with JS
-            pkgs.iperf2 # Test Network performance
+        # ── System Packages ───────────────────────────────────────────────────
+        environment.systemPackages = with pkgs; [
+          # Essentials
+          git
+          gh                          # GitHub CLI
+          tmux                        # Terminal multiplexer
+          reattach-to-user-namespace
 
-            # Stats
-            pkgs.neofetch
-            pkgs.btop # "htop" alternative
-            pkgs.htop # "top" command replacement
+          # Development
+          lazydocker
+          lazygit
+          lazysql
+          commitizen                  # Conventional commit helper
+          tig                         # Terminal git browser
+          pyenv                       # Python version manager
 
-            # Essentials
-            # pkgs.neovim
-            pkgs.git
-            pkgs.tmux # Terminal splitting
+          # Shell & Terminal
+          fish
+          lsd                         # ls replacement
+          bat                         # cat replacement
+          fzf                         # Fuzzy finder
+          peco                        # Interactive filter
+          fd                          # find replacement
+          ripgrep                     # grep replacement
+          ttyper                      # Typing practice CLI
 
-            # Window Manager
-            # pkgs.aerospace # Tiling window manager
+          # Monitoring
+          neofetch
+          btop
+          htop
 
-            # Terminal
-            pkgs.fish # Fish shell
-            pkgs.lsd # "ls" command replacement
-            pkgs.bat # "cat" command replacement
-            pkgs.fzf # Fuzzy Finder
-            pkgs.peco # Create an interrative list from output
-            pkgs.fd # "find" command replacement
-            pkgs.ripgrep # Search inside files for a pattern
-            pkgs.ttyper # Monkey type cli edition
+          # Networking
+          wget
+          nmap
+          yt-dlp
 
-            # Networking
-            pkgs.wget # "curl" command replacement
-            pkgs.nmap # Network Vuln Testing
-            pkgs.yt-dlp # Download Youtube videos
+          # Utils
+          ffmpeg
+          gnupg
+          fdupes
+          ttyd                        # Terminal in browser
+          jrnl                        # CLI journaling
 
-            # Utils
-            pkgs.reattach-to-user-namespace
-            pkgs.ffmpeg # FFMPEG : Video stuff
-            pkgs.gnupg # GPG
-            pkgs.fdupes # Get duplicates
-            pkgs.ttyd # Terminal over browser
-            pkgs.jrnl # Journaling app
+          # Testing
+          k6                          # Load testing
+          iperf2                      # Network performance
 
-            # Docs
-            pkgs.tlrc # "man" command replacement
-
-          ];
-
-        fonts.packages = [
-          pkgs.nerd-fonts.jetbrains-mono
+          # Docs & Linting
+          tlrc                        # tldr client
         ];
 
-        services = {
-          postgresql = {
-            enable = false;
-            dataDir = "/usr/local/var/postgres";
-            package = pkgs.postgresql_16;
-          };
-          # prometheus.exporters.node.enable = true;
+        fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+
+        # ── Services ──────────────────────────────────────────────────────────
+        services.postgresql = {
+          enable  = false;                    # using Docker instead
+          dataDir = "/usr/local/var/postgres";
+          package = pkgs.postgresql_16;       # overrides removed postgresql_13 default
         };
 
+        # ── Homebrew ──────────────────────────────────────────────────────────
         homebrew = {
           enable = true;
           taps = [
             "osx-cross/avr"
+            "coderabbit/tap"
           ];
           brews = [
             # Networking
             "iperf3"
-            "mole"           # SSH tunnel manager
-            "mosquitto"      # MQTT broker
+            "mole"                    # SSH tunnel manager
+            "mosquitto"               # MQTT broker
             "openssh"
-            "libfido2"       # FIDO2 hardware key support
+            "libfido2"                # FIDO2 hardware key support
             "wireguard-tools"
             "tailscale"
             "watch"
@@ -98,17 +94,19 @@
 
             # Runtimes
             "go"
-            "nvm"            # Node Version Manager
-            "uv"             # Fast Python package manager
+            "nvm"                     # Node Version Manager
+            "uv"                      # Python package manager
 
             # Dev tools
             "neovim"
-            "mas"            # Mac App Store CLI
+            "mas"                     # Mac App Store CLI
             "ansible"
             "imagemagick"
-            "httpie"         # HTTP client
-            "yazi"           # Terminal file manager
+            "httpie"
+            "yazi"                    # Terminal file manager
             "yarn"
+            "coderabbit"              # AI code review CLI
+            "markdownlint-cli"
 
             # Python build deps
             "readline"
@@ -119,202 +117,199 @@
             "make"
             "avr-gcc"
             "avrdude"
-            "minicom"        # Serial terminal
-            "minipro"        # EPROM programmer
+            "minicom"                 # Serial terminal
+            "minipro"                 # EPROM programmer
             "platformio"
             "arduino-cli"
-            "bear"           # Generates compile_commands.json
+            "bear"                    # Generates compile_commands.json
 
-            # Media
-            "mpv"            # CLI video player
-            "glow"
-            "gum"
-            "ykman"
+            # Media & TUI
+            "mpv"
+            "glow"                    # Markdown renderer
+            "gum"                     # Shell script UI toolkit
+            "ykman"                   # YubiKey manager
           ];
           casks = [
+            # Communication
             "anydesk"
-            "balenaetcher"
-            "mqttx"
             "telegram"
-            # "spotify" # Music
+            "whatsapp"
+            "discord"
+            # "spotify"
 
+            # AI / Coding
             "codex"
             "claude-code"
 
             # Development
-            "boop" # Developer toolsuite
-            # "yubico-yubikey-manager" -> End of Life
-            "ngrok" # Share local web page
-            "wireshark-app" # Test network packets
-            "httpie-desktop" # API testing
-            "postman" # API testing - Advance
-            "pgadmin4" # Postgresql client
+            "boop"                    # Developer toolsuite
+            "ngrok"                   # Share local server
+            "wireshark-app"
+            "httpie-desktop"
+            "postman"
+            "pgadmin4"                # PostgreSQL client
             "kicad"
             "db-browser-for-sqlite"
             "docker-desktop"
-            # "diffusionbee" # AI Image Generator
             "raspberry-pi-imager"
             "autodesk-fusion"
+            "balenaetcher"
+            "mqttx"
+            # "yubico-yubikey-manager" # End of Life
 
-            # Note Taking
+            # Notes & Productivity
             "obsidian"
             "notion"
-            # "affine"
-
-            # Productivity
             "libreoffice"
             "opal-app"
+            "ticktick"
+            "bitwarden"
 
-            # Editing
-            # "inkscape"
+            # Media & Editing
             "obs"
             "blender"
             "audacity"
+            "vlc"
+            # "iina"
+            # "inkscape"
+            # "diffusionbee"
 
             # 3D Printing
             "creality-print"
+            "bambu-studio"
             # "ultimaker-cura"
             # "creality-slicer"
-            "bambu-studio"
             # "orcaslicer"
 
             # Utilities
-            "logi-options+" # Logitech software
-            "numi" # Calculator Notepad
-            "shottr" # Screenshots
-            "the-unarchiver" # GUI Extractor
-            "flux-app" # Blue light filter
-            "appcleaner" # Remove app completely
-            # "bartender" # Menu bar items manager
+            "logi-options+"           # Logitech software
+            "numi"                    # Calculator notepad
+            "shottr"                  # Screenshots
+            "the-unarchiver"
+            "flux-app"                # Blue light filter
+            "appcleaner"
             "nordvpn"
             "paragon-ntfs"
             "tailscale-app"
-            # "jordanbaird-ice" # Menubar Organisor
-            # "aerospace" # Tiling window manager
             "karabiner-elements"
-            "whatsapp"
-            "bitwarden"
-            "ticktick"
             "yubico-authenticator"
+            # "bartender"
+            # "jordanbaird-ice"
+            # "aerospace"
 
             # Browser
             "firefox"
             "google-chrome"
 
-            # Terminal
+            # Terminal & Launcher
             "wezterm"
             "raycast"
-
-            # Entertainment
-            # "iina" # VLC Alternative
-            "vlc"
-            "discord"
-            # "steam"
           ];
           masApps = {
-            "Pandan" = 1569600264; # Time tracking
-            "Magnet" = 441258766; # Window splitting manager
-            "Steam Link" = 1246969117; # Remote play steam
-            "Amphetamine" = 937984704; # Keep the screen on
-            "Keynote" = 409183694; # Create Presentation
-            "Microsoft Remote Desktop" = 1295203466; # RDP Client
+            "Pandan"                   = 1569600264; # Time tracking
+            "Magnet"                   = 441258766;  # Window management
+            "Steam Link"               = 1246969117; # Remote play
+            "Amphetamine"              = 937984704;  # Keep screen on
+            "Keynote"                  = 409183694;  # Presentations
+            "Microsoft Remote Desktop" = 1295203466; # RDP
           };
-          onActivation.cleanup = "zap";
-          onActivation.autoUpdate = true;
-          onActivation.upgrade = true;
-          onActivation.extraFlags = [ "--force-cleanup" ]; # required by brew-bundle >=1.4
+          onActivation = {
+            cleanup    = "zap";
+            autoUpdate = true;
+            upgrade    = true;
+            extraFlags = [ "--force-cleanup" ]; # required by brew-bundle >=1.4
+          };
         };
 
-        # Determinate manages the Nix daemon; nix-darwin must not conflict.
-        nix.enable = false;
-
-        # Enable alternative shell support in nix-darwin.
+        # ── System ────────────────────────────────────────────────────────────
+        nix.enable = false;           # Determinate manages the Nix daemon
         programs.zsh.enable = true;
 
+        system.primaryUser        = "sai";
+        system.stateVersion       = 5;
+        system.configurationRevision = self.rev or self.dirtyRev or null;
+
         system.keyboard = {
-          enableKeyMapping = true;
+          enableKeyMapping      = true;
           remapCapsLockToEscape = true;
         };
 
         security.pam.services.sudo_local.touchIdAuth = true;
 
-        system.primaryUser = "sai";
-
+        # ── macOS Defaults ────────────────────────────────────────────────────
         system.defaults = {
-          dock.autohide = true;
-          dock.showhidden = true;
-          dock.mru-spaces = false;
-          dock.expose-animation-duration = 0.15;
-          dock.show-recents = false;
-          dock.persistent-apps = [
-            "/System/Applications/Apps.app"
-            "/System/Applications/Photos.app"
-            "/System/Applications/Messages.app"
-            "/Applications/Whatsapp.app"
-            "/System/Applications/FaceTime.app"
-            "/System/Applications/Notes.app"
-            "/System/Applications/App Store.app"
-            "/Applications/Google Chrome.app"
-            "/System/Applications/Mail.app"
-            "/Applications/NordVPN.app"
-            "/Applications/Tailscale.app"
-            "/Applications/TickTick.app"
-            "/Applications/Notion.app"
-            "/Applications/WezTerm.app"
-            "/System/Applications/Music.app"
-            "/System/Applications/System Settings.app"
-          ];
+          dock = {
+            autohide               = true;
+            showhidden             = true;
+            mru-spaces             = false;
+            expose-animation-duration = 0.15;
+            show-recents           = false;
+            persistent-apps = [
+              "/System/Applications/Apps.app"
+              "/System/Applications/Photos.app"
+              "/System/Applications/Messages.app"
+              "/Applications/Whatsapp.app"
+              "/System/Applications/FaceTime.app"
+              "/System/Applications/Notes.app"
+              "/System/Applications/App Store.app"
+              "/Applications/Google Chrome.app"
+              "/System/Applications/Mail.app"
+              "/Applications/NordVPN.app"
+              "/Applications/Tailscale.app"
+              "/Applications/TickTick.app"
+              "/Applications/Notion.app"
+              "/Applications/WezTerm.app"
+              "/System/Applications/Music.app"
+              "/System/Applications/System Settings.app"
+            ];
+          };
+
           loginwindow.GuestEnabled = false;
 
-          NSGlobalDomain.AppleInterfaceStyle = "Dark";
-          NSGlobalDomain.KeyRepeat = 2;
-          NSGlobalDomain."com.apple.springing.enabled" = true;
-          NSGlobalDomain."com.apple.springing.delay" = 0.1;
-          NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
-          NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
-          NSGlobalDomain.PMPrintingExpandedStateForPrint = true;
-          NSGlobalDomain.AppleShowAllExtensions = true;
+          NSGlobalDomain = {
+            AppleInterfaceStyle              = "Dark";
+            KeyRepeat                        = 2;
+            "com.apple.springing.enabled"    = true;
+            "com.apple.springing.delay"      = 0.1;
+            NSNavPanelExpandedStateForSaveMode  = true;
+            NSDocumentSaveNewDocumentsToCloud   = false;
+            PMPrintingExpandedStateForPrint     = true;
+            AppleShowAllExtensions           = true;
+          };
 
-          screencapture.location = "~/Desktop/Screenshots";
-          screencapture.disable-shadow = true;
-          screencapture.type = "png";
+          screencapture = {
+            location       = "~/Desktop/Screenshots";
+            disable-shadow = true;
+            type           = "png";
+          };
 
-          finder.AppleShowAllFiles = false;
-          finder.AppleShowAllExtensions = true;
-          finder.FXEnableExtensionChangeWarning = false;
-          finder._FXShowPosixPathInTitle = false;
-          finder.FXRemoveOldTrashItems = true;
-          finder.FXDefaultSearchScope = "SCcf";
-          finder.FXPreferredViewStyle = "clmv";
-          finder.ShowStatusBar = true;
-          finder.ShowPathbar = true;
-          finder.ShowMountedServersOnDesktop = true;
-          finder.ShowHardDrivesOnDesktop = false;
-          finder.ShowExternalHardDrivesOnDesktop = true;
+          finder = {
+            AppleShowAllFiles             = false;
+            AppleShowAllExtensions        = true;
+            FXEnableExtensionChangeWarning = false;
+            _FXShowPosixPathInTitle        = false;
+            FXRemoveOldTrashItems          = true;
+            FXDefaultSearchScope           = "SCcf";
+            FXPreferredViewStyle           = "clmv";
+            ShowStatusBar                 = true;
+            ShowPathbar                   = true;
+            ShowMountedServersOnDesktop   = true;
+            ShowHardDrivesOnDesktop       = false;
+            ShowExternalHardDrivesOnDesktop = true;
+          };
 
-          controlcenter.AirDrop = false;
-          controlcenter.BatteryShowPercentage = true;
-          controlcenter.Bluetooth = true;
-          controlcenter.Display = false;
-          controlcenter.FocusModes = true;
-          controlcenter.NowPlaying = true;
-          controlcenter.Sound = true;
+          controlcenter = {
+            AirDrop              = false;
+            BatteryShowPercentage = true;
+            Bluetooth            = true;
+            Display              = false;
+            FocusModes           = true;
+            NowPlaying           = true;
+            Sound                = true;
+          };
         };
-
-        # Set Git commit hash for darwin-version.
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-
-        # Used for backwards compatibility, please read the changelog before changing.
-        # $ darwin-rebuild changelog
-        system.stateVersion = 5;
-
-        # The platform the configuration will be used on.
-        nixpkgs.hostPlatform = "aarch64-darwin";
       };
-    in
-      {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#simple
+    in {
       darwinConfigurations."air" = nix-darwin.lib.darwinSystem {
         modules = [ configuration ];
       };
