@@ -2,8 +2,8 @@
   description = "Sai's nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -223,6 +223,11 @@
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
         };
+
+        # postgresql_13 removed in nixpkgs 25.11 — override default to unblock build.
+        # Service is disabled; using Docker for postgres instead.
+        services.postgresql.package = pkgs.postgresql_16;
+        # services.postgresql.enable = true;
 
         # Determinate manages the Nix daemon; nix-darwin must not conflict.
         nix.enable = false;
