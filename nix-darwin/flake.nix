@@ -19,7 +19,6 @@
           git
           gh                          # GitHub CLI
           tmux                        # Terminal multiplexer
-          reattach-to-user-namespace
 
           # Development
           lazydocker
@@ -34,13 +33,11 @@
           lsd                         # ls replacement
           bat                         # cat replacement
           fzf                         # Fuzzy finder
-          peco                        # Interactive filter
           fd                          # find replacement
           ripgrep                     # grep replacement
-          ttyper                      # Typing practice CLI
 
           # Monitoring
-          neofetch
+          fastfetch
           btop
           htop
 
@@ -53,8 +50,6 @@
           ffmpeg
           gnupg
           fdupes
-          ttyd                        # Terminal in browser
-          jrnl                        # CLI journaling
 
           # Testing
           k6                          # Load testing
@@ -78,7 +73,6 @@
           enable = true;
           taps = [
             "osx-cross/avr"
-            "coderabbit/tap"
           ];
           brews = [
             # Networking
@@ -105,7 +99,6 @@
             "httpie"
             "yazi"                    # Terminal file manager
             "yarn"
-            "coderabbit"              # AI code review CLI
             "markdownlint-cli"
 
             # Python build deps
@@ -140,6 +133,7 @@
             # AI / Coding
             "codex"
             "claude-code"
+            "coderabbit"              # AI code review CLI
 
             # Development
             "boop"                    # Developer toolsuite
@@ -208,7 +202,6 @@
           masApps = {
             "Pandan"                   = 1569600264; # Time tracking
             "Magnet"                   = 441258766;  # Window management
-            "Steam Link"               = 1246969117; # Remote play
             "Amphetamine"              = 937984704;  # Keep screen on
             "Keynote"                  = 409183694;  # Presentations
             "Microsoft Remote Desktop" = 1295203466; # RDP
