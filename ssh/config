@@ -1,122 +1,209 @@
-# ── Includes ──────────────────────────────────────────────────────────────────
-Include ~/.colima/ssh_config
-
-# ── VCS ───────────────────────────────────────────────────────────────────────
+# Github
 Host github.com
-  Hostname github.com
+  HostName github.com
   User git
   IdentityFile ~/.ssh/keys/github
   IdentitiesOnly yes
 
-Host gitlab
-  Hostname gitlab.local
-  IdentityFile ~/.ssh/gitlab
-
-# ── Remote Servers ────────────────────────────────────────────────────────────
-Host bixz
-  Hostname 172.104.51.243
+# Public remote servers
+Host sahara-backup
+  HostName 172.104.51.243
   User bixz
   Port 9020
-  StrictHostKeyChecking yes
-  PasswordAuthentication no
-  IdentityFile ~/.ssh/keys/bixz
 
-Host tesla
-  Hostname 69.62.85.156
+Host omada
+  HostName 69.62.85.156
   User tesla
   Port 9021
-  StrictHostKeyChecking yes
-  PasswordAuthentication no
-  IdentityFile ~/.ssh/keys/bixz
 
-# ── Site Remote Access (Tailscale) ────────────────────────────────────────────
+Host questlife
+  HostName 10.1.1.8
+  User quests
+
+Host gear5
+  HostName 10.1.1.133
+  User sai
+
+# Site remote Raspberry Pi hosts over Tailscale
 Host sahara-remote
-  Hostname erimayur
+  HostName erimayur
   Port 9360
-  IdentityFile ~/.ssh/keys/remote_sahara
-
-Host ultra-remote
-  Hostname ultra
-  Port 9361
-  IdentityFile ~/.ssh/keys/remote_ultra
-
-Host walayar-remote
-  Hostname walayar
-  Port 9362
-  IdentityFile ~/.ssh/keys/remote_walayar
-
-Host kannanur-remote
-  Hostname kannanur
-  Port 9363
-  IdentityFile ~/.ssh/keys/remote_kannanur
 
 Host vadakkencherry-remote
-  Hostname vadakkencherry
+  HostName vadakkencherry
   Port 9364
-  IdentityFile ~/.ssh/keys/remote_vadakkancherry
-
-Host kallekad-remote
-  Hostname kallekad
-  IdentityFile ~/.ssh/keys/remote_kallekad
 
 Host *-remote
   User zoro
 
-# ── Local Network ─────────────────────────────────────────────────────────────
-Host sonicpad
-  Hostname 10.10.1.121
-  HostkeyAlgorithms +ssh-rsa
+# Tang devices
+# Host tang-southern
+#   HostName 10.30.30.111
 
-Host sahara-storage
-  Hostname 192.168.1.166
+Host tang-ultra
+  HostName 10.20.30.111
+
+Host tang-walayar
+  HostName 10.21.30.111
+
+Host tang-kallekkad
+  HostName 10.22.30.111
+
+Host tang-palathurai
+  HostName 10.40.30.111
+
+Host tang-*
   User sahara
-  Port 9609
-  IdentityFile ~/.ssh/keys/local_sahara
 
-# ── NAS ───────────────────────────────────────────────────────────────────────
-Host ultra-nas
-  Hostname 10.20.10.10
+# Tailscale servers
+# Host tailscale-sahara
+#   HostName 10.10.10.50
+#
+# Host tailscale-sahara-ho
+#   HostName 10.10.10.51
+
+Host tailscale-kannanur
+  HostName 10.11.10.50
+
+Host tailscale-kannanur-ho
+  HostName 10.11.10.51
+
+Host tailscale-ultra
+  HostName 10.20.10.50
+
+Host tailscale-ultra-ho
+  HostName 10.20.10.51
+
+Host tailscale-walayar
+  HostName 10.21.10.50
+
+Host tailscale-walayar-ho
+  HostName 10.21.10.51
+
+Host tailscale-kallekkad
+  HostName 10.22.10.50
+
+Host tailscale-kallekkad-ho
+  HostName 10.22.10.51
+
+Host tailscale-southern
+  HostName 10.30.10.50
+
+Host tailscale-southern-ho
+  HostName 10.30.10.51
+
+Host tailscale-palathurai
+  HostName 10.40.10.50
+
+Host tailscale-palathurai-ho
+  HostName 10.40.10.51
+
+Host tailscale-*
+  User tailscale
+
+# MQTT servers
+# Host mqtt-sahara
+#   HostName 10.10.30.110
+
+Host mqtt-kannanur
+  HostName 10.11.30.110
+
+Host mqtt-ultra
+  HostName 10.20.30.110
+
+Host mqtt-walayar
+  HostName 10.21.30.110
+
+Host mqtt-kallekkad
+  HostName 10.22.30.110
+
+# Host mqtt-southern
+#   HostName 10.30.30.110
+
+Host mqtt-palathurai
+  HostName 10.40.30.110
+
+Host mqtt-*
+  User mqtt
+
+# Storage NAS
+Host nas-ultra
+  HostName 10.20.10.9
+
+Host nas-southern
+  HostName 10.30.10.9
+
+Host nas-*
+  User nas
+
+# Inventory servers
+Host inventory-ultra
+  HostName 10.20.30.102
+
+Host inventory-southern
+  HostName 10.30.30.102
+
+Host inventory-*
+  User inventory
+
+# ERP/media devices
+Host erp-southern
+  HostName 10.30.10.10
   User sahara
-  IdentityFile ~/.ssh/keys/remote_kallekad
 
-Host walayar-nas
-  Hostname 10.21.10.10
+Host erp-ultra
+  HostName 10.20.10.10
+  User sahara
+
+Host erp-walayar
+  HostName 10.21.10.10
   User nas
-  IdentityFile ~/.ssh/keys/remote_kallekad
 
-Host kallekkad-nas
-  Hostname 10.22.10.10
+Host erp-kallekkad
+  HostName 10.22.10.10
   User nas
-  IdentityFile ~/.ssh/keys/remote_kallekad
 
-# ── NVR ───────────────────────────────────────────────────────────────────────
-Host ultra-nvr
-  Hostname ultra-nvr.local
-  User nvr
-  IdentityFile ~/.ssh/pi_nvr
+Host erp-palathurai
+  HostName 10.40.10.10
+  User nas
 
-# ── Weighbridges ──────────────────────────────────────────────────────────────
+# Weighbridges
 Host weighbridge-sahara
-  Hostname 10.10.30.101
-
-Host weighbridge-southern
-  Hostname 10.30.30.101
-
-Host weighbridge-ultra
-  Hostname 10.20.10.101
+  HostName 10.10.30.101
 
 Host weighbridge-kannanur
-  Hostname 10.11.10.101
+  HostName 10.11.10.101
 
-Host weighbridge-palathurai
-  Hostname 10.40.10.101
+Host weighbridge-ultra
+  HostName 10.20.10.101
 
 Host weighbridge-walayar
-  Hostname 10.21.10.101
+  HostName 10.21.10.101
 
 Host weighbridge-kallekkad
-  Hostname 10.22.10.101
+  HostName 10.22.10.101
+
+Host weighbridge-southern
+  HostName 10.30.30.101
+
+Host weighbridge-palathurai
+  HostName 10.40.10.101
 
 Host weighbridge-*
   User weighbridge
-  IdentityFile ~/.ssh/keys/remote_kallekad
+
+# Shared admin identities
+Host sahara-backup omada questlife gear5 *-remote tang-* tailscale-* mqtt-* nas-* inventory-* erp-* weighbridge-*
+  StrictHostKeyChecking yes
+  PasswordAuthentication no
+  KbdInteractiveAuthentication no
+  PreferredAuthentications publickey
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/keys/sai-admin
+  IdentityFile ~/.ssh/keys/sai-admin-secure
+  ForwardAgent no
+
+# Local network
+Host sonicpad
+  HostName 10.10.1.121
+  HostkeyAlgorithms +ssh-rsa

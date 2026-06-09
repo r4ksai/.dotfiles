@@ -64,8 +64,6 @@
             # Docs
             pkgs.tlrc # "man" command replacement
 
-            # Installer UI
-            pkgs.gum
           ];
 
         fonts.packages = [
@@ -96,6 +94,7 @@
             "wireguard-tools"
             "tailscale"
             "watch"
+            "supabase"
 
             # Runtimes
             "go"
@@ -109,6 +108,7 @@
             "imagemagick"
             "httpie"         # HTTP client
             "yazi"           # Terminal file manager
+            "yarn"
 
             # Python build deps
             "readline"
@@ -127,6 +127,9 @@
 
             # Media
             "mpv"            # CLI video player
+            "glow"
+            "gum"
+            "ykman"
           ];
           casks = [
             "anydesk"
@@ -134,6 +137,9 @@
             "mqttx"
             "telegram"
             # "spotify" # Music
+
+            "codex"
+            "claude-code"
 
             # Development
             "boop" # Developer toolsuite
@@ -145,11 +151,13 @@
             "pgadmin4" # Postgresql client
             "kicad"
             "db-browser-for-sqlite"
+            "docker-desktop"
             # "diffusionbee" # AI Image Generator
-            # "raspberry-pi-imager"
+            "raspberry-pi-imager"
+            "autodesk-fusion"
 
             # Note Taking
-            # "obsidian"
+            "obsidian"
             "notion"
             # "affine"
 
@@ -164,9 +172,9 @@
             "audacity"
 
             # 3D Printing
-            # "creality-print"
+            "creality-print"
             # "ultimaker-cura"
-            "creality-slicer"
+            # "creality-slicer"
             "bambu-studio"
             # "orcaslicer"
 
@@ -210,7 +218,6 @@
             "Amphetamine" = 937984704; # Keep the screen on
             "Keynote" = 409183694; # Create Presentation
             "Microsoft Remote Desktop" = 1295203466; # RDP Client
-            # "Silicio" = 933627574; # Spotify Client
           };
           onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
@@ -252,8 +259,6 @@
             "/Applications/Tailscale.app"
             "/Applications/TickTick.app"
             "/Applications/Notion.app"
-            # "/Applications/AFFiNE.app"
-            # "/Applications/Obsidian.app"
             "/Applications/WezTerm.app"
             "/System/Applications/Music.app"
             "/System/Applications/System Settings.app"

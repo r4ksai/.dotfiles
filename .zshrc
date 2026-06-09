@@ -50,6 +50,15 @@ alias lld="ll --group-directories-first"
 alias lt="l --tree --depth=2"
 alias llt="ll --tree --depth=2"
 alias lat="la --tree --depth=2"
+alias lt3="l --tree --depth=3"
+alias llt3="ll --tree --depth=3"
+alias lat3="la --tree --depth=3"
+alias lt4="l --tree --depth=4"
+alias llt4="ll --tree --depth=4"
+alias lat4="la --tree --depth=4"
+alias lt5="l --tree --depth=5"
+alias llt5="ll --tree --depth=5"
+alias lat5="la --tree --depth=5"
 
 # Editors
 alias v="nvim"
@@ -104,6 +113,28 @@ mqttsub() {
     for(i=1;i<=n;i++)
       printf "%-40s %s\n", keys[i], color(data[keys[i]])
   }'
+}
+
+cpcat() {
+    if [ ! -f "$1" ]; then
+        echo "File not found: $1"
+        return 1
+    fi
+
+    if command -v pbcopy >/dev/null 2>&1; then
+        pbcopy < "$1"
+    elif command -v wl-copy >/dev/null 2>&1; then
+        wl-copy < "$1"
+    elif command -v xclip >/dev/null 2>&1; then
+        xclip -selection clipboard < "$1"
+    elif command -v xsel >/dev/null 2>&1; then
+        xsel --clipboard --input < "$1"
+    else
+        echo "No clipboard utility found"
+        return 1
+    fi
+
+    echo "Copied $1"
 }
 
 # ── Tools ─────────────────────────────────────────────────────────────────────
