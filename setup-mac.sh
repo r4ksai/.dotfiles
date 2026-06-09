@@ -129,8 +129,16 @@ _link "$DOTFILES/.wezterm.lua"             ~/.wezterm.lua
 _link "$DOTFILES/nvim"                     ~/.config/nvim
 _link "$DOTFILES/yazi"                     ~/.config/yazi
 _link "$DOTFILES/nix-darwin"               ~/.config/nix-darwin
+_link "$DOTFILES/fish"                     ~/.config/fish
+_link "$DOTFILES/alacritty"                ~/.config/alacritty
+_link "$DOTFILES/lazygit"                  ~/.config/lazygit
 _link "$DOTFILES/karabiner/karabiner.json" ~/.config/karabiner/karabiner.json
+_link "$DOTFILES/git/ignore"               ~/.config/git/ignore
+_link "$DOTFILES/gh/config.yml"            ~/.config/gh/config.yml
 _link "$DOTFILES/ssh/config"               ~/.ssh/config
+
+# Claude Code
+_link "$DOTFILES/claude/CLAUDE.md"         ~/.claude/CLAUDE.md
 
 echo ""
 ok "Done — run: exec zsh"
