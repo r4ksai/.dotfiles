@@ -4,6 +4,12 @@ Skills you author yourself, in `SKILL.md` package format. Vendor/plugin skills
 (installed via marketplaces like `claude-plugins-official`) are not stored here —
 only your own.
 
+## Available
+
+| Folder | What it does |
+| --- | --- |
+| `caveman/` | Ultra-terse, token-minimal response mode. Invoke with `/caveman`; say "stop"/"normal" to exit. Manual-only, never auto-activates. |
+
 ## Format
 
 ```

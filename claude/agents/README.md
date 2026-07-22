@@ -18,10 +18,14 @@ Claude Code subagent definitions — markdown files with frontmatter, matching t
 | `security-reviewer.md` | Reviews for OWASP-style vulnerabilities (review only) |
 | `devops-engineer.md` | CI/CD, deployment, containers, infrastructure-as-code |
 | `performance-engineer.md` | Profiles and fixes backend/frontend performance issues |
+| `debugger.md` | Root-cause analysis on a specific bug/crash/failing test before fixing |
+| `database-engineer.md` | Schema design, migrations, query correctness/performance |
 
 The "reviewer"-style agents (`architecture-reviewer`, `senior-developer`,
 `security-reviewer`) are deliberately read-only — they report findings rather
-than editing code, so they stay independent of whoever wrote the change.
+than editing code, so they stay independent of whoever wrote the change. They
+keep Bash for inspection (`git diff`, tests, linters) but are instructed never
+to use it to write files.
 
 All descriptions are currently phrased for **manual invocation only** — none
 say "use PROACTIVELY", so Claude Code should not auto-delegate to them. Invoke
