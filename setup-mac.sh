@@ -139,6 +139,7 @@ _link "$DOTFILES/ssh/config"               ~/.ssh/config
 
 # Claude Code
 _link "$DOTFILES/claude/CLAUDE.md"         ~/.claude/CLAUDE.md
+_link "$DOTFILES/claude/agents"            ~/.claude/agents
 
 echo ""
 ok "Done — run: exec zsh"
