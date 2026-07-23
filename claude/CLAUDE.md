@@ -102,6 +102,12 @@ docs(api): update authentication guide
 
 ---
 
+## SSH
+
+- When connecting to remote servers, use the SSH key `~/.ssh/keys/agent-key` (e.g. `ssh -i ~/.ssh/keys/agent-key user@host`) unless stated otherwise.
+
+---
+
 ## Security
 
 - Never hardcode secrets.
