@@ -117,7 +117,6 @@
             "bear"                    # Generates compile_commands.json
 
             # Media & TUI
-            "mpv"
             "glow"                    # Markdown renderer
             "gum"                     # Shell script UI toolkit
             "ykman"                   # YubiKey manager
@@ -128,6 +127,7 @@
             "telegram"
             "whatsapp"
             "discord"
+            "slack"
             # "spotify"
 
             # AI / Coding
