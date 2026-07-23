@@ -6,6 +6,12 @@ Host github.com
   IdentitiesOnly yes
 
 # Public remote servers
+Host bix
+  # HostName 167.233.135.118
+  HostName 100.100.99.99
+  User bix
+  Port 2975
+
 Host sahara-backup
   HostName 172.104.51.243
   User bixz
@@ -193,12 +199,13 @@ Host weighbridge-*
   User weighbridge
 
 # Shared admin identities
-Host sahara-backup omada questlife gear5 *-remote tang-* tailscale-* mqtt-* nas-* inventory-* erp-* weighbridge-*
+Host bix sahara-backup omada questlife gear5 *-remote tang-* tailscale-* mqtt-* nas-* inventory-* erp-* weighbridge-*
   StrictHostKeyChecking yes
   PasswordAuthentication no
   KbdInteractiveAuthentication no
   PreferredAuthentications publickey
   IdentitiesOnly yes
+  IdentityFile ~/.ssh/keys/sai-admin-nano
   IdentityFile ~/.ssh/keys/sai-admin
   IdentityFile ~/.ssh/keys/sai-admin-secure
   ForwardAgent no
