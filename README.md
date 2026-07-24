@@ -152,6 +152,24 @@ ssh-add ~/.ssh/id_ed25519
 ssh-copy-id user@host
 ```
 
+### Agent SSH key
+Use this key to grant agents server access without requiring repeated
+hardware-key touch prompts during automated work.
+
+```bash
+# Grant agent-key access to one or more servers
+agent-key.sh add user@host
+
+# Check whether agent-key is present
+agent-key.sh status user@host
+
+# Remove agent-key access
+agent-key.sh remove user@host
+```
+
+Claude/Codex agents should use `~/.ssh/keys/agent-key` for remote server SSH
+unless told otherwise.
+
 ---
 
 ## Updating

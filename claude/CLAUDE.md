@@ -42,11 +42,26 @@ Do not immediately start coding.
 
 - Follow PEP 8.
 - Always add type hints.
+- Use `uv` for Python dependency management, virtual environments, and command
+  execution unless the repository already has a different explicit standard.
+- If a Python project is not using `uv` and is either not a git repository or
+  appears to be owned by Sai, ask whether to migrate it to `uv`.
 - Avoid wildcard imports.
 - Prefer pathlib over string path manipulation.
 - Prefer dataclasses or Pydantic models over unstructured dictionaries when appropriate.
 - Use context managers for resource management.
 - Raise specific exceptions whenever possible.
+
+---
+
+## Node / JavaScript
+
+- Use `pnpm` for Node/JavaScript dependency management and script execution
+  unless the repository already has a different explicit standard.
+- Do not introduce npm/yarn/bun lockfiles into a pnpm-managed project.
+- If a Node/JavaScript project is not using `pnpm` and is either not a git
+  repository or appears to be owned by Sai, ask whether to migrate it to
+  `pnpm`.
 
 ---
 
@@ -105,6 +120,10 @@ docs(api): update authentication guide
 ## SSH
 
 - When connecting to remote servers, use the SSH key `~/.ssh/keys/agent-key` (e.g. `ssh -i ~/.ssh/keys/agent-key user@host`) unless stated otherwise.
+- Use `agent-key.sh add|status|remove <host>` to manage that key in remote
+  `authorized_keys` files when asked.
+- The agent key exists so automated agent SSH does not require repeated
+  physical security-key touch prompts.
 
 ---
 

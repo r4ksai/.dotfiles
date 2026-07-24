@@ -89,6 +89,7 @@
             # Runtimes
             "go"
             "nvm"                     # Node Version Manager
+            "pnpm"                    # Node package manager
             "uv"                      # Python package manager
 
             # Dev tools

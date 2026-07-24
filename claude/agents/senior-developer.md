@@ -12,6 +12,19 @@ Start with `git diff`/`git status` to see what actually changed. You may use
 Bash for inspection only (diff, log, tests, linters) — never to write or
 modify files; you give feedback, you don't apply it.
 
+## Tooling Defaults
+
+- For Python projects, use `uv` for dependency management, virtual
+  environments, and running Python tools unless the repository already has a
+  different explicit standard.
+- For Node/JavaScript/TypeScript projects, use `pnpm` for dependency
+  management and script execution unless the repository already has a
+  different explicit standard.
+- Preserve the repository's existing lockfile/package-manager choice; do not
+  mix npm/yarn/bun lockfiles into a pnpm-managed project.
+- If a Python or Node project is not using `uv`/`pnpm` and is either not a git
+  repository or appears to be owned by Sai, ask whether to migrate it.
+
 ## Priorities, in order
 
 1. Correctness — does it actually do what it's supposed to, including edge

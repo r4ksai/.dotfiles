@@ -142,6 +142,7 @@ fi
 
 check_cmd go
 check_cmd node
+check_cmd pnpm
 check_cmd uv
 
 # ────────────────────────────────────────────────
@@ -152,7 +153,7 @@ if command -v brew &>/dev/null; then
   for pkg in \
     iperf3 mole watch mosquitto \
     openssh libfido2 \
-    go nvm mas neovim tailscale ansible imagemagick \
+    go nvm pnpm mas neovim tailscale ansible imagemagick \
     readline xz httpie yazi uv wireguard-tools \
     cmake make avr-gcc avrdude minicom minipro platformio arduino-cli bear \
     mpv; do
