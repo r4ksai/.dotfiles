@@ -186,7 +186,12 @@
             "nordvpn"
             "paragon-ntfs"
             "tailscale-app"
-            "karabiner-elements"
+            "karabiner-elements"      # kept for later use, but no rules configured; its
+                                       # LaunchAgents/daemon are disabled via `launchctl
+                                       # disable` (org.pqrs.service.*) — it was intercepting
+                                       # trackpad drag events system-wide (Finder, KiCad,
+                                       # browser uploads). Re-enable with `launchctl enable`
+                                       # on each label if rules are ever added.
             "yubico-authenticator"
             # "bartender"
             # "jordanbaird-ice"
@@ -232,6 +237,16 @@
 
         # ── macOS Defaults ────────────────────────────────────────────────────
         system.defaults = {
+          # Pinned so an external process (Logi Options+, Karabiner-Elements, etc.)
+          # can't silently flip tap-to-click back on across rebuilds.
+          trackpad = {
+            Clicking                = false; # no tap to click
+            Dragging                = false; # no tap-to-drag; drag via physical click+hold instead
+            TrackpadThreeFingerDrag = false; # single-finger click+drag only, no three-finger gesture
+            DragLock                = false;
+            TrackpadRightClick      = true;  # two-finger tap/click for right-click
+          };
+
           dock = {
             autohide               = true;
             showhidden             = true;
@@ -269,6 +284,7 @@
             NSDocumentSaveNewDocumentsToCloud   = false;
             PMPrintingExpandedStateForPrint     = true;
             AppleShowAllExtensions           = true;
+            ApplePressAndHoldEnabled         = false; # key-repeat instead of accent-picker on hold
           };
 
           screencapture = {
@@ -281,6 +297,7 @@
             AppleShowAllFiles             = false;
             AppleShowAllExtensions        = true;
             FXEnableExtensionChangeWarning = false;
+            _FXSortFoldersFirst            = true;
             _FXShowPosixPathInTitle        = false;
             FXRemoveOldTrashItems          = true;
             FXDefaultSearchScope           = "SCcf";
