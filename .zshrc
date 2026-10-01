@@ -142,3 +142,8 @@ eval "$(fzf --zsh)"
 command -v rbenv &>/dev/null && eval "$(rbenv init -)"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Tang Nano / FPGA toolchain (yosys, nextpnr-himbaechel, gowin_pack, openFPGALoader)
+oss-cad-suite() { source ~/tools/oss-cad-suite/environment; }
+
+alias get_idf='. $HOME/tools/esp/esp-idf/export.sh'
