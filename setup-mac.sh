@@ -135,6 +135,7 @@ _link "$DOTFILES/lazygit"                  ~/.config/lazygit
 _link "$DOTFILES/karabiner/karabiner.json" ~/.config/karabiner/karabiner.json
 _link "$DOTFILES/git/ignore"               ~/.config/git/ignore
 _link "$DOTFILES/gh/config.yml"            ~/.config/gh/config.yml
+_link "$DOTFILES/svls"                     ~/.config/svls
 _link "$DOTFILES/ssh/config"               ~/.ssh/config
 
 # Claude Code

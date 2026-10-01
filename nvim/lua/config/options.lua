@@ -10,6 +10,16 @@ vim.g.snacks_animate = true
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 vim.g.markdown_recommended_style = 0
 
+-- Neovim's built-in .v detection is content-based (Coq/Verilog/V share the
+-- extension) and falls back to the "v" filetype for empty/new files, so a
+-- fresh .v buffer isn't recognized as verilog until it has enough content
+-- to match the heuristic. Force it since we don't use the V language.
+vim.g.filetype_v = "systemverilog"
+
+-- .cst = Gowin FPGA physical constraints file (pin/IO_LOC, IO_PORT, etc.),
+-- unclaimed by Neovim's builtin filetype detection. See syntax/gowin_cst.vim.
+vim.filetype.add({ extension = { cst = "gowin_cst" } })
+
 -- Colors / display
 opt.termguicolors = true
 opt.encoding = "UTF-8"
