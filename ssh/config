@@ -157,9 +157,13 @@ Host erp-southern
   HostName 10.30.10.10
   User sahara
 
+Host erp-sahara
+  HostName 10.10.10.10
+  User erp
+
 Host erp-ultra
   HostName 10.20.10.10
-  User sahara
+  User erp
 
 Host erp-walayar
   HostName 10.21.10.10
